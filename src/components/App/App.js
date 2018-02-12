@@ -7,7 +7,8 @@ import StorySection from '../StorySection/StorySection';
 import AppsSection from '../AppsSection/AppsSection';
 import ExpertsSection from '../ExpertsSection/ExpertsSection';
 import ImageCard1 from '../ImageCard1/ImageCard1';
-
+import ImageCard2 from '../ImageCard2/ImageCard2';
+import ImageCard3 from '../ImageCard3/ImageCard3';
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
       <AppsSection/>
       <ExpertsSection/>
       <ImageCard1/>
+      <ImageCard2/>    
+      <ImageCard3/>
     </React.Fragment>
   );
 }
