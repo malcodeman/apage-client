@@ -1,0 +1,29 @@
+.header {
+    background-color: #fff;
+}
+
+.header .nav {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .nav .logo {
+    height: 24px;
+    width: 24px;
+    margin-right: 6px;
+}
+
+.header .nav .link {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, .6);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .nav .link .bold {
+    color: rgba(0, 0, 0, 1);
+}
