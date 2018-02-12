@@ -1,0 +1,21 @@
+.story-section {
+    padding: 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-section .h1 {
+    margin: 0;
+    border-left: 2px solid #D9BC6C;
+    padding-left: 2rem;
+    line-height: 2;
+    font-weight: 400;
+}
+
+.story-section .p {
+    margin: 0;
+    max-width: 340px;
+    padding: 2rem;
+    line-height: 1.4;
+    font-size: 1rem;
+}

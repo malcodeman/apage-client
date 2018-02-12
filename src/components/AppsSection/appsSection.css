@@ -1,0 +1,20 @@
+.apps-section {
+    padding: 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.apps-section .p {
+    margin: 0;
+    max-width: 340px;
+    line-height: 1.4;
+    font-size: 1.6rem;
+}
+
+.apps-section .p .dash {
+    width: 2rem;
+    height: 2px;
+    background-color: #D9BC6C;
+    display: inline-block;
+    vertical-align: middle;
+}
