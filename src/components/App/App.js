@@ -6,6 +6,8 @@ import Form from '../Form/Form';
 import StorySection from '../StorySection/StorySection';
 import AppsSection from '../AppsSection/AppsSection';
 import ExpertsSection from '../ExpertsSection/ExpertsSection';
+import ImageCard1 from '../ImageCard1/ImageCard1';
+
 
 const App = () => {
   return (
@@ -16,6 +18,7 @@ const App = () => {
       <StorySection/>
       <AppsSection/>
       <ExpertsSection/>
+      <ImageCard1/>
     </React.Fragment>
   );
 }
