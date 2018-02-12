@@ -9,6 +9,7 @@
     max-width: 340px;
     line-height: 1.4;
     font-size: 1.6rem;
+    padding-bottom: 2rem;
 }
 
 .apps-section .p .dash {
@@ -17,4 +18,24 @@
     background-color: #D9BC6C;
     display: inline-block;
     vertical-align: middle;
+}
+
+.apps-section .vertical-line {
+    padding: 2rem 0;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.apps-section .vertical-line .line {
+    height: 256px;
+    width: 1px;
+    background-color: #000;
+    margin-bottom: 2rem;
+}
+
+.apps-section .vertical-line .text {
+    transform: rotate(90deg);
+    color: #D9BC6C;
+    font-size: .8rem;
 }

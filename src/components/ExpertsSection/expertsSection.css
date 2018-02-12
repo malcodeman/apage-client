@@ -1,0 +1,25 @@
+.experts-section {
+    background-color: #F5F5F5;
+}
+.experts-section .experts-section-content {
+    padding: 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.experts-section .experts-section-content .text-container {
+    max-width: 340px;
+}
+
+.experts-section .experts-section-content .text-container .h2 {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.experts-section .experts-section-content .text-container .p {
+    margin: 0;
+    line-height: 1.6;
+}

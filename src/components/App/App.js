@@ -5,6 +5,7 @@ import Video from '../Video/Video';
 import Form from '../Form/Form';
 import StorySection from '../StorySection/StorySection';
 import AppsSection from '../AppsSection/AppsSection';
+import ExpertsSection from '../ExpertsSection/ExpertsSection';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Form/>
       <StorySection/>
       <AppsSection/>
+      <ExpertsSection/>
     </React.Fragment>
   );
 }
