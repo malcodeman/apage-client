@@ -12,15 +12,19 @@ import ImageCard3 from '../ImageCard3/ImageCard3';
 import AboutSection from '../AboutSection/AboutSection';
 import Footer from '../Footer/Footer';
 import HeroImage from '../HeroImage/HeroImage';
-
+import ViewportHeight from '../ViewportHeight/ViewportHeight';
+import Scroll from '../Scroll/Scroll';
 
 const App = () => {
   return (
     <React.Fragment>
       <HeroImage/>
-      <Header/>
-      <Video/>
-      <Form placeholder="Enter email adress to stay informed" value="Launching at summer 2018"/>
+      <ViewportHeight>        
+        <Header/>
+        <Video/>
+        <Form placeholder="Enter email adress to stay informed" value="Launching at summer 2018"/>
+        <Scroll/>
+      </ViewportHeight>      
       <StorySection/>
       <AppsSection/>
       <ExpertsSection/>
