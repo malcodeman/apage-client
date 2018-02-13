@@ -4,6 +4,9 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  min-height: 600px;
 }
 
 @media (min-width: 576px) {
@@ -44,6 +47,7 @@
   font-size: 1.2rem;
   display: flex;
   align-items: center;
+  padding: 2rem;
 }
 
 .chevron-right {

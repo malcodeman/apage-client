@@ -1,9 +1,10 @@
 import React from 'react';
 import './imageCard2.css';
+import bg from './assets/bg2.png';
 
 const ImageCard2 = () => {
     return(
-        <section className="image-card-2">
+        <section className="image-card-2" style={{backgroundImage: `url(${bg})`}}>
             <div className="image-card-2-content">
                 <div className="text-container">
                     <h2 className="h2">Fun and science<span className="dash"></span>combined</h2>

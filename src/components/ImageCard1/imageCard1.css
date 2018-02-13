@@ -1,6 +1,8 @@
 .image-card-1 {
   background-color: #f5f5f5;
   min-height: 600px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .image-card-1 .image-card-1-content {
