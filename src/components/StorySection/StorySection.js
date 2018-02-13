@@ -15,7 +15,7 @@ const StorySection = () => {
             <div>
                 <a className="read-story-link" href="/">
                     Full story
-                    <img class="chevron-right" src={chevronRight}></img>
+                    <img className="chevron-right" src={chevronRight} alt="Chevron right"></img>
                 </a>
             </div>
         </section>

@@ -31,8 +31,14 @@
   margin: 0;
   margin-bottom: 1rem;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 576px) {
+  .footer .footer-content .h3 {
+    font-size: 2rem;
+  }
 }
 
 .footer .footer-content .p {
