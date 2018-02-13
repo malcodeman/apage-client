@@ -10,6 +10,7 @@ import ImageCard1 from '../ImageCard1/ImageCard1';
 import ImageCard2 from '../ImageCard2/ImageCard2';
 import ImageCard3 from '../ImageCard3/ImageCard3';
 import AboutSection from '../AboutSection/AboutSection';
+import Footer from '../Footer/Footer';
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
     <React.Fragment>
       <Header/>
       <Video/>
-      <Form/>
+      <Form placeholder="Enter email adress to stay informed" value="Launching at summer 2018"/>
       <StorySection/>
       <AppsSection/>
       <ExpertsSection/>
@@ -25,6 +26,7 @@ const App = () => {
       <ImageCard2/>    
       <ImageCard3/>
       <AboutSection/>
+      <Footer/>
     </React.Fragment>
   );
 }

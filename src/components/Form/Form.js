@@ -1,11 +1,11 @@
 import React from 'react';
 import './form.css';
 
-const Form = () => {
+const Form = (props) => {
     return(
         <form className="form">
-            <input className="email" type="email" placeholder="ENTER EMAIL ADRESS TO STAY INFORMED"/>
-            <input className="submit" type="submit" value="LAUNCHING AT SUMMER 2018"/>
+            <input className="email" type="email" placeholder={props.placeholder}/>
+            <input className="submit" type="submit" value={props.value}/>
         </form>
     )
 }

@@ -1,0 +1,10 @@
+.icon {
+    height: 48px;
+    width: 48px;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    border: 1px solid #DADADA;
+    background-position: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
