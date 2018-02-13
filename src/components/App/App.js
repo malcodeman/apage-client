@@ -11,11 +11,13 @@ import ImageCard2 from '../ImageCard2/ImageCard2';
 import ImageCard3 from '../ImageCard3/ImageCard3';
 import AboutSection from '../AboutSection/AboutSection';
 import Footer from '../Footer/Footer';
+import HeroImage from '../HeroImage/HeroImage';
 
 
 const App = () => {
   return (
     <React.Fragment>
+      <HeroImage/>
       <Header/>
       <Video/>
       <Form placeholder="Enter email adress to stay informed" value="Launching at summer 2018"/>

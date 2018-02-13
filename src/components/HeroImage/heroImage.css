@@ -1,0 +1,17 @@
+.image {
+  position: absolute;
+  right: 0;
+  top: 1200px;
+  top: 1500px;
+  width: 40%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+@media (min-width: 576px) {
+  .image {
+    width: 50%;
+    top: 1320px;
+    z-index: 1;
+  }
+}
