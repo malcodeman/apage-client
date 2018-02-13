@@ -7,7 +7,8 @@ const ImageCard3 = () => {
             <div className="image-card-3-content">
                 <div className="text-container">
                         <span className="number">002</span>
-                        <p className="p">Cryptocurrency <span className="dash"></span> Soon trade with <span className="gold">FITNESSBODY Coin</span></p>
+                        <p className="p">Cryptocurrency
+                            <span className="dash"></span>Soon trade with <span className="gold"><strong>FITNESSBODY</strong> Coin</span></p>
                     </div>
                 </div>
         </section>

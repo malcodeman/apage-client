@@ -6,7 +6,7 @@ const ImageCard2 = () => {
         <section className="image-card-2">
             <div className="image-card-2-content">
                 <div className="text-container">
-                    <h2 className="h2">Fun and science combined</h2>
+                    <h2 className="h2">Fun and science<span className="dash"></span>combined</h2>
                     <p className="p">We combine state of the arts fitness experts and video training with an amazing attention to detail to bring
                         You a new training experience that 
                         You have never seen before to increase 
