@@ -1,17 +1,15 @@
 .image {
-  position: absolute;
-  right: 0;
-  top: 1200px;
-  top: 1500px;
-  width: 40%;
-  object-fit: cover;
-  z-index: -1;
+  display: none;
 }
 
 @media (min-width: 576px) {
   .image {
+    position: absolute;
+    right: 0;
+    width: 40%;
+    object-fit: cover;
     width: 50%;
-    top: 1320px;
-    z-index: 1;
+    top: 1600px;
+    display: block;
   }
 }

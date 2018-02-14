@@ -1,7 +1,13 @@
 .image-card-2 {
   background-color: #f5f5f5;
   background-repeat: no-repeat;
-  background-position: 10% 50%;
+  background-position: 100% 90%;
+}
+
+@media (min-width: 768px) {
+  .image-card-2 {
+    background-position: 10% 50%;
+  }
 }
 
 .image-card-2 .image-card-2-content {

@@ -20,7 +20,7 @@
 
 @media (min-width: 768px) {
   .story-section {
-    background-size: initial;
+    background-size: inherit;
   }
 }
 
