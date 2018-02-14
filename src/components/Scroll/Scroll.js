@@ -3,11 +3,8 @@ import mouse from "./assets/mouse.svg";
 import "./scroll.css";
 
 class Scroll extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shouldHide: false
-    };
+  state = {
+    shouldHide: false  
   }
   handleScroll = () => {
     this.setState({ shouldHide: true });
@@ -18,10 +15,7 @@ class Scroll extends React.Component {
   render() {
     return (
       <section className={`scroll-section ${this.state.shouldHide ? 'hidden' : ''}`}>
-        <img
-          className={'scroll-icon'}
-          style={{ backgroundImage: `url(${mouse})` }}
-        />
+        <div className={'scroll-icon'} style={{ backgroundImage:`url(${mouse})`}}></div>
         <p className="scroll-text">Scroll</p>
       </section>
     );

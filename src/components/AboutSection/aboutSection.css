@@ -1,71 +1,71 @@
 .about-section {
-    background-color: #F5F5F5;
-    padding: 2rem 0;
+  background-color: #f5f5f5;
+  padding: 2rem 0;
 }
 
 .about-section .about-section-content {
-    padding: 2rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 2rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .about-section .about-section-content .text-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (min-width: 576px) { 
-    .about-section .about-section-content .text-container {
-        margin: 0 auto;
-        max-width: 60%;
-        flex-direction: row;
-        justify-content: space-around;
-    }
- }
+@media (min-width: 576px) {
+  .about-section .about-section-content .text-container {
+    margin: 0 auto;
+    max-width: 60%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
 
 .about-section .about-section-content .text-container .left-side {
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
-@media (min-width: 576px) { 
-    .about-section .about-section-content .text-container .left-side {
-        margin-bottom: 0;
-    }
- }
+@media (min-width: 576px) {
+  .about-section .about-section-content .text-container .left-side {
+    margin-bottom: 0;
+  }
+}
 
 .about-section .about-section-content .text-container .p {
-    margin: 0;
-    color: rgba(0, 0, 0, .6);
+  margin: 0;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .about-section .about-section-content .text-container .p .gold {
-    color: #D9BC6C;
+  color: #d9bc6c;
 }
 
 .about-section .about-section-content .text-container .p .dash {
-    width: 1.2rem;
-    height: 2px;
-    margin: 0 1rem;
-    background-color: #000;
-    display: inline-block;
-    vertical-align: middle;
+  width: 1.2rem;
+  height: 2px;
+  margin: 0 1rem;
+  background-color: #000;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .about-section .about-section-content .text-container .right-side {
-    max-width: 380px;
+  max-width: 380px;
 }
 
 .about-section .about-section-content .text-container .right-side .p {
-    margin-bottom: 2rem;
-    color: rgba(0, 0, 0, .6);
-    line-height: 1.4;
+  margin-bottom: 2rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
 }
 
 .about-section .about-section-content .text-container .right-side .h2 {
-    text-transform: uppercase;
-    margin: 0;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    font-weight: 400;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
 }

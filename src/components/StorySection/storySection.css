@@ -7,13 +7,20 @@
   background-repeat: no-repeat;
   background-position: 100% 50%;
   min-height: 600px;
+  background-size: 0;
 }
 
 @media (min-width: 576px) {
   .story-section {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;  
+  }
+}
+
+@media (min-width: 768px) {
+  .story-section {
+    background-size: initial;
   }
 }
 
