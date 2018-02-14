@@ -1,6 +1,6 @@
 .video-overlay {
   position: absolute;
-  top: 64px;
+  top: 0;
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
@@ -8,7 +8,7 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   padding: 2rem;
   box-sizing: border-box;
@@ -19,6 +19,7 @@
 .video-overlay .p {
   margin: 0;
   font-size: 1rem;
+  padding: 1rem;
 }
 
 @media (min-width: 576px) {

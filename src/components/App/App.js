@@ -19,8 +19,8 @@ const App = () => {
   return (
     <React.Fragment>
       <HeroImage/>
-      <ViewportHeight>        
-        <Header/>
+      <Header/>
+      <ViewportHeight>
         <Video/>
         <Form placeholder="Enter email adress to stay informed" value="Launching at summer 2018"/>
         <Scroll/>
