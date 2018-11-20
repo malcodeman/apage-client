@@ -1,5 +1,16 @@
 import React from 'react'
 
-const IndexPage = () => <h1>Buy x</h1>
+import './globalStyle.css'
+import Header from '../components/Header'
+import Body from '../components/Body'
+import Footer from '../components/Footer'
+
+const IndexPage = () => (
+  <div>
+    <Header />
+    <Body />
+    <Footer />
+  </div>
+)
 
 export default IndexPage
