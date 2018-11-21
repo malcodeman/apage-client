@@ -4,13 +4,16 @@ import './globalStyle.css'
 import Header from '../components/Header'
 import Body from '../components/Body'
 import Footer from '../components/Footer'
+import style from './index.module.css'
 
 const IndexPage = () => (
-  <div>
-    <Header />
-    <Body />
+  <>
+    <div className={style.fullscreen}>
+      <Header />
+      <Body />
+    </div>
     <Footer />
-  </div>
+  </>
 )
 
 export default IndexPage
