@@ -1,11 +1,11 @@
 import React from 'react'
 
 import './globalStyle.css'
-import Header from '../components/Header'
-import Body from '../components/Body'
+import Header from '../components/header/Header'
+import Body from '../components/body/Body'
 import Reviews from '../components/reviews/Reviews'
 
-import Footer from '../components/Footer'
+import Footer from '../components/footer/Footer'
 import style from './index.module.css'
 
 const IndexPage = () => (
