@@ -1,7 +1,32 @@
-.header {
+.nav {
   display: flex;
   justify-content: space-between;
   padding: 16px 32px;
-  background-color: #fcf8f4;
-  color: #2e3038;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  color: #998da0;
+}
+
+.brandName {
+  font-size: 1.2rem;
+  color: #463853;
+}
+
+.mainNavigation {
+  display: block;
+}
+
+.navItem {
+  color: #998da0;
+  padding: 12px 24px;
+}
+
+.active {
+  color: #463853;
+  background-color: #fbfbfd;
+  border-radius: 6px;
 }
