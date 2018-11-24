@@ -1,0 +1,6 @@
+.reviews {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 24px;
+}
