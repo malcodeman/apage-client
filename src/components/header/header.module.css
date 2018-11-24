@@ -1,7 +1,10 @@
+.header {
+  padding: 16px 128px;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 16px 32px;
   align-items: center;
 }
 
