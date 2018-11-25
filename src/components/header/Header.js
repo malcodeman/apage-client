@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Link } from 'gatsby'
 import style from './header.module.css'
+import menu from '../../images/menu.svg'
 
 function Header() {
   return (
@@ -11,6 +12,9 @@ function Header() {
           <span className={style.brandName}>Bedtime Stories</span>
           <span>Exciting tales for young & old</span>
         </div>
+        <button className={style.menu}>
+          <img src={menu} alt="" className={style.menuIcon} />
+        </button>
         <div className={style.mainNavigation}>
           <Link to="/" className={style.navItem} activeClassName={style.active}>
             Home
