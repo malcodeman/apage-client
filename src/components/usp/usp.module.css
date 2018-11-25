@@ -1,0 +1,42 @@
+.usp {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+  background-color: #fbfbfd;
+  padding: 64px 128px;
+}
+
+@media (min-width: 768px) {
+  .usp {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .usp {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  height: 128px;
+  width: 128px;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: #463853;
+  font-size: 1.4rem;
+}
+
+.subtitle {
+  color: #998da0;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
