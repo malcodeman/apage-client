@@ -46,7 +46,7 @@ function Features() {
           })}
         </div>
       </div>
-      <div className={style.screens}>
+      <div className={style.screensWrapper}>
         <img src={iphone} alt="" className={style.screen} />
       </div>
     </div>

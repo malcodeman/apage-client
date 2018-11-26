@@ -1,0 +1,64 @@
+.school {
+  padding: 16px 32px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+  background-color: #ffdd57;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .school {
+    grid-template-columns: 1fr 1fr;
+    padding: 32px 64px;
+  }
+}
+
+@media (min-width: 992px) {
+  .school {
+    padding: 64px 128px;
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.4rem;
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.buttonWrapper {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.button {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primaryButton {
+  composes: button;
+  background-color: #fff;
+  color: #0a0a0a;
+  margin-right: 6px;
+}
+
+.emoji {
+  margin-right: 6px;
+}
+
+.illustration {
+  width: 100%;
+}

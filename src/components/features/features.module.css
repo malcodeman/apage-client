@@ -1,7 +1,7 @@
 .features {
   padding: 16px 32px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 64px;
 }
 
@@ -54,10 +54,16 @@
   line-height: 1.2;
 }
 
-.screens {
-  display: flex;
-  justify-content: center;
-  max-height: 100%;
+.screensWrapper {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .screensWrapper {
+    display: flex;
+    justify-content: center;
+    max-height: 100%;
+  }
 }
 
 .screen {
