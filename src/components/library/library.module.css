@@ -1,0 +1,150 @@
+.library {
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fbfbfd;
+}
+
+@media (min-width: 768px) {
+  .library {
+    padding: 32px 64px;
+  }
+}
+
+@media (min-width: 992px) {
+  .library {
+    padding: 64px 128px;
+  }
+}
+
+.titleWrapper {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: #463853;
+  font-size: 1.4rem;
+}
+
+.subtitle {
+  color: #998da0;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.counterWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .counterWrapper {
+    flex-direction: row;
+  }
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 24px;
+  text-align: center;
+}
+
+.counterNumber {
+  color: #463853;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.counterLabel {
+  color: #998da0;
+}
+
+.cardsWrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 48px;
+  margin: 16px 0;
+}
+
+@media (min-width: 768px) {
+  .cardsWrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.cardImage {
+  max-width: 100%;
+}
+
+.cardBody {
+  padding: 24px;
+}
+
+.cardTitle {
+  color: #463853;
+}
+
+.cardDescription {
+  color: #998da0;
+  margin-bottom: 16px;
+}
+
+.button {
+  padding: 12px 24px;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ghostButton {
+  composes: button;
+  color: #8e51c7;
+  border: 2px solid #8e51c7;
+  font-weight: 500;
+}
+
+.primaryButton {
+  composes: button;
+  background-color: #8e51c7;
+  margin-bottom: 6px;
+}
+
+.ghostButton:hover {
+  background-color: #8e51c7;
+  color: #fff;
+}
+
+.footerWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.bellIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.footerText {
+  color: #998da0;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}

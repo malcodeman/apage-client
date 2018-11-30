@@ -6,6 +6,7 @@ import Body from '../components/body/Body'
 import Usp from '../components/usp/Usp'
 import Features from '../components/features/Features'
 import School from '../components/school/School'
+import Library from '../components/library/Library'
 import Newsletter from '../components/newsletter/Newsletter'
 import Reviews from '../components/reviews/Reviews'
 import Footer from '../components/footer/Footer'
@@ -20,6 +21,7 @@ const IndexPage = () => (
     <Usp />
     <Features />
     <School />
+    <Library />
     <Newsletter />
     <Reviews />
     <Footer />
