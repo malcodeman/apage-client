@@ -38,7 +38,7 @@ function Features() {
         <div className={style.featuresWrapper}>
           {features.map(feature => {
             return (
-              <div className={style.feature}>
+              <div key={feature.title} className={style.feature}>
                 <h4 className={style.featureTitle}>{feature.title}</h4>
                 <p className={style.featureSubtitle}>{feature.subtitle}</p>
               </div>

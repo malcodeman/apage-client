@@ -30,7 +30,7 @@ function Usp() {
     <section className={style.usp}>
       {usps.map(usp => {
         return (
-          <div className={style.card}>
+          <div key={usp.title} className={style.card}>
             <img src={usp.icon} alt="" className={style.icon} />
             <h3 className={style.title}>{usp.title}</h3>
             <p className={style.subtitle}>{usp.subtitle}</p>
