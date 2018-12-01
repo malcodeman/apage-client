@@ -50,16 +50,16 @@
   outline: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  width: 100%;
   color: #463853;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
+  flex: 1 1 auto;
   box-shadow: none;
   background-color: rgba(255, 255, 255, 0.75);
 }
 
 @media (min-width: 768px) {
   .emailInput {
-    width: auto;
+    font-size: 1.2rem;
   }
 }
 
@@ -70,7 +70,7 @@
 }
 
 .subscribeButton {
-  padding: 12px 24px;
+  padding: 6px 12px;
   font-weight: 500;
   display: flex;
   justify-content: center;
@@ -81,7 +81,14 @@
   border-bottom-right-radius: 4px;
   border: 0;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  .subscribeButton {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+  }
 }
 
 .emoji {
