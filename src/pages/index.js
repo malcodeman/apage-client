@@ -9,6 +9,7 @@ import School from '../components/school/School'
 import Library from '../components/library/Library'
 import Newsletter from '../components/newsletter/Newsletter'
 import Reviews from '../components/reviews/Reviews'
+import Contact from '../components/contact/Contact'
 import Footer from '../components/footer/Footer'
 import style from './index.module.css'
 
@@ -24,6 +25,7 @@ const IndexPage = () => (
     <Library />
     <Newsletter />
     <Reviews />
+    <Contact />
     <Footer />
   </>
 )
