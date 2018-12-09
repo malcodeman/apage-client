@@ -1,4 +1,80 @@
 .footer {
-  background-color: #484543;
-  color: #fff;
+  padding: 16px 32px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 64px;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    padding: 32px 64px;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    padding: 64px 128px;
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  color: #998da0;
+  padding: 12px 24px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandName {
+  font-size: 1.2rem;
+  color: #463853;
+  margin-bottom: 12px;
+}
+
+.menus {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 576px) {
+  .menus {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+}
+
+.menuHeader {
+  font-size: 1.2rem;
+  color: #463853;
+  padding: 12px 24px;
+}
+
+.menuItem {
+  color: #998da0;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.menuItem:hover {
+  color: #463853;
+  background-color: #fbfbfd;
+  border-radius: 6px;
+}
+
+.socialIcon {
+  height: 20px;
+  width: 20px;
+  margin-right: 12px;
 }
