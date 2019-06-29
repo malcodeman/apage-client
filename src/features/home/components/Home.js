@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-import { ReactComponent as WebDeveloper } from "../../styles/illustrations/web_developer.svg";
+import { ReactComponent as WebDeveloper } from "../styles/illustrations/web_developer.svg";
 
 const StyledHome = styled.div``;
 
@@ -33,7 +34,7 @@ const Links = styled.div`
   }
 `;
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   font-size: 0.8rem;
   text-transform: uppercase;
   padding: 10px;
@@ -41,7 +42,7 @@ const Link = styled.a`
   color: ${props => props.theme.primary};
 `;
 
-const SignIn = styled.a`
+const SignIn = styled(Link)`
   margin-left: auto;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -68,6 +69,8 @@ const Illustration = styled(WebDeveloper)`
     height: 232px;
   }
 `;
+
+const HeroContent = styled.div``;
 
 const SubheadingWrapper = styled.div`
   display: flex;
@@ -114,16 +117,16 @@ function Home() {
         <Nav>
           <Brand>Templates</Brand>
           <Links>
-            <Link>Features</Link>
-            <Link>Pricing</Link>
-            <Link>Contact</Link>
+            <StyledLink to="/">Features</StyledLink>
+            <StyledLink to="/">Pricing</StyledLink>
+            <StyledLink to="/">Contact</StyledLink>
           </Links>
-          <SignIn>Sign in</SignIn>
+          <SignIn to="/login">Sign in</SignIn>
         </Nav>
       </Header>
       <Hero>
         <Illustration />
-        <div>
+        <HeroContent>
           <SubheadingWrapper>
             <Subheading>
               Templates is the all-in-one platform to build a beautiful online
@@ -132,7 +135,7 @@ function Home() {
             <CTA>Get started</CTA>
           </SubheadingWrapper>
           <Note>Free trial. No credit card required.</Note>
-        </div>
+        </HeroContent>
       </Hero>
     </StyledHome>
   );
