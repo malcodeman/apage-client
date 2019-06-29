@@ -4,11 +4,11 @@ export default {
   secondary: "#818181",
   backgroundPrimary: "#000000",
   backgroundSecondary: "#FFFFFF",
-  backgroundInput: "#FFFFFF",
+  backgroundInput: "#f2f2f2",
   backgroundColorTransition: "background-color 0.2s ease",
   error: "#f82b60",
   link: "#2680eb",
   borderColor: "#DDDDDD",
   borderWidth: "1px",
-  borderRadius: "2px"
+  borderRadius: "3px"
 };
