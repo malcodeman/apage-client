@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -131,6 +131,8 @@ const Note = styled.p`
 `;
 
 function Home(props) {
+  const [email, setEmail] = useState("");
+
   return (
     <>
       <Container>
@@ -144,7 +146,7 @@ function Home(props) {
             <StyledLink to="/">Templates</StyledLink>
             <StyledLink to="/">Pricing</StyledLink>
             <StyledLink to="/login">Sign in</StyledLink>
-            <StyledLink to="/" color={props.theme.brand}>
+            <StyledLink to="/signup" color={props.theme.brand}>
               Sign up
             </StyledLink>
           </Links>
@@ -159,8 +161,15 @@ function Home(props) {
               presence.
             </Subheading>
             <Form>
-              <Input type="text" placeholder="Enter your email address" />
-              <CTA>Get started</CTA>
+              <Input
+                type="text"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={e => setEmail(e.currentTarget.value)}
+              />
+              <Link to={`/signup?email=${email}`}>
+                <CTA>Get started</CTA>
+              </Link>
             </Form>
             <Note>
               Already using Templates ?

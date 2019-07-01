@@ -8,6 +8,7 @@ import theme from "./styles/themes/light";
 import history from "./routing/history";
 import Home from "../features/home/components/Home";
 import Login from "../features/auth/components/Login";
+import Signup from "../features/auth/components/Signup";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Router history={history}>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
         </Router>
       </ThemeProvider>
     </Provider>

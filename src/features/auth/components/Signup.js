@@ -8,10 +8,9 @@ import { withRouter } from "react-router-dom";
 
 import Logo from "../../commonComponents/Logo";
 import Loader from "../../commonComponents/Loader";
-import Mail from "../styles/icons/Mail";
-import Lock from "../styles/icons/Lock";
 import Google from "../styles/icons/Google";
-import { login } from "../actions/authActionCreators";
+import { signup } from "../actions/authActionCreators";
+import utils from "../../../core/utils";
 
 const Wrapper = styled.div`
   @media (min-width: 576px) {
@@ -88,26 +87,25 @@ const FormItem = styled.div`
   margin-bottom: 1rem;
 `;
 
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  border: 2px solid transparent;
-  &:focus-within {
-    border-color: ${props => props.theme.borderColor};
-  }
-  border-radius: ${props => props.theme.borderRadius};
-  background-color: ${props => props.theme.backgroundSecondary};
+const Label = styled.label`
+  font-size: 0.8rem;
+  padding-bottom: 0.25rem;
+  color: ${props => props.theme.secondary};
 `;
 
 const Input = styled(Field)`
   font-size: 1rem;
   outline: 0;
-  border: 0;
   padding: 0 0.5rem;
-  filter: none;
+  padding: 0.5rem;
+  border: 2px solid transparent;
   font-weight: 500;
+  &:focus {
+    border-color: ${props => props.theme.borderColor};
+  }
+  border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.primary};
+  background-color: ${props => props.theme.backgroundSecondary};
 `;
 
 const SubmitButton = styled.button`
@@ -151,7 +149,7 @@ const SocialSignInButton = styled.button`
   padding: 0.5rem;
   background-color: transparent;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   border: 2px solid ${props => props.theme.borderColor};
   border-radius: ${props => props.theme.borderRadius};
 `;
@@ -160,6 +158,13 @@ const SocialSignInText = styled.span`
   font-size: 1rem;
   font-weight: 500;
   padding-left: 1rem;
+  color: ${props => props.theme.primary};
+`;
+
+const TextSecondary = styled.p`
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-bottom: 1rem;
   color: ${props => props.theme.primary};
 `;
 
@@ -190,24 +195,19 @@ const FormikForm = props => {
         </Header>
         <FormWrapper>
           <FormHeader>
-            <Heading>Sign in</Heading>
-            <StyledLink to="/forgot">Forgot password ?</StyledLink>
+            <Heading>Create an account</Heading>
           </FormHeader>
           <StyledForm>
             <FormItem>
-              <InputWrapper>
-                <Mail size={12} color={props.theme.secondary} />
-                <Input type="text" name="email" placeholder="Email" />
-              </InputWrapper>
+              <Label>Email</Label>
+              <Input type="text" name="email" />
               {touched.email && errors.email && (
                 <ErrorMessage>{errors.email}</ErrorMessage>
               )}
             </FormItem>
             <FormItem>
-              <InputWrapper>
-                <Lock size={12} color={props.theme.secondary} />
-                <Input type="password" name="password" placeholder="Password" />
-              </InputWrapper>
+              <Label>Create a password</Label>
+              <Input type="password" name="password" />
               {touched.password && errors.password && (
                 <ErrorMessage>{errors.password}</ErrorMessage>
               )}
@@ -221,7 +221,7 @@ const FormikForm = props => {
                 errors.password
               }
             >
-              {isSubmitting ? <Loader /> : "Sign in"}
+              {isSubmitting ? <Loader /> : "Sign up for free"}
             </SubmitButton>
             {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
           </StyledForm>
@@ -229,16 +229,19 @@ const FormikForm = props => {
         <Footer>
           <SocialSignInButton>
             <Google size={18} />
-            <SocialSignInText>Sign in with Google</SocialSignInText>
+            <SocialSignInText>Sign up with Google</SocialSignInText>
           </SocialSignInButton>
+          <TextSecondary>
+            By creating an account, you agree to the{" "}
+            <StyledLink to="/tos">Terms of Service</StyledLink>.
+          </TextSecondary>
           <OtherOptions>
             <NoAccountWrapper>
-              <Text>Don't have an account?</Text>
-              <StyledLink to="/signup" color={props.theme.brand} bold="true">
-                Sign up for free
+              <Text>Already have an account?</Text>
+              <StyledLink to="/login" color={props.theme.brand} bold="true">
+                Sign in
               </StyledLink>
             </NoAccountWrapper>
-            <StyledLink to="/sso/login">Sign in with SSO</StyledLink>
           </OtherOptions>
         </Footer>
       </Content>
@@ -246,7 +249,7 @@ const FormikForm = props => {
   );
 };
 
-const LoginForm = withFormik({
+const SignupForm = withFormik({
   validationSchema: Yup.object().shape({
     email: Yup.string()
       .required("Email is required")
@@ -256,11 +259,11 @@ const LoginForm = withFormik({
       .min(6, "Password must be at least 6 characters")
   }),
   mapPropsToValues: props => ({
-    email: props.email || "",
+    email: utils.getParam("email") || props.email || "",
     password: props.password || ""
   }),
   handleSubmit(payload, bag) {
-    bag.props.login(payload, {
+    bag.props.signup(payload, {
       setSubmitting: bag.setSubmitting,
       setFieldError: bag.setFieldError,
       history: bag.props.history
@@ -272,7 +275,7 @@ export default withRouter(
   withTheme(
     connect(
       null,
-      { login }
-    )(LoginForm)
+      { signup }
+    )(SignupForm)
   )
 );
