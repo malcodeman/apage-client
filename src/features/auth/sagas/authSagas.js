@@ -21,7 +21,6 @@ const loginApi = user => {
 function* signup(action) {
   const { setSubmitting } = action.meta;
   const { setFieldError } = action.meta;
-  const { history } = action.meta;
 
   try {
     const data = yield call(signupApi, action.payload);
@@ -29,7 +28,6 @@ function* signup(action) {
 
     localStorage.setItem("token", token);
     setSubmitting(false);
-    history.push("/");
     yield put({ type: SIGNUP_SUCCESS, payload: data.data });
   } catch (error) {
     const exception = error.data.exception;
@@ -52,7 +50,6 @@ function* signup(action) {
 function* login(action) {
   const { setSubmitting } = action.meta;
   const { setFieldError } = action.meta;
-  const { history } = action.meta;
 
   try {
     const data = yield call(loginApi, action.payload);
@@ -61,7 +58,6 @@ function* login(action) {
 
     localStorage.setItem("token", token);
     setSubmitting(false);
-    history.push("/");
     yield put({ type: LOGIN_SUCCESS, payload: user });
   } catch (error) {
     const exception = error.data.exception;

@@ -1,10 +1,11 @@
 import React from "react";
+import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { Form, Field, withFormik } from "formik";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import Logo from "../../commonComponents/Logo";
 import Loader from "../../commonComponents/Loader";
@@ -177,7 +178,11 @@ const Text = styled.span`
 `;
 
 const FormikForm = props => {
-  const { values, errors, touched, isSubmitting } = props;
+  const { isAuthorized, values, errors, touched, isSubmitting } = props;
+
+  if (isAuthorized) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Wrapper>
@@ -262,17 +267,23 @@ const LoginForm = withFormik({
   handleSubmit(payload, bag) {
     bag.props.login(payload, {
       setSubmitting: bag.setSubmitting,
-      setFieldError: bag.setFieldError,
-      history: bag.props.history
+      setFieldError: bag.setFieldError
     });
   }
 })(FormikForm);
 
-export default withRouter(
-  withTheme(
-    connect(
-      null,
-      { login }
-    )(LoginForm)
-  )
+const mapStateToProps = state => {
+  return {
+    isAuthorized: state.auth.isAuthorized
+  };
+};
+
+const withConnect = connect(
+  mapStateToProps,
+  { login }
 );
+
+export default compose(
+  withTheme,
+  withConnect
+)(LoginForm);
