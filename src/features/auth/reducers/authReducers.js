@@ -1,4 +1,8 @@
-import { SIGNUP_SUCCESS, LOGIN_SUCCESS } from "../actions/authActionTypes";
+import {
+  SIGNUP_SUCCESS,
+  LOGIN_SUCCESS,
+  LOGOUT
+} from "../actions/authActionTypes";
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -11,6 +15,11 @@ export default (state = {}, action) => {
       return {
         ...state,
         isAuthorized: true
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isAuthorized: false
       };
     default:
       return state;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Header from "../../header/components/Header";
+import Header from "../../header/containers/Header";
 import CategoriesList from "../components/CategoriesList";
 import { PROFILE } from "../contants/templatesConstants";
 
