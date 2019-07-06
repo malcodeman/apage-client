@@ -1,5 +1,7 @@
 import React from "react";
+import { compose } from "redux";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 import Header from "../../header/containers/Header";
 import CategoriesList from "../components/CategoriesList";
@@ -72,7 +74,13 @@ const Description = styled.div`
   color: ${props => props.theme.secondary};
 `;
 
-function Templates() {
+function Templates(props) {
+  function handleOnClick() {
+    const { history } = props;
+
+    history.push("/card");
+  }
+
   return (
     <>
       <Header />
@@ -84,7 +92,7 @@ function Templates() {
               <CategoriesGrid>
                 {PROFILE.map(category => {
                   return (
-                    <Category key={category.id}>
+                    <Category key={category.id} onClick={handleOnClick}>
                       <Cover bg={category.coverPhoto} />
                       <TextWrapper>
                         <CategoryTitle>{category.title}</CategoryTitle>
@@ -102,4 +110,4 @@ function Templates() {
   );
 }
 
-export default Templates;
+export default compose(withRouter)(Templates);

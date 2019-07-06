@@ -11,6 +11,7 @@ import Root from "./features/root/containers/Root";
 import Login from "./features/auth/components/Login";
 import Signup from "./features/auth/components/Signup";
 import Templates from "./features/templates/containers/Templates";
+import Card from "./features/templates/containers/Card";
 import GlobalStyles from "./core/styles/GlobalStyles";
 
 const MOUNT_NODE = document.getElementById("root");
@@ -25,6 +26,7 @@ function render() {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/templates" component={Templates} />
+            <Route path="/card" component={Card} />
           </Router>
           <GlobalStyles />
         </>
