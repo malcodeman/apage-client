@@ -17,6 +17,7 @@ export const PROFILE = [
   {
     id: nanoid(),
     title: "Card",
+    template: "card",
     description:
       "Create a website/card for your profile and links. The perfect solution for content creators.",
     coverPhoto: "https://images.unsplash.com/photo-1561969451-a51b1034d762"
@@ -24,6 +25,7 @@ export const PROFILE = [
   {
     id: nanoid(),
     title: "Profile",
+    template: "profile",
     description:
       "Create a website for your profile, text, links & newsletter... perfect for content creators.",
     coverPhoto: "https://images.unsplash.com/photo-1548294364-f8f87bae61f9"
@@ -31,6 +33,7 @@ export const PROFILE = [
   {
     id: nanoid(),
     title: "Folio",
+    template: "folio",
     description:
       "Create a website for your portfolio. Add images, descriptions & links.",
     coverPhoto: "https://images.unsplash.com/photo-1560414239-dcdf7d8d0226"

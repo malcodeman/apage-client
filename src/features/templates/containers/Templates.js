@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { compose } from "redux";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
+import {
+  createPage,
+  createPageReset
+} from "../../pages/actions/pagesActionCreators";
 import Header from "../../header/containers/Header";
 import CategoriesList from "../components/CategoriesList";
 import { PROFILE } from "../contants/templatesConstants";
@@ -75,10 +80,22 @@ const Description = styled.div`
 `;
 
 function Templates(props) {
-  function handleOnClick() {
-    const { history } = props;
+  const { pages, createPageSuccess, history, createPageReset } = props;
+  const redirect = useCallback(link => history.push(`/${link}`), [history]);
 
-    history.push("/card");
+  useEffect(() => {
+    if (pages.length && createPageSuccess) {
+      const link = pages[pages.length - 1].domain;
+
+      redirect(link);
+    }
+    return () => createPageReset();
+  }, [pages, redirect, createPageSuccess, createPageReset]);
+
+  function handleOnClick(template, title) {
+    const { createPage } = props;
+
+    createPage({ template, title });
   }
 
   return (
@@ -92,7 +109,12 @@ function Templates(props) {
               <CategoriesGrid>
                 {PROFILE.map(category => {
                   return (
-                    <Category key={category.id} onClick={handleOnClick}>
+                    <Category
+                      key={category.id}
+                      onClick={() =>
+                        handleOnClick(category.template, category.title)
+                      }
+                    >
                       <Cover bg={category.coverPhoto} />
                       <TextWrapper>
                         <CategoryTitle>{category.title}</CategoryTitle>
@@ -110,4 +132,19 @@ function Templates(props) {
   );
 }
 
-export default compose(withRouter)(Templates);
+const mapStateToProps = state => {
+  return {
+    pages: state.pages.pages,
+    createPageSuccess: state.pages.createPageSuccess
+  };
+};
+
+const withConnect = connect(
+  mapStateToProps,
+  { createPage, createPageReset }
+);
+
+export default compose(
+  withRouter,
+  withConnect
+)(Templates);
