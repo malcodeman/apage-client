@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
+import { getPages } from "../actions/pagesActionCreators";
 import Header from "../../header/containers/Header";
 import AddPage from "./AddPage";
+import Page from "../components/Page";
 
 const Main = styled.main`
   margin-top: 48px;
@@ -23,13 +27,25 @@ const Grid = styled.div`
   padding 2rem 0;
 `;
 
-function Pages() {
+function Pages(props) {
+  const { getPages, pages } = props;
+  const memoizedGetPages = useCallback(() => getPages(), [getPages]);
+
+  useEffect(() => {
+    if (!pages.length) {
+      memoizedGetPages();
+    }
+  }, [memoizedGetPages, pages]);
+
   return (
     <>
       <Header />
       <Main>
         <Container>
           <Grid>
+            {pages.map(page => (
+              <Page key={page.id} domain={page.domain} title={page.title} />
+            ))}
             <AddPage />
           </Grid>
         </Container>
@@ -38,4 +54,15 @@ function Pages() {
   );
 }
 
-export default Pages;
+const mapStateToProps = state => {
+  return {
+    pages: state.pages.pages
+  };
+};
+
+const withConnect = connect(
+  mapStateToProps,
+  { getPages }
+);
+
+export default compose(withConnect)(Pages);

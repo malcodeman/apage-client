@@ -1,4 +1,14 @@
-import { CREATE_PAGE_REQUEST, CREATE_PAGE_RESET } from "./pagesActionTypes";
+import {
+  GET_PAGES_REQUEST,
+  CREATE_PAGE_REQUEST,
+  CREATE_PAGE_RESET
+} from "./pagesActionTypes";
+
+export const getPages = payload => {
+  return {
+    type: GET_PAGES_REQUEST
+  };
+};
 
 export const createPage = payload => {
   return {
