@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+
+import { getPage, getPageReset } from "../actions/pagesActionCreators";
+import Card from "../../templates/containers/Card";
 
 function RootPage(props) {
+  const { getPage, getPageReset, page, match } = props;
+  const memoizedGetPage = useCallback(domain => getPage(domain), [getPage]);
+  const domain = match.params.domain;
+
+  useEffect(() => {
+    memoizedGetPage(domain);
+
+    return () => getPageReset();
+  }, [memoizedGetPage, domain, getPageReset]);
+
+  if (page.template === "card") {
+    return <Card />;
+  }
+
   return <div>ROOT PAGE</div>;
 }
 
-export default RootPage;
+const mapStateToProps = state => {
+  return {
+    page: state.pages.page
+  };
+};
+
+const withConnect = connect(
+  mapStateToProps,
+  { getPage, getPageReset }
+);
+
+export default compose(withConnect)(RootPage);

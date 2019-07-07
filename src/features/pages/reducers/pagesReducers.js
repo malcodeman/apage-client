@@ -3,10 +3,18 @@ import {
   CREATE_PAGE_REQUEST,
   CREATE_PAGE_SUCCESS,
   CREATE_PAGE_RESET,
-  GET_PAGES_SUCCESS
+  GET_PAGES_SUCCESS,
+  GET_PAGE_SUCCESS,
+  GET_PAGE_RESET
 } from "../actions/pagesActionTypes";
 
+const initialPageState = {
+  domain: "",
+  title: ""
+};
+
 const initialState = {
+  page: initialPageState,
   pages: [],
   createPageSuccess: false
 };
@@ -31,6 +39,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         pages: [...state.pages, action.payload],
+        page: action.payload,
         createPageSuccess: true
       };
     case CREATE_PAGE_RESET:
@@ -42,6 +51,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         pages: action.payload
+      };
+    case GET_PAGE_SUCCESS:
+      return {
+        ...state,
+        page: action.payload
+      };
+    case GET_PAGE_RESET:
+      return {
+        ...state,
+        page: initialPageState
       };
     default:
       return state;

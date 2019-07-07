@@ -29,7 +29,7 @@ function render() {
               <Route path="/signup" component={Signup} />
               <Route path="/templates" component={Templates} />
               <Route path="/card" component={Card} />
-              <Route path="/:template" component={RootPage} />
+              <Route path="/:domain" component={RootPage} />
             </Switch>
           </Router>
           <GlobalStyles />
