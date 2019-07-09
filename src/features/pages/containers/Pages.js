@@ -35,7 +35,7 @@ function Pages(props) {
     if (!pages.length) {
       memoizedGetPages();
     }
-  }, [memoizedGetPages, pages]);
+  }, [memoizedGetPages, pages.length]);
 
   return (
     <>
