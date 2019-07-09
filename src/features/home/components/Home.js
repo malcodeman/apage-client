@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../commonComponents/Logo";
 import { ReactComponent as SvgIllustration } from "../styles/illustrations/landing_page.svg";
+import Inspiration from "./Inspiration";
 
 const Container = styled.div`
   padding: 0 32px;
@@ -178,6 +179,7 @@ function Home(props) {
           </HeroText>
           <Illustration />
         </Hero>
+        <Inspiration />
       </Container>
     </>
   );
