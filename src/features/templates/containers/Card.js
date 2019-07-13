@@ -2,10 +2,9 @@ import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import styled, { withTheme } from "styled-components";
-import { Link } from "react-router-dom";
 
-import Logo from "../../commonComponents/Logo";
 import LinkIcon from "../assets/icons/Link";
+import CardConfig from "./CardConfig";
 
 const Grid = styled.div`
   display: grid;
@@ -14,59 +13,12 @@ const Grid = styled.div`
   background-color: #fcfcfc;
   height: 100vh;
   @media (min-width: 576px) {
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
-`;
-
-const Configs = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Header = styled.header`
-  margin-bottom: 1rem;
-`;
-
-const BrandLink = styled(Link)`
-  display: flex;
-  align-items: center;
-`;
-
-const LogoWrapper = styled.div`
-  display: flex;
-`;
-
-const BrandText = styled.span`
-  font-size: 1rem;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  color: ${props => props.theme.primary};
-`;
-
-const StyledList = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-`;
-
-const Item = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-`;
-
-const ItemText = styled.span`
-  border-bottom: 2px solid transparent;
-  padding-bottom: 0.14rem;
-  cursor: pointer;
-  &:hover {
-    border-color: ${props => props.theme.borderColor};
+  @media (min-width: 768px) {
+    grid-template-columns: 20% 1fr;
   }
-  color: ${props => props.theme.primary};
 `;
 
 const CardContainer = styled.div`
@@ -86,6 +38,7 @@ const StyledCard = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 100vh;
   background-image: url(${props => props.bg});
 `;
 
@@ -186,30 +139,11 @@ const SocialUrl = styled.span`
 `;
 
 function Card(props) {
-  const { theme } = props;
+  const { theme, domain } = props;
+
   return (
     <Grid>
-      <Configs>
-        <Header>
-          <BrandLink to="/">
-            <LogoWrapper>
-              <Logo size={16} color={theme.brand} />
-            </LogoWrapper>
-            <BrandText>Templates</BrandText>
-          </BrandLink>
-        </Header>
-        <StyledList>
-          <Item>
-            <ItemText>Colors</ItemText>
-          </Item>
-          <Item>
-            <ItemText>Profile</ItemText>
-          </Item>
-          <Item>
-            <ItemText>Social links</ItemText>
-          </Item>
-        </StyledList>
-      </Configs>
+      <CardConfig domain={domain} />
       <CardContainer>
         <StyledCard
           bg={"https://images.unsplash.com/photo-1492252719637-c7b68468489b"}

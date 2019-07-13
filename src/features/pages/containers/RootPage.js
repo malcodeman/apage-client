@@ -17,7 +17,7 @@ function RootPage(props) {
   }, [memoizedGetPage, domain, getPageReset]);
 
   if (page.template === "card") {
-    return <Card />;
+    return <Card domain={domain} />;
   }
 
   return <div>ROOT PAGE</div>;
