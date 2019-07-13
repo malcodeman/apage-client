@@ -11,7 +11,7 @@ import Root from "./features/root/containers/Root";
 import Login from "./features/auth/components/Login";
 import Signup from "./features/auth/components/Signup";
 import Templates from "./features/templates/containers/Templates";
-import Card from "./features/templates/containers/Card";
+import Card from "./features/templates/card/components/Card";
 import RootPage from "./features/pages/containers/RootPage";
 import GlobalStyles from "./core/styles/GlobalStyles";
 

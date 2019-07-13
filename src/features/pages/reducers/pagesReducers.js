@@ -5,7 +5,8 @@ import {
   CREATE_PAGE_RESET,
   GET_PAGES_SUCCESS,
   GET_PAGE_SUCCESS,
-  GET_PAGE_RESET
+  GET_PAGE_RESET,
+  UPDATE_PAGE_SUCCESS
 } from "../actions/pagesActionTypes";
 
 const initialPageState = {
@@ -61,6 +62,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         page: initialPageState
+      };
+    case UPDATE_PAGE_SUCCESS:
+      return {
+        ...state,
+        page: action.payload
       };
     default:
       return state;

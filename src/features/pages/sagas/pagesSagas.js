@@ -10,7 +10,10 @@ import {
   GET_PAGES_SUCCESS,
   CREATE_PAGE_FAILURE,
   CREATE_PAGE_REQUEST,
-  CREATE_PAGE_SUCCESS
+  CREATE_PAGE_SUCCESS,
+  UPDATE_PAGE_FAILURE,
+  UPDATE_PAGE_REQUEST,
+  UPDATE_PAGE_SUCCESS
 } from "../actions/pagesActionTypes";
 
 const getPageApi = domain => {
@@ -23,6 +26,10 @@ const getPagesApi = () => {
 
 const createPageApi = newPage => {
   return axios.post("/pages", newPage);
+};
+
+const updatePageApi = updatedPage => {
+  return axios.put(`/pages/${updatedPage.domain}`, updatedPage);
 };
 
 function* getPage(action) {
@@ -58,10 +65,26 @@ function* createPage(action) {
   }
 }
 
+function* updatePage(action) {
+  try {
+    const data = yield call(updatePageApi, action.payload);
+    const payload = data.data;
+
+    yield put({ type: UPDATE_PAGE_SUCCESS, payload });
+  } catch (error) {
+    yield put({ type: UPDATE_PAGE_FAILURE, error });
+  } finally {
+    const { setSubmitting } = action.meta;
+
+    setSubmitting(false);
+  }
+}
+
 const saga = function*() {
   yield takeLatest(GET_PAGE_REQUEST, getPage);
   yield takeLatest(GET_PAGES_REQUEST, getPages);
   yield takeLatest(CREATE_PAGE_REQUEST, createPage);
+  yield takeLatest(UPDATE_PAGE_REQUEST, updatePage);
 };
 
 export default saga;

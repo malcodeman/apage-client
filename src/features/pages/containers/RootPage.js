@@ -3,7 +3,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 
 import { getPage, getPageReset } from "../actions/pagesActionCreators";
-import Card from "../../templates/containers/Card";
+import Card from "../../templates/card/components/Card";
 
 function RootPage(props) {
   const { getPage, getPageReset, page, match } = props;

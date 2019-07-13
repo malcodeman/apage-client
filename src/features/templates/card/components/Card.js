@@ -3,8 +3,8 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import styled, { withTheme } from "styled-components";
 
-import LinkIcon from "../assets/icons/Link";
-import CardConfig from "./CardConfig";
+import LinkIcon from "./assets/icons/Link";
+import Config from "./Config";
 
 const Grid = styled.div`
   display: grid;
@@ -87,7 +87,7 @@ const Location = styled.span`
   margin-bottom: 2rem;
 `;
 
-const CtaButton = styled.button`
+const CtaButton = styled.a`
   height: 36px;
   padding: 0 1rem;
   font-size: 18px;
@@ -139,11 +139,19 @@ const SocialUrl = styled.span`
 `;
 
 function Card(props) {
-  const { theme, domain } = props;
+  const {
+    theme,
+    domain,
+    name,
+    tagline,
+    location,
+    cta_button_text,
+    cta_button_link
+  } = props;
 
   return (
     <Grid>
-      <CardConfig domain={domain} />
+      <Config domain={domain} />
       <CardContainer>
         <StyledCard
           bg={"https://images.unsplash.com/photo-1492252719637-c7b68468489b"}
@@ -155,18 +163,22 @@ function Card(props) {
                   "https://pbs.twimg.com/profile_images/1115609012907560961/ugZB3UD7_400x400.jpg"
                 }
               />
-              <Name>Dua Lipa</Name>
-              <Tagline>Singer</Tagline>
-              <Location>London</Location>
-              <CtaButton>
-                <CtaButtonText>Get in touch</CtaButtonText>
+              <Name>{name}</Name>
+              <Tagline>{tagline}</Tagline>
+              <Location>{location}</Location>
+              <CtaButton
+                href={cta_button_link}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <CtaButtonText>{cta_button_text}</CtaButtonText>
               </CtaButton>
             </CardProfile>
             <CardLinks>
               <CardLink
                 href="https://www.instagram.com/dualipa/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <SocialIcon>
                   <LinkIcon size={16} color={theme.primary} />
@@ -183,7 +195,12 @@ function Card(props) {
 
 const mapStateToProps = state => {
   return {
-    isAuthorized: state.auth.isAuthorized
+    isAuthorized: state.auth.isAuthorized,
+    name: state.pages.page.name,
+    tagline: state.pages.page.tagline,
+    location: state.pages.page.location,
+    cta_button_text: state.pages.page.cta_button_text,
+    cta_button_link: state.pages.page.cta_button_link
   };
 };
 

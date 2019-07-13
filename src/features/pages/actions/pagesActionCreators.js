@@ -3,7 +3,8 @@ import {
   GET_PAGES_REQUEST,
   CREATE_PAGE_REQUEST,
   CREATE_PAGE_RESET,
-  GET_PAGE_RESET
+  GET_PAGE_RESET,
+  UPDATE_PAGE_REQUEST
 } from "./pagesActionTypes";
 
 export const getPage = payload => {
@@ -35,5 +36,13 @@ export const createPageReset = () => {
 export const getPageReset = () => {
   return {
     type: GET_PAGE_RESET
+  };
+};
+
+export const updatePage = (payload, meta) => {
+  return {
+    type: UPDATE_PAGE_REQUEST,
+    payload,
+    meta
   };
 };
