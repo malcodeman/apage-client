@@ -81,7 +81,9 @@ const Description = styled.div`
 
 function Templates(props) {
   const { pages, createPageSuccess, history, createPageReset } = props;
-  const redirect = useCallback(link => history.push(`/${link}`), [history]);
+  const redirect = useCallback(link => history.push(`/${link}/config`), [
+    history
+  ]);
 
   useEffect(() => {
     if (pages.length && createPageSuccess) {
@@ -92,10 +94,27 @@ function Templates(props) {
     return () => createPageReset();
   }, [pages, redirect, createPageSuccess, createPageReset]);
 
-  function handleOnClick(template, title) {
+  function handleOnClick(card) {
     const { createPage } = props;
+    const {
+      template,
+      title,
+      name,
+      tagline,
+      location,
+      cta_button_text,
+      cta_button_link
+    } = card;
 
-    createPage({ template, title });
+    createPage({
+      template,
+      title,
+      name,
+      tagline,
+      location,
+      cta_button_text,
+      cta_button_link
+    });
   }
 
   return (
@@ -111,9 +130,7 @@ function Templates(props) {
                   return (
                     <Category
                       key={category.id}
-                      onClick={() =>
-                        handleOnClick(category.template, category.title)
-                      }
+                      onClick={() => handleOnClick(category)}
                     >
                       <Cover bg={category.coverPhoto} />
                       <TextWrapper>

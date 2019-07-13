@@ -6,7 +6,9 @@ import {
   GET_PAGES_SUCCESS,
   GET_PAGE_SUCCESS,
   GET_PAGE_RESET,
-  UPDATE_PAGE_SUCCESS
+  UPDATE_PAGE_SUCCESS,
+  UPDATE_DOMAIN_SUCCESS,
+  UPDATE_DOMAIN_RESET
 } from "../actions/pagesActionTypes";
 
 const initialPageState = {
@@ -17,7 +19,8 @@ const initialPageState = {
 const initialState = {
   page: initialPageState,
   pages: [],
-  createPageSuccess: false
+  createPageSuccess: false,
+  updateDomainSuccess: false
 };
 
 export default (state = initialState, action) => {
@@ -67,6 +70,22 @@ export default (state = initialState, action) => {
       return {
         ...state,
         page: action.payload
+      };
+    case UPDATE_DOMAIN_SUCCESS:
+      return {
+        ...state,
+        updateDomainSuccess: true,
+        pages: state.pages.map(page => {
+          if (page.domain === action.payload.oldDomain) {
+            return { ...page, domain: action.payload.domain };
+          }
+          return page;
+        })
+      };
+    case UPDATE_DOMAIN_RESET:
+      return {
+        ...state,
+        updateDomainSuccess: false
       };
     default:
       return state;

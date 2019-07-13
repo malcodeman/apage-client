@@ -1,12 +1,14 @@
 import React, { useEffect, useCallback } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import { getPage, getPageReset } from "../actions/pagesActionCreators";
 import Card from "../../templates/card/components/Card";
+import ManageCard from "../../templates/card/components/ManageCard";
 
 function RootPage(props) {
-  const { getPage, getPageReset, page, match } = props;
+  const { getPage, getPageReset, page, match, config } = props;
   const memoizedGetPage = useCallback(domain => getPage(domain), [getPage]);
   const domain = match.params.domain;
 
@@ -17,7 +19,7 @@ function RootPage(props) {
   }, [memoizedGetPage, domain, getPageReset]);
 
   if (page.template === "card") {
-    return <Card domain={domain} />;
+    return config ? <ManageCard domain={domain} /> : <Card domain={domain} />;
   }
 
   return <div>ROOT PAGE</div>;
@@ -34,4 +36,7 @@ const withConnect = connect(
   { getPage, getPageReset }
 );
 
-export default compose(withConnect)(RootPage);
+export default compose(
+  withConnect,
+  withRouter
+)(RootPage);

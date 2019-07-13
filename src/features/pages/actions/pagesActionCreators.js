@@ -4,7 +4,9 @@ import {
   CREATE_PAGE_REQUEST,
   CREATE_PAGE_RESET,
   GET_PAGE_RESET,
-  UPDATE_PAGE_REQUEST
+  UPDATE_PAGE_REQUEST,
+  UPDATE_DOMAIN_REQUEST,
+  UPDATE_DOMAIN_RESET
 } from "./pagesActionTypes";
 
 export const getPage = payload => {
@@ -44,5 +46,19 @@ export const updatePage = (payload, meta) => {
     type: UPDATE_PAGE_REQUEST,
     payload,
     meta
+  };
+};
+
+export const updateDomain = (payload, meta) => {
+  return {
+    type: UPDATE_DOMAIN_REQUEST,
+    payload,
+    meta
+  };
+};
+
+export const updateDomainReset = () => {
+  return {
+    type: UPDATE_DOMAIN_RESET
   };
 };

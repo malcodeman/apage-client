@@ -65,13 +65,16 @@ function Home(props) {
       </Header>
       <StyledList>
         <Item>
-          <StyledLink to={`${domain}/config/color`}>Colors</StyledLink>
+          <StyledLink to={`/${domain}/config/general`}>General</StyledLink>
         </Item>
         <Item>
-          <StyledLink to={`${domain}/config/profile`}>Profile</StyledLink>
+          <StyledLink to={`/${domain}/config/color`}>Colors</StyledLink>
         </Item>
         <Item>
-          <StyledLink to={`${domain}/config/links`}>Social links</StyledLink>
+          <StyledLink to={`/${domain}/config/profile`}>Profile</StyledLink>
+        </Item>
+        <Item>
+          <StyledLink to={`/${domain}/config/links`}>Social links</StyledLink>
         </Item>
       </StyledList>
     </>

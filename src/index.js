@@ -29,7 +29,15 @@ function render() {
               <Route path="/signup" component={Signup} />
               <Route path="/templates" component={Templates} />
               <Route path="/card" component={Card} />
-              <Route path="/:domain" component={RootPage} />
+              <Route
+                exact
+                path="/:domain"
+                render={() => <RootPage config={false} />}
+              />
+              <Route
+                path="/:domain/config"
+                render={() => <RootPage config={true} />}
+              />
             </Switch>
           </Router>
           <GlobalStyles />

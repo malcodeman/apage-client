@@ -9,6 +9,11 @@ import { updatePage } from "../../../pages/actions/pagesActionCreators";
 import BackButton from "../../components/BackButton";
 import Loader from "../../../commonComponents/Loader";
 
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Title = styled.h2`
   font-size: 1rem;
   font-weight: 500;
@@ -76,11 +81,6 @@ const ErrorMessage = styled.span`
   font-weight: 500;
   color: ${props => props.theme.error};
   animation: ${props => props.theme.bounceInAnimation};
-`;
-
-const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
 `;
 
 function Profile(props) {

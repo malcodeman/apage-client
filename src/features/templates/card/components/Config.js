@@ -5,6 +5,7 @@ import styled, { withTheme } from "styled-components";
 import { Route } from "react-router-dom";
 
 import Home from "./Home";
+import General from "./General";
 import Profile from "./Profile";
 
 const Config = styled.div`
@@ -19,8 +20,13 @@ function CardConfig(props) {
     <Config>
       <Route
         exact
-        path={`/${domain}`}
+        path={`/${domain}/config`}
         render={() => <Home domain={domain} />}
+      />
+      <Route
+        exact
+        path={`/${domain}/config/general`}
+        render={() => <General />}
       />
       <Route
         exact

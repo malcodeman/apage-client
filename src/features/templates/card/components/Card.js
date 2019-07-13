@@ -4,30 +4,6 @@ import { connect } from "react-redux";
 import styled, { withTheme } from "styled-components";
 
 import LinkIcon from "./assets/icons/Link";
-import Config from "./Config";
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 2rem;
-  background-color: #fcfcfc;
-  height: 100vh;
-  @media (min-width: 576px) {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-  @media (min-width: 768px) {
-    grid-template-columns: 20% 1fr;
-  }
-`;
-
-const CardContainer = styled.div`
-  display: none;
-  @media (min-width: 576px) {
-    display: block;
-    overflow-y: auto;
-  }
-`;
 
 const StyledCard = styled.div`
   display: flex;
@@ -141,7 +117,6 @@ const SocialUrl = styled.span`
 function Card(props) {
   const {
     theme,
-    domain,
     name,
     tagline,
     location,
@@ -150,46 +125,41 @@ function Card(props) {
   } = props;
 
   return (
-    <Grid>
-      <Config domain={domain} />
-      <CardContainer>
-        <StyledCard
-          bg={"https://images.unsplash.com/photo-1492252719637-c7b68468489b"}
-        >
-          <CardContent>
-            <CardProfile>
-              <ProfileImage
-                bg={
-                  "https://pbs.twimg.com/profile_images/1115609012907560961/ugZB3UD7_400x400.jpg"
-                }
-              />
-              <Name>{name}</Name>
-              <Tagline>{tagline}</Tagline>
-              <Location>{location}</Location>
-              <CtaButton
-                href={cta_button_link}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <CtaButtonText>{cta_button_text}</CtaButtonText>
-              </CtaButton>
-            </CardProfile>
-            <CardLinks>
-              <CardLink
-                href="https://www.instagram.com/dualipa/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <SocialIcon>
-                  <LinkIcon size={16} color={theme.primary} />
-                </SocialIcon>
-                <SocialUrl>instagram.com/dualipa/</SocialUrl>
-              </CardLink>
-            </CardLinks>
-          </CardContent>
-        </StyledCard>
-      </CardContainer>
-    </Grid>
+    <StyledCard
+      bg={"https://images.unsplash.com/photo-1492252719637-c7b68468489b"}
+    >
+      <CardContent>
+        <CardProfile>
+          <ProfileImage
+            bg={
+              "https://pbs.twimg.com/profile_images/1115609012907560961/ugZB3UD7_400x400.jpg"
+            }
+          />
+          <Name>{name}</Name>
+          <Tagline>{tagline}</Tagline>
+          <Location>{location}</Location>
+          <CtaButton
+            href={cta_button_link}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <CtaButtonText>{cta_button_text}</CtaButtonText>
+          </CtaButton>
+        </CardProfile>
+        <CardLinks>
+          <CardLink
+            href="https://www.instagram.com/dualipa/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <SocialIcon>
+              <LinkIcon size={16} color={theme.primary} />
+            </SocialIcon>
+            <SocialUrl>instagram.com/dualipa/</SocialUrl>
+          </CardLink>
+        </CardLinks>
+      </CardContent>
+    </StyledCard>
   );
 }
 

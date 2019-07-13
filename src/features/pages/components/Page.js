@@ -31,7 +31,7 @@ function Page(props) {
   const { domain, title } = props;
 
   return (
-    <Link to={`/${domain}`}>
+    <Link to={`/${domain}/config`}>
       <Wrapper>
         <Info>
           <Title>{domain}</Title>
