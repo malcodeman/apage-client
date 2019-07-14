@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import * as Yup from "yup";
 import { Form, Field, withFormik } from "formik";
 
 import { updatePage } from "../../../pages/actions/pagesActionCreators";
 import BackButton from "../../components/BackButton";
 import Loader from "../../../commonComponents/Loader";
+import ProfileImageModal from "./ProfileImageModal";
+import EditIcon from "./assets/icons/Edit";
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -19,6 +21,36 @@ const Title = styled.h2`
   font-weight: 500;
   margin: 2rem 0;
   color: ${props => props.theme.primary};
+`;
+
+const ProfileImage = styled.div`
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  transition: 0.06s box-shadow ease-in;
+  align-self: center;
+  margin-bottom: 1rem;
+  :hover {
+    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.06);
+  }
+  background-image: url(${props => props.bg});
+`;
+
+const EditIconWrapper = styled.div`
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(0, 0%, 100%);
 `;
 
 const ProfileItem = styled.div`
@@ -84,66 +116,80 @@ const ErrorMessage = styled.span`
 `;
 
 function Profile(props) {
-  const { errors, touched, isSubmitting } = props;
+  const [profileImageModal, setProfileImageModal] = useState(false);
+  const { theme, errors, touched, isSubmitting, profileImageURL } = props;
 
   return (
-    <StyledForm>
-      <BackButton text={"Home"} />
-      <Title>Profile</Title>
-      <ProfileItem>
-        <DescriptionTitle>Name</DescriptionTitle>
-        <DescriptionText>e.g. Alex McRad</DescriptionText>
-        <Input placeholder="Name" type="text" name="name" />
-        {touched.name && errors.name && (
-          <ErrorMessage>{errors.name}</ErrorMessage>
-        )}
-      </ProfileItem>
-      <ProfileItem>
-        <DescriptionTitle>Tagline</DescriptionTitle>
-        <DescriptionText>e.g. Drinker of Coffee</DescriptionText>
-        <Input placeholder="Tagline" type="text" name="tagline" />
-        {touched.tagline && errors.tagline && (
-          <ErrorMessage>{errors.tagline}</ErrorMessage>
-        )}
-      </ProfileItem>
-      <ProfileItem>
-        <DescriptionTitle>Location</DescriptionTitle>
-        <DescriptionText>e.g. Seattle, WA</DescriptionText>
-        <Input placeholder="Location" type="text" name="location" />
-        {touched.location && errors.location && (
-          <ErrorMessage>{errors.location}</ErrorMessage>
-        )}
-      </ProfileItem>
-      <ProfileItem>
-        <DescriptionTitle>CTA button title</DescriptionTitle>
-        <DescriptionText>e.g. Get in Touch</DescriptionText>
-        <Input
-          placeholder="CTA Button Title"
-          type="text"
-          name="cta_button_text"
-        />
-        {touched.cta_button_text && errors.cta_button_text && (
-          <ErrorMessage>{errors.cta_button_text}</ErrorMessage>
-        )}
-      </ProfileItem>
-      <ProfileItem>
-        <DescriptionTitle>CTA button link</DescriptionTitle>
-        <DescriptionText>e.g. mailto:hi@templates.com</DescriptionText>
-        <Input
-          placeholder="CTA Button Link"
-          type="text"
-          name="cta_button_link"
-        />
-        {touched.cta_button_link && errors.cta_button_link && (
-          <ErrorMessage>{errors.cta_button_link}</ErrorMessage>
-        )}
-      </ProfileItem>
-      <SubmitButton>
-        <SubmitButtonText>
-          {isSubmitting ? <Loader /> : "Save changes"}
-        </SubmitButtonText>
-      </SubmitButton>
-    </StyledForm>
+    <>
+      {profileImageModal && (
+        <ProfileImageModal dismiss={() => setProfileImageModal(false)} />
+      )}
+      <StyledForm>
+        <BackButton text={"Home"} />
+        <Title>Profile</Title>
+        <ProfileImage
+          bg={profileImageURL}
+          onClick={() => setProfileImageModal(true)}
+        >
+          <EditIconWrapper>
+            <EditIcon size={16} color={theme.secondary} />
+          </EditIconWrapper>
+        </ProfileImage>
+        <ProfileItem>
+          <DescriptionTitle>Name</DescriptionTitle>
+          <DescriptionText>e.g. Alex McRad</DescriptionText>
+          <Input placeholder="Name" type="text" name="name" />
+          {touched.name && errors.name && (
+            <ErrorMessage>{errors.name}</ErrorMessage>
+          )}
+        </ProfileItem>
+        <ProfileItem>
+          <DescriptionTitle>Tagline</DescriptionTitle>
+          <DescriptionText>e.g. Drinker of Coffee</DescriptionText>
+          <Input placeholder="Tagline" type="text" name="tagline" />
+          {touched.tagline && errors.tagline && (
+            <ErrorMessage>{errors.tagline}</ErrorMessage>
+          )}
+        </ProfileItem>
+        <ProfileItem>
+          <DescriptionTitle>Location</DescriptionTitle>
+          <DescriptionText>e.g. Seattle, WA</DescriptionText>
+          <Input placeholder="Location" type="text" name="location" />
+          {touched.location && errors.location && (
+            <ErrorMessage>{errors.location}</ErrorMessage>
+          )}
+        </ProfileItem>
+        <ProfileItem>
+          <DescriptionTitle>CTA button title</DescriptionTitle>
+          <DescriptionText>e.g. Get in Touch</DescriptionText>
+          <Input
+            placeholder="CTA Button Title"
+            type="text"
+            name="cta_button_text"
+          />
+          {touched.cta_button_text && errors.cta_button_text && (
+            <ErrorMessage>{errors.cta_button_text}</ErrorMessage>
+          )}
+        </ProfileItem>
+        <ProfileItem>
+          <DescriptionTitle>CTA button link</DescriptionTitle>
+          <DescriptionText>e.g. mailto:hi@templates.com</DescriptionText>
+          <Input
+            placeholder="CTA Button Link"
+            type="text"
+            name="cta_button_link"
+          />
+          {touched.cta_button_link && errors.cta_button_link && (
+            <ErrorMessage>{errors.cta_button_link}</ErrorMessage>
+          )}
+        </ProfileItem>
+        <SubmitButton>
+          <SubmitButtonText>
+            {isSubmitting ? <Loader /> : "Save changes"}
+          </SubmitButtonText>
+        </SubmitButton>
+      </StyledForm>
+    </>
   );
 }
 
@@ -174,6 +220,7 @@ const ProfileForm = withFormik({
 
 const mapStateToProps = state => {
   return {
+    profileImageURL: state.pages.page.profileImageURL,
     name: state.pages.page.name,
     tagline: state.pages.page.tagline,
     location: state.pages.page.location,
@@ -187,4 +234,7 @@ const withConnect = connect(
   { updatePage }
 );
 
-export default compose(withConnect)(ProfileForm);
+export default compose(
+  withConnect,
+  withTheme
+)(ProfileForm);

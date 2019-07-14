@@ -6,7 +6,8 @@ import {
   GET_PAGE_RESET,
   UPDATE_PAGE_REQUEST,
   UPDATE_DOMAIN_REQUEST,
-  UPDATE_DOMAIN_RESET
+  UPDATE_DOMAIN_RESET,
+  UPDATE_PROFILE_IMAGE_REQUEST
 } from "./pagesActionTypes";
 
 export const getPage = payload => {
@@ -60,5 +61,13 @@ export const updateDomain = (payload, meta) => {
 export const updateDomainReset = () => {
   return {
     type: UPDATE_DOMAIN_RESET
+  };
+};
+
+export const updateProfileImage = (payload, meta) => {
+  return {
+    type: UPDATE_PROFILE_IMAGE_REQUEST,
+    payload,
+    meta
   };
 };
