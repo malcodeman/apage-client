@@ -117,6 +117,7 @@ const SocialUrl = styled.span`
 function Card(props) {
   const {
     theme,
+    mainImageURL,
     profileImageURL,
     name,
     tagline,
@@ -126,9 +127,7 @@ function Card(props) {
   } = props;
 
   return (
-    <StyledCard
-      bg={"https://images.unsplash.com/photo-1492252719637-c7b68468489b"}
-    >
+    <StyledCard bg={mainImageURL}>
       <CardContent>
         <CardProfile>
           <ProfileImage bg={profileImageURL} />
@@ -163,6 +162,7 @@ function Card(props) {
 const mapStateToProps = state => {
   return {
     isAuthorized: state.auth.isAuthorized,
+    mainImageURL: state.pages.page.mainImageURL,
     profileImageURL: state.pages.page.profileImageURL,
     name: state.pages.page.name,
     tagline: state.pages.page.tagline,

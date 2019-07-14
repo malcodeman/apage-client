@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import styled, { withTheme } from "styled-components";
+import styled from "styled-components";
 import * as Yup from "yup";
 import { Form, Field, withFormik } from "formik";
 
@@ -9,7 +9,7 @@ import { updatePage } from "../../../pages/actions/pagesActionCreators";
 import BackButton from "../../components/BackButton";
 import Loader from "../../../commonComponents/Loader";
 import ProfileImageModal from "./ProfileImageModal";
-import EditIcon from "./assets/icons/Edit";
+import Image from "./Image";
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -23,34 +23,11 @@ const Title = styled.h2`
   color: ${props => props.theme.primary};
 `;
 
-const ProfileImage = styled.div`
-  height: 120px;
-  width: 120px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
+const ImagesWrapper = styled.div`
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  transition: 0.06s box-shadow ease-in;
-  align-self: center;
-  margin-bottom: 1rem;
-  :hover {
-    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.06);
-  }
-  background-image: url(${props => props.bg});
-`;
-
-const EditIconWrapper = styled.div`
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  background-color: hsl(0, 0%, 100%);
+  margin-bottom: 1rem;
 `;
 
 const ProfileItem = styled.div`
@@ -117,7 +94,13 @@ const ErrorMessage = styled.span`
 
 function Profile(props) {
   const [profileImageModal, setProfileImageModal] = useState(false);
-  const { theme, errors, touched, isSubmitting, profileImageURL } = props;
+  const {
+    errors,
+    touched,
+    isSubmitting,
+    profileImageURL,
+    mainImageURL
+  } = props;
 
   return (
     <>
@@ -127,14 +110,14 @@ function Profile(props) {
       <StyledForm>
         <BackButton text={"Home"} />
         <Title>Profile</Title>
-        <ProfileImage
-          bg={profileImageURL}
-          onClick={() => setProfileImageModal(true)}
-        >
-          <EditIconWrapper>
-            <EditIcon size={16} color={theme.secondary} />
-          </EditIconWrapper>
-        </ProfileImage>
+        <ImagesWrapper>
+          <Image image={mainImageURL} />
+          <Image
+            circle
+            image={profileImageURL}
+            handleOnClick={() => setProfileImageModal(true)}
+          />
+        </ImagesWrapper>
         <ProfileItem>
           <DescriptionTitle>Name</DescriptionTitle>
           <DescriptionText>e.g. Alex McRad</DescriptionText>
@@ -220,6 +203,7 @@ const ProfileForm = withFormik({
 
 const mapStateToProps = state => {
   return {
+    mainImageURL: state.pages.page.mainImageURL,
     profileImageURL: state.pages.page.profileImageURL,
     name: state.pages.page.name,
     tagline: state.pages.page.tagline,
@@ -234,7 +218,4 @@ const withConnect = connect(
   { updatePage }
 );
 
-export default compose(
-  withConnect,
-  withTheme
-)(ProfileForm);
+export default compose(withConnect)(ProfileForm);
