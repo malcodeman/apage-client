@@ -28,3 +28,112 @@ export const INSPIRATIONS = [
     cover: <Project />
   }
 ];
+
+export const FOOTER_LINKS = [
+  [
+    {
+      id: nanoid(),
+      text: "Product",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Inspiration",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Blocks",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Templates",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Universe",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Pricing",
+      path: "/"
+    }
+  ],
+  [
+    {
+      id: nanoid(),
+      text: "Events",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Case studies",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Security",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Enterprise",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "API",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Integrations",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Download apps",
+      path: "/"
+    }
+  ],
+  [
+    {
+      id: nanoid(),
+      text: "About",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Jobs",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Blog",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Creators magazine",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Contact sales",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Press",
+      path: "/"
+    },
+    {
+      id: nanoid(),
+      text: "Twitter",
+      path: "/"
+    }
+  ]
+];
