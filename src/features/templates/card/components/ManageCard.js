@@ -7,12 +7,10 @@ import Card from "./Card";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  padding: 2rem;
   background-color: #fcfcfc;
   height: 100vh;
   @media (min-width: 576px) {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
   }
   @media (min-width: 992px) {
     grid-template-columns: minmax(396px, 20%) 1fr;
@@ -24,6 +22,7 @@ const CardContainer = styled.div`
   @media (min-width: 576px) {
     display: block;
     overflow-y: auto;
+    margin: 2rem 2rem 2rem 0;
   }
 `;
 

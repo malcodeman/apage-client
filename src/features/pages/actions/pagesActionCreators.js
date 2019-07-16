@@ -8,7 +8,8 @@ import {
   UPDATE_DOMAIN_REQUEST,
   UPDATE_DOMAIN_RESET,
   UPDATE_MAIN_IMAGE_REQUEST,
-  UPDATE_PROFILE_IMAGE_REQUEST
+  UPDATE_PROFILE_IMAGE_REQUEST,
+  ADD_SOCIAL_LINK_REQUEST
 } from "./pagesActionTypes";
 
 export const getPage = payload => {
@@ -76,6 +77,14 @@ export const updateMainImage = (payload, meta) => {
 export const updateProfileImage = (payload, meta) => {
   return {
     type: UPDATE_PROFILE_IMAGE_REQUEST,
+    payload,
+    meta
+  };
+};
+
+export const addSocialLink = (payload, meta) => {
+  return {
+    type: ADD_SOCIAL_LINK_REQUEST,
     payload,
     meta
   };

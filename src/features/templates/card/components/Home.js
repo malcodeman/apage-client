@@ -5,6 +5,10 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../../commonComponents/Logo";
 
+const Wrapper = styled.div`
+  padding: 0 2rem;
+`;
+
 const Header = styled.header`
   margin-bottom: 1rem;
 `;
@@ -54,7 +58,7 @@ function Home(props) {
   const { theme, domain } = props;
 
   return (
-    <>
+    <Wrapper>
       <Header>
         <BrandLink to="/">
           <LogoWrapper>
@@ -77,7 +81,7 @@ function Home(props) {
           <StyledLink to={`/${domain}/config/links`}>Social links</StyledLink>
         </Item>
       </StyledList>
-    </>
+    </Wrapper>
   );
 }
 

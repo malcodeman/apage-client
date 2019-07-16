@@ -14,6 +14,7 @@ import Image from "./Image";
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  padding: 0 2rem;
 `;
 
 const Title = styled.h2`

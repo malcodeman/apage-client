@@ -10,7 +10,8 @@ import {
   UPDATE_DOMAIN_SUCCESS,
   UPDATE_DOMAIN_RESET,
   UPDATE_MAIN_IMAGE_SUCCESS,
-  UPDATE_PROFILE_IMAGE_SUCCESS
+  UPDATE_PROFILE_IMAGE_SUCCESS,
+  ADD_SOCIAL_LINK_SUCCESS
 } from "../actions/pagesActionTypes";
 
 const initialPageState = {
@@ -103,6 +104,14 @@ export default (state = initialState, action) => {
         page: {
           ...state.page,
           profileImageURL: action.payload.profileImageURL
+        }
+      };
+    case ADD_SOCIAL_LINK_SUCCESS:
+      return {
+        ...state,
+        page: {
+          ...state.page,
+          socialLinks: [...state.page.socialLinks, action.payload]
         }
       };
     default:

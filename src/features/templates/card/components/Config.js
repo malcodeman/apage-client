@@ -6,11 +6,13 @@ import { Route } from "react-router-dom";
 
 import Home from "./Home";
 import General from "./General";
+import SocialLinks from "./SocialLinks";
 import Profile from "./Profile";
 
 const Config = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 2rem 0;
 `;
 
 function CardConfig(props) {
@@ -27,6 +29,11 @@ function CardConfig(props) {
         exact
         path={`/${domain}/config/general`}
         render={() => <General />}
+      />
+      <Route
+        exact
+        path={`/${domain}/config/links`}
+        render={() => <SocialLinks />}
       />
       <Route
         exact

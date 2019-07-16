@@ -123,7 +123,8 @@ function Card(props) {
     tagline,
     location,
     cta_button_text,
-    cta_button_link
+    cta_button_link,
+    socialLinks
   } = props;
 
   return (
@@ -143,16 +144,21 @@ function Card(props) {
           </CtaButton>
         </CardProfile>
         <CardLinks>
-          <CardLink
-            href="https://www.instagram.com/dualipa/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <SocialIcon>
-              <LinkIcon size={16} color={theme.primary} />
-            </SocialIcon>
-            <SocialUrl>instagram.com/dualipa/</SocialUrl>
-          </CardLink>
+          {socialLinks.map(link => {
+            return (
+              <CardLink
+                key={link.id}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <SocialIcon>
+                  <LinkIcon size={16} color={theme.primary} />
+                </SocialIcon>
+                <SocialUrl>{link.url}</SocialUrl>
+              </CardLink>
+            );
+          })}
         </CardLinks>
       </CardContent>
     </StyledCard>
@@ -168,7 +174,8 @@ const mapStateToProps = state => {
     tagline: state.pages.page.tagline,
     location: state.pages.page.location,
     cta_button_text: state.pages.page.cta_button_text,
-    cta_button_link: state.pages.page.cta_button_link
+    cta_button_link: state.pages.page.cta_button_link,
+    socialLinks: state.pages.page.socialLinks
   };
 };
 
