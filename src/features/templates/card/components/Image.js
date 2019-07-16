@@ -12,7 +12,7 @@ const StyledImage = styled.div`
   justify-content: flex-end;
   transition: 0.06s box-shadow ease-in;
   :hover {
-    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.06);
+    box-shadow: 0 0 0 10px hsla(0, 0%, 0%, 0.05);
   }
   background-image: url(${props => props.bg});
   border-radius: ${props => (props.circle ? "50%" : "0")};

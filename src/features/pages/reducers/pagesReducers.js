@@ -9,6 +9,7 @@ import {
   UPDATE_PAGE_SUCCESS,
   UPDATE_DOMAIN_SUCCESS,
   UPDATE_DOMAIN_RESET,
+  UPDATE_MAIN_IMAGE_SUCCESS,
   UPDATE_PROFILE_IMAGE_SUCCESS
 } from "../actions/pagesActionTypes";
 
@@ -87,6 +88,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         updateDomainSuccess: false
+      };
+    case UPDATE_MAIN_IMAGE_SUCCESS:
+      return {
+        ...state,
+        page: {
+          ...state.page,
+          mainImageURL: action.payload.mainImageURL
+        }
       };
     case UPDATE_PROFILE_IMAGE_SUCCESS:
       return {

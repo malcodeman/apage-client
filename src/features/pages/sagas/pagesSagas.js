@@ -19,7 +19,10 @@ import {
   UPDATE_DOMAIN_SUCCESS,
   UPDATE_PROFILE_IMAGE_FAILURE,
   UPDATE_PROFILE_IMAGE_REQUEST,
-  UPDATE_PROFILE_IMAGE_SUCCESS
+  UPDATE_PROFILE_IMAGE_SUCCESS,
+  UPDATE_MAIN_IMAGE_FAILURE,
+  UPDATE_MAIN_IMAGE_REQUEST,
+  UPDATE_MAIN_IMAGE_SUCCESS
 } from "../actions/pagesActionTypes";
 
 const getPageApi = domain => {
@@ -40,6 +43,10 @@ const updatePageApi = updatedPage => {
 
 const updateDomainApi = (currentDomain, payload) => {
   return axios.post(`/pages/updateSiteIdentifier/${currentDomain}`, payload);
+};
+
+const updateMainImageApi = (domain, updatedMainImage) => {
+  return axios.post(`/pages/updateMainImage/${domain}`, updatedMainImage);
 };
 
 const updateProfileImageApi = (domain, updatedProfileImage) => {
@@ -110,6 +117,22 @@ function* updateDomain(action) {
   }
 }
 
+function* updateMainImage(action) {
+  try {
+    const { domain } = action.meta;
+    const data = yield call(updateMainImageApi, domain, action.payload);
+    const payload = data.data;
+
+    yield put({ type: UPDATE_MAIN_IMAGE_SUCCESS, payload });
+  } catch (error) {
+    yield put({ type: UPDATE_MAIN_IMAGE_FAILURE, error });
+  } finally {
+    const { setSubmitting } = action.meta;
+
+    setSubmitting(false);
+  }
+}
+
 function* updateProfileImage(action) {
   try {
     const { domain } = action.meta;
@@ -132,6 +155,7 @@ const saga = function*() {
   yield takeLatest(CREATE_PAGE_REQUEST, createPage);
   yield takeLatest(UPDATE_PAGE_REQUEST, updatePage);
   yield takeLatest(UPDATE_DOMAIN_REQUEST, updateDomain);
+  yield takeLatest(UPDATE_MAIN_IMAGE_REQUEST, updateMainImage);
   yield takeLatest(UPDATE_PROFILE_IMAGE_REQUEST, updateProfileImage);
 };
 

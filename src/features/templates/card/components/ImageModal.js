@@ -1,11 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { compose } from "redux";
 import styled from "styled-components";
 import * as Yup from "yup";
 import { Form, Field, withFormik } from "formik";
 import { connect } from "react-redux";
 
-import { updateProfileImage } from "../../../pages/actions/pagesActionCreators";
+import {
+  updateMainImage,
+  updateProfileImage
+} from "../../../pages/actions/pagesActionCreators";
 import Modal from "../../../commonComponents/Modal";
 import Loader from "../../../commonComponents/Loader";
 import LinkIcon from "./assets/icons/Link";
@@ -104,7 +108,7 @@ const ErrorMessage = styled.span`
   animation: ${props => props.theme.bounceInAnimation};
 `;
 
-function ProfileImageModal(props) {
+function ImageModal(props) {
   const { dismiss, isSubmitting, errors, touched } = props;
 
   return (
@@ -120,18 +124,14 @@ function ProfileImageModal(props) {
           <FormWrapper>
             <StyledForm>
               <FormItem>
-                <Input
-                  type="text"
-                  name="profileImageURL"
-                  placeholder="Enter a URL"
-                />
+                <Input type="text" name="imageURL" placeholder="Enter a URL" />
                 <Submit disabled={isSubmitting}>
                   {isSubmitting ? <Loader /> : <LinkIcon />}
                 </Submit>
               </FormItem>
               <ErrorMessage>
-                {(touched.profileImageURL && errors.profileImageURL && (
-                  <ErrorMessage>{errors.profileImageURL}</ErrorMessage>
+                {(touched.imageURL && errors.imageURL && (
+                  <ErrorMessage>{errors.imageURL}</ErrorMessage>
                 )) ||
                   errors.general}
               </ErrorMessage>
@@ -143,27 +143,45 @@ function ProfileImageModal(props) {
   );
 }
 
-const ProfileImageForm = withFormik({
+const ImageForm = withFormik({
   enableReinitialize: true,
   validationSchema: Yup.object().shape({
-    profileImageURL: Yup.string()
+    imageURL: Yup.string()
       .required("URL is required")
       .url("Please enter a URL")
   }),
   mapPropsToValues: props => ({
-    profileImageURL: props.profileImageURL || ""
+    imageURL: props.profileImage
+      ? props.profileImageURL || " "
+      : props.mainImageURL || ""
   }),
   handleSubmit(payload, bag) {
-    bag.props.updateProfileImage(payload, {
+    const profileImage = bag.props.profileImage;
+    const meta = {
       domain: bag.props.domain,
       setSubmitting: bag.setSubmitting,
       setFieldError: bag.setFieldError
-    });
+    };
+
+    if (profileImage) {
+      const updatedPayload = {
+        profileImageURL: payload.imageURL
+      };
+
+      bag.props.updateProfileImage(updatedPayload, meta);
+    } else {
+      const updatedPayload = {
+        mainImageURL: payload.imageURL
+      };
+
+      bag.props.updateMainImage(updatedPayload, meta);
+    }
   }
-})(ProfileImageModal);
+})(ImageModal);
 
 const mapStateToProps = state => {
   return {
+    mainImageURL: state.pages.page.mainImageURL,
     profileImageURL: state.pages.page.profileImageURL,
     domain: state.pages.page.domain
   };
@@ -171,7 +189,15 @@ const mapStateToProps = state => {
 
 const withConnect = connect(
   mapStateToProps,
-  { updateProfileImage }
+  { updateMainImage, updateProfileImage }
 );
 
-export default compose(withConnect)(ProfileImageForm);
+ImageForm.propTypes = {
+  profileImage: PropTypes.bool
+};
+
+ImageForm.defaultProps = {
+  profileImage: false
+};
+
+export default compose(withConnect)(ImageForm);

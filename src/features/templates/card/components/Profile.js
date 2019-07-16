@@ -8,7 +8,7 @@ import { Form, Field, withFormik } from "formik";
 import { updatePage } from "../../../pages/actions/pagesActionCreators";
 import BackButton from "../../components/BackButton";
 import Loader from "../../../commonComponents/Loader";
-import ProfileImageModal from "./ProfileImageModal";
+import ImageModal from "./ImageModal";
 import Image from "./Image";
 
 const StyledForm = styled(Form)`
@@ -93,7 +93,14 @@ const ErrorMessage = styled.span`
 `;
 
 function Profile(props) {
+  const [mainImageModal, setMainImageModal] = useState(false);
   const [profileImageModal, setProfileImageModal] = useState(false);
+
+  function dismissModal() {
+    setMainImageModal(false);
+    setProfileImageModal(false);
+  }
+
   const {
     errors,
     touched,
@@ -104,14 +111,20 @@ function Profile(props) {
 
   return (
     <>
-      {profileImageModal && (
-        <ProfileImageModal dismiss={() => setProfileImageModal(false)} />
+      {(mainImageModal || profileImageModal) && (
+        <ImageModal
+          dismiss={dismissModal}
+          profileImage={profileImageModal ? true : false}
+        />
       )}
       <StyledForm>
         <BackButton text={"Home"} />
         <Title>Profile</Title>
         <ImagesWrapper>
-          <Image image={mainImageURL} />
+          <Image
+            image={mainImageURL}
+            handleOnClick={() => setMainImageModal(true)}
+          />
           <Image
             circle
             image={profileImageURL}
