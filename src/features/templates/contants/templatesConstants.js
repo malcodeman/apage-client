@@ -1,4 +1,9 @@
+import React from "react";
 import nanoid from "nanoid";
+
+import { ReactComponent as CardIllustration } from "../assets/illustrations/card.svg";
+import { ReactComponent as ProfileIllustration } from "../assets/illustrations/profile.svg";
+import { ReactComponent as FolioIllustration } from "../assets/illustrations/folio.svg";
 
 export const CATEGORIES = [
   { id: nanoid(), text: "Featured", path: "/templates/featured" },
@@ -28,7 +33,7 @@ export const PROFILE = [
     template: "card",
     description:
       "Create a website/card for your profile and links. The perfect solution for content creators.",
-    coverPhoto: "https://images.unsplash.com/photo-1561969451-a51b1034d762",
+    coverPhoto: <CardIllustration />,
     ...CARD_INITIAL_PROPS
   },
   {
@@ -37,7 +42,7 @@ export const PROFILE = [
     template: "profile",
     description:
       "Create a website for your profile, text, links & newsletter... perfect for content creators.",
-    coverPhoto: "https://images.unsplash.com/photo-1548294364-f8f87bae61f9"
+    coverPhoto: <ProfileIllustration />
   },
   {
     id: nanoid(),
@@ -45,7 +50,7 @@ export const PROFILE = [
     template: "folio",
     description:
       "Create a website for your portfolio. Add images, descriptions & links.",
-    coverPhoto: "https://images.unsplash.com/photo-1560414239-dcdf7d8d0226"
+    coverPhoto: <FolioIllustration />
   }
 ];
 

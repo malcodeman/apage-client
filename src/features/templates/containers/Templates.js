@@ -56,9 +56,10 @@ const Cover = styled.div`
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
   height: 140px;
-  background-size: cover;
-  background-position: center;
-  background-image: url(${props => props.bg});
+  svg {
+    width: 100%;
+    max-height: 100%;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -132,7 +133,7 @@ function Templates(props) {
                       key={category.id}
                       onClick={() => handleOnClick(category)}
                     >
-                      <Cover bg={category.coverPhoto} />
+                      <Cover>{category.coverPhoto}</Cover>
                       <TextWrapper>
                         <CategoryTitle>{category.title}</CategoryTitle>
                         <Description>{category.description}</Description>
