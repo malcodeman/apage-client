@@ -11,7 +11,8 @@ import {
   UPDATE_DOMAIN_RESET,
   UPDATE_MAIN_IMAGE_SUCCESS,
   UPDATE_PROFILE_IMAGE_SUCCESS,
-  ADD_SOCIAL_LINK_SUCCESS
+  ADD_SOCIAL_LINK_SUCCESS,
+  REMOVE_SOCIAL_LINK_SUCCESS
 } from "../actions/pagesActionTypes";
 
 const initialPageState = {
@@ -112,6 +113,16 @@ export default (state = initialState, action) => {
         page: {
           ...state.page,
           socialLinks: [...state.page.socialLinks, action.payload]
+        }
+      };
+    case REMOVE_SOCIAL_LINK_SUCCESS:
+      return {
+        ...state,
+        page: {
+          ...state.page,
+          socialLinks: state.page.socialLinks.filter(
+            link => link.id !== action.payload.linkId
+          )
         }
       };
     default:

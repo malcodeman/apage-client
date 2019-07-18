@@ -25,7 +25,10 @@ import {
   UPDATE_MAIN_IMAGE_SUCCESS,
   ADD_SOCIAL_LINK_FAILURE,
   ADD_SOCIAL_LINK_REQUEST,
-  ADD_SOCIAL_LINK_SUCCESS
+  ADD_SOCIAL_LINK_SUCCESS,
+  REMOVE_SOCIAL_LINK_FAILURE,
+  REMOVE_SOCIAL_LINK_REQUEST,
+  REMOVE_SOCIAL_LINK_SUCCESS
 } from "../actions/pagesActionTypes";
 
 const getPageApi = domain => {
@@ -58,6 +61,10 @@ const updateProfileImageApi = (domain, updatedProfileImage) => {
 
 const addSocialLinkApi = (domain, socialLink) => {
   return axios.post(`/pages/addSocialLink/${domain}`, socialLink);
+};
+
+const removeSocialLinkApi = (domain, linkId) => {
+  return axios.delete(`/pages/removeSocialLink/${domain}/${linkId}`);
 };
 
 function* getPage(action) {
@@ -173,6 +180,18 @@ function* addSocialLink(action) {
   }
 }
 
+function* removeSocialLink(action) {
+  try {
+    const { domain } = action.meta;
+    const data = yield call(removeSocialLinkApi, domain, action.payload);
+    const payload = data.data;
+
+    yield put({ type: REMOVE_SOCIAL_LINK_SUCCESS, payload });
+  } catch (error) {
+    yield put({ type: REMOVE_SOCIAL_LINK_FAILURE, error });
+  }
+}
+
 const saga = function*() {
   yield takeLatest(GET_PAGE_REQUEST, getPage);
   yield takeLatest(GET_PAGES_REQUEST, getPages);
@@ -182,6 +201,7 @@ const saga = function*() {
   yield takeLatest(UPDATE_MAIN_IMAGE_REQUEST, updateMainImage);
   yield takeLatest(UPDATE_PROFILE_IMAGE_REQUEST, updateProfileImage);
   yield takeLatest(ADD_SOCIAL_LINK_REQUEST, addSocialLink);
+  yield takeLatest(REMOVE_SOCIAL_LINK_REQUEST, removeSocialLink);
 };
 
 export default saga;
