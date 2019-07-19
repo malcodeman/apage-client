@@ -1,7 +1,7 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, cloneElement } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
 
 import {
@@ -81,7 +81,7 @@ const Description = styled.div`
 `;
 
 function Templates(props) {
-  const { pages, createPageSuccess, history, createPageReset } = props;
+  const { pages, createPageSuccess, history, createPageReset, theme } = props;
   const redirect = useCallback(link => history.push(`/${link}/config`), [
     history
   ]);
@@ -133,7 +133,11 @@ function Templates(props) {
                       key={category.id}
                       onClick={() => handleOnClick(category)}
                     >
-                      <Cover>{category.coverPhoto}</Cover>
+                      <Cover>
+                        {cloneElement(category.coverPhoto, {
+                          color: theme.brand
+                        })}
+                      </Cover>
                       <TextWrapper>
                         <CategoryTitle>{category.title}</CategoryTitle>
                         <Description>{category.description}</Description>
@@ -164,5 +168,6 @@ const withConnect = connect(
 
 export default compose(
   withRouter,
-  withConnect
+  withConnect,
+  withTheme
 )(Templates);
