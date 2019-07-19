@@ -1,9 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import { compose } from "redux";
+import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as SvgIllustration } from "../styles/illustrations/landing_page.svg";
 import EmailForm from "./EmailForm";
+import LandingPage from "../styles/illustrations/LandingPage";
 
 const Container = styled.section`
   padding: 0 2rem;
@@ -29,12 +30,13 @@ const Grid = styled.div`
 
 const HeroText = styled.div``;
 
-const Illustration = styled(SvgIllustration)`
+const Illustration = styled.div`
   display: none;
   @media (min-width: 576px) {
     display: block;
     max-width: 32rem;
     margin: 0 auto;
+    width: 100%;
   }
   @media (min-width: 768px) {
     max-width: initial;
@@ -64,6 +66,8 @@ const Note = styled.p`
 `;
 
 function Hero(props) {
+  const { theme } = props;
+
   return (
     <Container>
       <Grid>
@@ -79,10 +83,12 @@ function Hero(props) {
             <StyledLink to="/login">Sign in</StyledLink>
           </Note>
         </HeroText>
-        <Illustration />
+        <Illustration>
+          <LandingPage color={theme.brand} />
+        </Illustration>
       </Grid>
     </Container>
   );
 }
 
-export default Hero;
+export default compose(withTheme)(Hero);

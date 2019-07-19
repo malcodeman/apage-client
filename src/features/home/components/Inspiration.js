@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React, { cloneElement } from "react";
+import { compose } from "redux";
+import styled, { withTheme } from "styled-components";
 
 import { INSPIRATIONS } from "../constants/homeConstants";
 
@@ -90,12 +91,12 @@ const CardCover = styled.div`
   display: flex;
   height: 180px;
   margin-bottom: 1rem;
-  background-color: #f0efff;
   padding: 1rem;
   border-radius: 14px;
   @media (min-width: 1200px) {
     height: 300px;
   }
+  background-color: ${props => `${props.theme.brand}33`};
 `;
 
 const CardText = styled.span`
@@ -106,7 +107,9 @@ const CardText = styled.span`
   line-height: 1.5;
 `;
 
-function Inspiration() {
+function Inspiration(props) {
+  const { theme } = props;
+
   return (
     <Wrapper>
       <Grid>
@@ -118,7 +121,9 @@ function Inspiration() {
         </TextWrapper>
         {INSPIRATIONS.map(inspiration => (
           <Card key={inspiration.id}>
-            <CardCover>{inspiration.cover}</CardCover>
+            <CardCover>
+              {cloneElement(inspiration.cover, { color: theme.brand })}
+            </CardCover>
             <CardText>{inspiration.text}</CardText>
           </Card>
         ))}
@@ -127,4 +132,4 @@ function Inspiration() {
   );
 }
 
-export default Inspiration;
+export default compose(withTheme)(Inspiration);

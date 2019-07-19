@@ -1,10 +1,10 @@
 import React from "react";
 import nanoid from "nanoid";
 
-import { ReactComponent as Creative } from "../styles/illustrations/creative.svg";
-import { ReactComponent as Marketing } from "../styles/illustrations/marketing.svg";
-import { ReactComponent as Product } from "../styles/illustrations/product.svg";
-import { ReactComponent as Project } from "../styles/illustrations/project.svg";
+import Creative from "../styles/illustrations/Creative";
+import Marketing from "../styles/illustrations/Marketing";
+import Product from "../styles/illustrations/Product";
+import Project from "../styles/illustrations/Project";
 
 export const INSPIRATIONS = [
   {
