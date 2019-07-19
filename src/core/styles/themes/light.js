@@ -16,12 +16,13 @@ const bounceIn = keyframes`
 
 export default {
   brand: "#1473e6",
+  brandHover: "#2750ae",
   primary: "#3f3f3f",
   secondary: "#818181",
   backgroundPrimary: "#000000",
   backgroundSecondary: "#FFFFFF",
   backgroundInput: "#f2f2f2",
-  backgroundColorTransition: "background-color 0.2s ease",
+  easeIn: "0.085s all ease-in",
   error: "#f82b60",
   link: "#2680eb",
   borderColor: "#DDDDDD",

@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { INSPIRATIONS } from "../constants/homeConstants";
 
 const Wrapper = styled.section`
-  padding: 8rem 0;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
 `;
 
 const Grid = styled.div`
@@ -37,7 +39,6 @@ const Grid = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  padding: 1rem;
   grid-area: text;
   @media (min-width: 992px) {
     display: flex;
@@ -49,6 +50,7 @@ const TextWrapper = styled.div`
 const Heading = styled.h2`
   font-size: 2rem;
   font-weight: 500;
+  line-height: 1.25;
   margin-bottom: 1rem;
   color: ${props => props.theme.primary};
 `;

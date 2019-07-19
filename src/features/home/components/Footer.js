@@ -7,7 +7,9 @@ import Logo from "../../commonComponents/Logo";
 import { FOOTER_LINKS } from "../constants/homeConstants";
 
 const Wrapper = styled.section`
-  padding: 8rem 0;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
 `;
 
 const StyledFooter = styled.footer`
