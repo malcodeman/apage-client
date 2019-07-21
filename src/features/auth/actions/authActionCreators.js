@@ -16,7 +16,7 @@ export const login = (payload, meta) => {
   };
 };
 
-export const logout = (payload, meta) => {
+export const logout = () => {
   return {
     type: LOGOUT
   };
