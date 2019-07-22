@@ -77,7 +77,7 @@ function Title(props) {
 }
 
 Title.propTypes = {
-  level: PropTypes.oneOf(1, 2, 3, 4),
+  level: PropTypes.oneOf([1, 2, 3, 4]),
   mt: PropTypes.number,
   mb: PropTypes.number,
   weight: PropTypes.number,
