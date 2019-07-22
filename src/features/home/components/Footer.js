@@ -111,7 +111,7 @@ function Footer(props) {
             <StyledLink mr={0.5} small="true" quiet={0.75} to="/">
               Terms
             </StyledLink>
-            <StyledLink small="true" quiet={0.75} to="/">
+            <StyledLink small="true" quiet={0.75} to="/privacy">
               Privacy
             </StyledLink>
           </LegalWrapper>
