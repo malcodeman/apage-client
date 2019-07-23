@@ -13,6 +13,7 @@ import Signup from "./features/auth/components/Signup";
 import Templates from "./features/templates/containers/Templates";
 import Card from "./features/templates/card/components/Card";
 import Privacy from "./features/legal/components/Privacy";
+import Tos from "./features/legal/components/Tos";
 import RootPage from "./features/pages/containers/RootPage";
 import GlobalStyles from "./core/styles/GlobalStyles";
 
@@ -31,6 +32,7 @@ function render() {
               <Route path="/templates" component={Templates} />
               <Route path="/card" component={Card} />
               <Route path="/privacy" component={Privacy} />
+              <Route path="/tos" component={Tos} />
               <Route
                 exact
                 path="/:domain"

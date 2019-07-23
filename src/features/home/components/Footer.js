@@ -108,7 +108,7 @@ function Footer(props) {
             <Text mr={0.5} small quiet={0.75}>
               © Templates
             </Text>
-            <StyledLink mr={0.5} small="true" quiet={0.75} to="/">
+            <StyledLink mr={0.5} small="true" quiet={0.75} to="/tos">
               Terms
             </StyledLink>
             <StyledLink small="true" quiet={0.75} to="/privacy">
