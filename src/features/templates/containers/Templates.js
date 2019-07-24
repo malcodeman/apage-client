@@ -95,26 +95,11 @@ function Templates(props) {
     return () => createPageReset();
   }, [pages, redirect, createPageSuccess, createPageReset]);
 
-  function handleOnClick(card) {
+  function handleOnClick(template) {
     const { createPage } = props;
-    const {
-      template,
-      title,
-      name,
-      tagline,
-      location,
-      cta_button_text,
-      cta_button_link
-    } = card;
 
     createPage({
-      template,
-      title,
-      name,
-      tagline,
-      location,
-      cta_button_text,
-      cta_button_link
+      template
     });
   }
 
@@ -131,7 +116,7 @@ function Templates(props) {
                   return (
                     <Category
                       key={category.id}
-                      onClick={() => handleOnClick(category)}
+                      onClick={() => handleOnClick(category.template)}
                     >
                       <Cover>
                         {cloneElement(category.coverPhoto, {

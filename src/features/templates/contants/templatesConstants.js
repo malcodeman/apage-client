@@ -18,14 +18,6 @@ export const CATEGORIES = [
   { id: nanoid(), text: "Video", path: "/templates/video" }
 ];
 
-const CARD_INITIAL_PROPS = {
-  name: "Dua Lipa",
-  tagline: "Singer",
-  location: "London",
-  cta_button_text: "Get in Touch",
-  cta_button_link: "mailto:hi@templates.com"
-};
-
 export const PROFILE = [
   {
     id: nanoid(),
@@ -33,8 +25,7 @@ export const PROFILE = [
     template: "card",
     description:
       "Create a website/card for your profile and links. The perfect solution for content creators.",
-    coverPhoto: <Card />,
-    ...CARD_INITIAL_PROPS
+    coverPhoto: <Card />
   },
   {
     id: nanoid(),

@@ -122,8 +122,8 @@ function Card(props) {
     name,
     tagline,
     location,
-    cta_button_text,
-    cta_button_link,
+    ctaButtonText,
+    ctaButtonLink,
     socialLinks
   } = props;
 
@@ -136,11 +136,11 @@ function Card(props) {
           <Tagline>{tagline}</Tagline>
           <Location>{location}</Location>
           <CtaButton
-            href={cta_button_link}
+            href={ctaButtonLink}
             rel="noopener noreferrer"
             target="_blank"
           >
-            <CtaButtonText>{cta_button_text}</CtaButtonText>
+            <CtaButtonText>{ctaButtonText}</CtaButtonText>
           </CtaButton>
         </CardProfile>
         <CardLinks>
@@ -173,8 +173,8 @@ const mapStateToProps = state => {
     name: state.pages.page.name,
     tagline: state.pages.page.tagline,
     location: state.pages.page.location,
-    cta_button_text: state.pages.page.cta_button_text,
-    cta_button_link: state.pages.page.cta_button_link,
+    ctaButtonText: state.pages.page.ctaButtonText,
+    ctaButtonLink: state.pages.page.ctaButtonLink,
     socialLinks: state.pages.page.socialLinks
   };
 };

@@ -162,10 +162,10 @@ function Profile(props) {
           <Input
             placeholder="CTA Button Title"
             type="text"
-            name="cta_button_text"
+            name="ctaButtonText"
           />
-          {touched.cta_button_text && errors.cta_button_text && (
-            <ErrorMessage>{errors.cta_button_text}</ErrorMessage>
+          {touched.ctaButtonText && errors.ctaButtonText && (
+            <ErrorMessage>{errors.ctaButtonText}</ErrorMessage>
           )}
         </ProfileItem>
         <ProfileItem>
@@ -174,10 +174,10 @@ function Profile(props) {
           <Input
             placeholder="CTA Button Link"
             type="text"
-            name="cta_button_link"
+            name="ctaButtonLink"
           />
-          {touched.cta_button_link && errors.cta_button_link && (
-            <ErrorMessage>{errors.cta_button_link}</ErrorMessage>
+          {touched.ctaButtonLink && errors.ctaButtonLink && (
+            <ErrorMessage>{errors.ctaButtonLink}</ErrorMessage>
           )}
         </ProfileItem>
         <SubmitButton>
@@ -196,16 +196,16 @@ const ProfileForm = withFormik({
     name: Yup.string().required("Name is required"),
     tagline: Yup.string().required("Tagline is required"),
     location: Yup.string().required("Location is required"),
-    cta_button_text: Yup.string().required("CTA Button text is required"),
-    cta_button_link: Yup.string().required("CTA Button Link is required")
+    ctaButtonText: Yup.string().required("CTA Button text is required"),
+    ctaButtonLink: Yup.string().required("CTA Button Link is required")
   }),
   mapPropsToValues: props => ({
     domain: props.domain || "",
     name: props.name || "",
     tagline: props.tagline || "",
     location: props.location || "",
-    cta_button_text: props.cta_button_text || "",
-    cta_button_link: props.cta_button_link || ""
+    ctaButtonText: props.ctaButtonText || "",
+    ctaButtonLink: props.ctaButtonLink || ""
   }),
   handleSubmit(payload, bag) {
     bag.props.updatePage(payload, {
@@ -222,8 +222,8 @@ const mapStateToProps = state => {
     name: state.pages.page.name,
     tagline: state.pages.page.tagline,
     location: state.pages.page.location,
-    cta_button_text: state.pages.page.cta_button_text,
-    cta_button_link: state.pages.page.cta_button_link
+    ctaButtonText: state.pages.page.ctaButtonText,
+    ctaButtonLink: state.pages.page.ctaButtonLink
   };
 };
 
