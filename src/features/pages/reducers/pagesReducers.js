@@ -12,7 +12,8 @@ import {
   UPDATE_MAIN_IMAGE_SUCCESS,
   UPDATE_PROFILE_IMAGE_SUCCESS,
   ADD_SOCIAL_LINK_SUCCESS,
-  REMOVE_SOCIAL_LINK_SUCCESS
+  REMOVE_SOCIAL_LINK_SUCCESS,
+  GET_PAGE_FAILURE
 } from "../actions/pagesActionTypes";
 
 const initialPageState = {
@@ -24,7 +25,8 @@ const initialState = {
   page: initialPageState,
   pages: [],
   createPageSuccess: false,
-  updateDomainSuccess: false
+  updateDomainSuccess: false,
+  pageNotExists: false
 };
 
 export default (state = initialState, action) => {
@@ -63,12 +65,19 @@ export default (state = initialState, action) => {
     case GET_PAGE_SUCCESS:
       return {
         ...state,
-        page: action.payload
+        page: action.payload,
+        pageNotExists: false
+      };
+    case GET_PAGE_FAILURE:
+      return {
+        ...state,
+        pageNotExists: action.payload === "404" ? true : false
       };
     case GET_PAGE_RESET:
       return {
         ...state,
-        page: initialPageState
+        page: initialPageState,
+        pageNotExists: false
       };
     case UPDATE_PAGE_SUCCESS:
       return {

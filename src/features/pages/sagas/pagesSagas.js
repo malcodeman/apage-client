@@ -74,7 +74,11 @@ function* getPage(action) {
 
     yield put({ type: GET_PAGE_SUCCESS, payload });
   } catch (error) {
-    yield put({ type: GET_PAGE_FAILURE, error });
+    if (error.data.message === "PageNotFoundException") {
+      yield put({ type: GET_PAGE_FAILURE, payload: "404" });
+    } else {
+      yield put({ type: GET_PAGE_FAILURE, error });
+    }
   }
 }
 
