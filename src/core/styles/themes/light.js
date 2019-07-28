@@ -31,5 +31,19 @@ export default {
   disabled: "hsla(0,0%,0%,0.25)",
   bounceInAnimation: css`
     ${bounceIn} 240ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  `
+  `,
+  button: {
+    disabled: {
+      color: "rgba(0, 0, 0, 0.247)",
+      background: "hsla(0, 0%, 0%, 0.25)"
+    },
+    primary: {
+      color: "hsl(0, 0%, 100%)",
+      background: "#1473e6"
+    },
+    danger: {
+      color: "hsl(0, 0%, 100%)",
+      background: "#f82b60"
+    }
+  }
 };

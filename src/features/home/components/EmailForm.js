@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
+import Button from "../../commonComponents/Button";
+
 const Form = styled.form`
   display: grid;
   grid-template-columns: 1fr auto;
@@ -30,26 +32,6 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
-  display: flex;
-  align-items: center;
-  border: 0;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: ${props => props.theme.easeIn};
-  background-color: ${props => props.theme.brand};
-  &:hover {
-    background-color: ${props => props.theme.brandHover};
-  }
-`;
-
-const ButtonText = styled.h4`
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: hsl(0, 0%, 100%);
-`;
-
 function EmailForm(props) {
   const { placeholderText, ctaText, history } = props;
   const [email, setEmail] = useState("");
@@ -68,8 +50,8 @@ function EmailForm(props) {
         value={email}
         onChange={e => setEmail(e.currentTarget.value)}
       />
-      <Button>
-        <ButtonText>{ctaText}</ButtonText>
+      <Button type="primary" htmlType="submit">
+        {ctaText}
       </Button>
     </Form>
   );

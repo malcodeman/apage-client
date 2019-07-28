@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import Logo from "../../commonComponents/Logo";
-import Loader from "../../commonComponents/Loader";
+import Button from "../../commonComponents/Button";
 import Google from "../styles/icons/Google";
 import { signup } from "../actions/authActionCreators";
 import utils from "../../../core/utils";
@@ -109,21 +109,6 @@ const Input = styled(Field)`
   background-color: ${props => props.theme.backgroundSecondary};
 `;
 
-const SubmitButton = styled.button`
-  color: #fff;
-  border: 0;
-  cursor: pointer;
-  padding: 0.5rem;
-  font-size: 1rem;
-  &:disabled {
-    cursor: default;
-    color: rgba(0, 0, 0, 0.247);
-    background-color: ${props => props.theme.disabled};
-  }
-  background-color: ${props => props.theme.brand};
-  border-radius: ${props => props.theme.borderRadius};
-`;
-
 const ErrorMessage = styled.span`
   padding: 4px 8px;
   font-size: 0.8rem;
@@ -217,17 +202,20 @@ const FormikForm = props => {
                 <ErrorMessage>{errors.password}</ErrorMessage>
               )}
             </FormItem>
-            <SubmitButton
-              disabled={
+            <Button
+              type="primary"
+              htmlType="submit"
+              disabled={Boolean(
                 isSubmitting ||
-                !values.email.length ||
-                !values.password.length ||
-                errors.email ||
-                errors.password
-              }
+                  !values.email.length ||
+                  !values.password.length ||
+                  errors.email ||
+                  errors.password
+              )}
+              loading={isSubmitting}
             >
-              {isSubmitting ? <Loader /> : "Sign up for free"}
-            </SubmitButton>
+              Sign up for free
+            </Button>
             {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
           </StyledForm>
         </FormWrapper>
