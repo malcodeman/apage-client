@@ -9,11 +9,11 @@ import { connect } from "react-redux";
 import {
   updateMainImage,
   updateProfileImage
-} from "../../../pages/actions/pagesActionCreators";
-import Modal from "../../../commonComponents/Modal";
-import Loader from "../../../commonComponents/Loader";
-import LinkIcon from "./assets/icons/Link";
-import XIcon from "./assets/icons/X";
+} from "../../pages/actions/pagesActionCreators";
+import Modal from "../../commonComponents/Modal";
+import Loader from "../../commonComponents/Loader";
+import LinkIcon from "../assets/icons/Link";
+import XIcon from "../assets/icons/X";
 
 const Wrapper = styled.div`
   display: grid;

@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { getPage, getPageReset } from "../actions/pagesActionCreators";
-import Card from "../../templates/card/components/Card";
-import ManageCard from "../../templates/card/components/ManageCard";
+import Card from "../../card/components/Card";
+import ManageCard from "../../card/components/ManageCard";
 import NotExists from "../components/NotExists";
 
 function RootPage(props) {

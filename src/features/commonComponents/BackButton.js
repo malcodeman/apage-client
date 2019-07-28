@@ -4,7 +4,7 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
 
-import ChevronLeft from "../assets/icons/ChevronLeft";
+import ChevronLeft from "../commonAssets/ChevronLeft";
 
 const Container = styled.div``;
 

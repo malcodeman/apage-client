@@ -3,7 +3,7 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
-import Logo from "../../../commonComponents/Logo";
+import Logo from "../../commonComponents/Logo";
 
 const Wrapper = styled.div`
   padding: 0 2rem;

@@ -5,9 +5,9 @@ import styled from "styled-components";
 import * as Yup from "yup";
 import { Form, Field, withFormik } from "formik";
 
-import { updatePage } from "../../../pages/actions/pagesActionCreators";
-import BackButton from "../../components/BackButton";
-import Loader from "../../../commonComponents/Loader";
+import { updatePage } from "../../pages/actions/pagesActionCreators";
+import BackButton from "../../commonComponents/BackButton";
+import Loader from "../../commonComponents/Loader";
 import ImageModal from "./ImageModal";
 import Image from "./Image";
 

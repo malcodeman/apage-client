@@ -9,9 +9,9 @@ import { Redirect } from "react-router-dom";
 import {
   updateDomain,
   updateDomainReset
-} from "../../../pages/actions/pagesActionCreators";
-import BackButton from "../../components/BackButton";
-import Loader from "../../../commonComponents/Loader";
+} from "../../pages/actions/pagesActionCreators";
+import BackButton from "../../commonComponents/BackButton";
+import Loader from "../../commonComponents/Loader";
 
 const StyledForm = styled(Form)`
   display: flex;

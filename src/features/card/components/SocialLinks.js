@@ -8,11 +8,11 @@ import * as Yup from "yup";
 import {
   addSocialLink,
   removeSocialLink
-} from "../../../pages/actions/pagesActionCreators";
-import BackButton from "../../components/BackButton";
-import LinkIcon from "./assets/icons/Link";
-import Loader from "../../../commonComponents/Loader";
-import XIcon from "./assets/icons/X";
+} from "../../pages/actions/pagesActionCreators";
+import BackButton from "../../commonComponents/BackButton";
+import LinkIcon from "../assets/icons/Link";
+import Loader from "../../commonComponents/Loader";
+import XIcon from "../assets/icons/X";
 
 const Wrapper = styled.div`
   padding: 0 2rem;
