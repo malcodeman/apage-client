@@ -37,6 +37,10 @@ export default {
       color: "rgba(0, 0, 0, 0.247)",
       background: "hsla(0, 0%, 0%, 0.25)"
     },
+    default: {
+      color: "hsl(0, 0%, 20%)",
+      background: "hsla(0, 0%, 0%, 0.05)"
+    },
     primary: {
       color: "hsl(0, 0%, 100%)",
       background: "#1473e6"

@@ -11,7 +11,7 @@ import {
   updateDomainReset
 } from "../../pages/actions/pagesActionCreators";
 import BackButton from "../../commonComponents/BackButton";
-import Loader from "../../commonComponents/Loader";
+import Button from "../../commonComponents/Button";
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -58,28 +58,6 @@ const Input = styled(Field)`
   }
 `;
 
-const SubmitButton = styled.button`
-  height: 36px;
-  padding: 0 1rem;
-  font-size: 18px;
-  border-radius: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  background-color: #000;
-  align-self: center;
-`;
-
-const SubmitButtonText = styled.span`
-  font-family: "Roboto", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 500;
-  text-transform: uppercase;
-`;
-
 const ErrorMessage = styled.span`
   padding: 4px 8px;
   font-size: 0.8rem;
@@ -116,11 +94,9 @@ function General(props) {
           <ErrorMessage>{errors.domain}</ErrorMessage>
         )}
       </FormItem>
-      <SubmitButton>
-        <SubmitButtonText>
-          {isSubmitting ? <Loader /> : "Save changes"}
-        </SubmitButtonText>
-      </SubmitButton>
+      <Button loading={isSubmitting} htmlType="submit" type="primary">
+        Save changes
+      </Button>
     </StyledForm>
   );
 }

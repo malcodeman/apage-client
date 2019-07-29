@@ -28,7 +28,7 @@ function BackButton(props) {
 
   return (
     <Container>
-      <Button onClick={() => history.goBack()}>
+      <Button onClick={() => history.goBack()} type="button">
         <ChevronLeft size={20} color={theme.primary} />
         <Text>{text}</Text>
       </Button>

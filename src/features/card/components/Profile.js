@@ -7,7 +7,7 @@ import { Form, Field, withFormik } from "formik";
 
 import { updatePage } from "../../pages/actions/pagesActionCreators";
 import BackButton from "../../commonComponents/BackButton";
-import Loader from "../../commonComponents/Loader";
+import Button from "../../commonComponents/Button";
 import ImageModal from "./ImageModal";
 import Image from "./Image";
 
@@ -61,28 +61,6 @@ const Input = styled(Field)`
   &:focus {
     border-color: ${props => props.theme.borderColor};
   }
-`;
-
-const SubmitButton = styled.button`
-  height: 36px;
-  padding: 0 1rem;
-  font-size: 18px;
-  border-radius: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  background-color: #000;
-  align-self: center;
-`;
-
-const SubmitButtonText = styled.span`
-  font-family: "Roboto", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 500;
-  text-transform: uppercase;
 `;
 
 const ErrorMessage = styled.span`
@@ -180,11 +158,9 @@ function Profile(props) {
             <ErrorMessage>{errors.ctaButtonLink}</ErrorMessage>
           )}
         </ProfileItem>
-        <SubmitButton>
-          <SubmitButtonText>
-            {isSubmitting ? <Loader /> : "Save changes"}
-          </SubmitButtonText>
-        </SubmitButton>
+        <Button loading={isSubmitting} htmlType="submit" type="primary">
+          Save changes
+        </Button>
       </StyledForm>
     </>
   );

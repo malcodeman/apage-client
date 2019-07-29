@@ -10,8 +10,8 @@ import {
   removeSocialLink
 } from "../../pages/actions/pagesActionCreators";
 import BackButton from "../../commonComponents/BackButton";
+import Button from "../../commonComponents/Button";
 import LinkIcon from "../assets/icons/Link";
-import Loader from "../../commonComponents/Loader";
 import XIcon from "../assets/icons/X";
 
 const Wrapper = styled.div`
@@ -89,6 +89,8 @@ const SocialUrl = styled.span`
 `;
 
 const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
   margin-top: 1rem;
   padding: 0 2rem;
 `;
@@ -116,28 +118,6 @@ const ErrorMessage = styled.span`
   font-weight: 500;
   color: ${props => props.theme.error};
   animation: ${props => props.theme.bounceInAnimation};
-`;
-
-const SubmitButton = styled.button`
-  height: 36px;
-  padding: 0 1rem;
-  font-size: 18px;
-  border-radius: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  background-color: #000;
-  margin: 0 auto;
-`;
-
-const SubmitButtonText = styled.span`
-  font-family: "Roboto", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 500;
-  text-transform: uppercase;
 `;
 
 function SocialLinks(props) {
@@ -183,11 +163,9 @@ function SocialLinks(props) {
             <ErrorMessage>{errors.url}</ErrorMessage>
           )}
         </FormItem>
-        <SubmitButton type="submit">
-          <SubmitButtonText>
-            {isSubmitting ? <Loader /> : "Add new"}
-          </SubmitButtonText>
-        </SubmitButton>
+        <Button loading={isSubmitting} htmlType="submit" type="primary">
+          Add new
+        </Button>
       </StyledForm>
     </>
   );
