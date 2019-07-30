@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
 import Input from "../../commonComponents/Input";
-import Home from "../assets/icons/Home";
+import HomeIcon from "../../commonAssets/icons/Home";
 import { CATEGORIES } from "../contants/templatesConstants";
 
 const Wrapper = styled.div``;
@@ -69,7 +69,7 @@ function CategoriesList(props) {
     <Wrapper>
       <Header>
         <HomeLink to="/templates">
-          <Home size={16} />
+          <HomeIcon />
         </HomeLink>
         <Input type="text" placeholder="Search templates" />
       </Header>

@@ -7,10 +7,10 @@ import { Form, withFormik } from "formik";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import Logo from "../../commonComponents/Logo";
+import Logo from "../../commonAssets/icons/Logo";
+import GoogleIcon from "../../commonAssets/icons/Google";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
-import Google from "../styles/icons/Google";
 import { login } from "../actions/authActionCreators";
 
 const Wrapper = styled.div`
@@ -158,7 +158,7 @@ const FormikForm = props => {
       <Content>
         <Header>
           <BrandLink to="/">
-            <Logo size={16} color={props.theme.brand} />
+            <Logo color={props.theme.brand} />
             <BrandText>Templates</BrandText>
           </BrandLink>
         </Header>
@@ -213,7 +213,7 @@ const FormikForm = props => {
         </FormWrapper>
         <Footer>
           <SocialSignInButton>
-            <Google size={18} />
+            <GoogleIcon />
             <SocialSignInText>Sign in with Google</SocialSignInText>
           </SocialSignInButton>
           <OtherOptions>

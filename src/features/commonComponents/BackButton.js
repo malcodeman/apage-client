@@ -4,7 +4,7 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { withRouter } from "react-router-dom";
 
-import ChevronLeft from "../commonAssets/ChevronLeft";
+import ChevronLeftIcon from "../commonAssets/icons/ChevronLeft";
 
 const Container = styled.div``;
 
@@ -15,7 +15,7 @@ const Button = styled.button`
   border: 0;
   background-color: transparent;
   padding: 0;
-  margin-left: -10px;
+  margin-left: -8px;
 `;
 
 const Text = styled.span`
@@ -29,7 +29,7 @@ function BackButton(props) {
   return (
     <Container>
       <Button onClick={() => history.goBack()} type="button">
-        <ChevronLeft size={20} color={theme.primary} />
+        <ChevronLeftIcon color={theme.primary} />
         <Text>{text}</Text>
       </Button>
     </Container>

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Mail(props) {
+function Lock(props) {
   const { color, size, ...otherProps } = props;
 
   return (
@@ -17,20 +17,20 @@ function Mail(props) {
       strokeLinejoin="round"
       {...otherProps}
     >
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-      <polyline points="22,6 12,13 2,6" />
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
     </svg>
   );
 }
 
-Mail.propTypes = {
+Lock.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-Mail.defaultProps = {
+Lock.defaultProps = {
   color: "currentColor",
-  size: "24"
+  size: "16"
 };
 
-export default Mail;
+export default Lock;

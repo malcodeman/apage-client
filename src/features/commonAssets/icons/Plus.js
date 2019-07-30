@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function LogOut(props) {
+function Plus(props) {
   const { color, size, ...otherProps } = props;
 
   return (
@@ -17,21 +17,20 @@ function LogOut(props) {
       strokeLinejoin="round"
       {...otherProps}
     >
-      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-      <polyline points="16 17 21 12 16 7" />
-      <line x1="21" y1="12" x2="9" y2="12" />
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   );
 }
 
-LogOut.propTypes = {
+Plus.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-LogOut.defaultProps = {
+Plus.defaultProps = {
   color: "currentColor",
-  size: "24"
+  size: "16"
 };
 
-export default LogOut;
+export default Plus;

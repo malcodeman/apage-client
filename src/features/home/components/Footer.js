@@ -3,7 +3,7 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
-import Logo from "../../commonComponents/Logo";
+import Logo from "../../commonAssets/icons/Logo";
 import { FOOTER_LINKS } from "../constants/homeConstants";
 
 const Wrapper = styled.section`
@@ -66,7 +66,7 @@ function Footer(props) {
   return (
     <Wrapper>
       <StyledFooter>
-        <Logo color={theme.brand} size={16} />
+        <Logo color={theme.brand} />
         <LinksWrapper>
           {FOOTER_LINKS[0].map(link => {
             return (

@@ -32,13 +32,11 @@ function Button(props) {
   const { onClick, disabled, type, htmlType, loading, children, icon } = props;
 
   function handleIcon(icon) {
-    const size = 16;
-
     switch (icon) {
       case "link":
-        return <LinkIcon size={size} />;
+        return <LinkIcon />;
       case "search":
-        return <SearchIcon size={size} />;
+        return <SearchIcon />;
       default:
         return null;
     }

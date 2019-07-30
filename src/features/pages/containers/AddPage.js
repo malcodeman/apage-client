@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import Plus from "../assets/icons/Plus";
+import PlusIcon from "../../commonAssets/icons/Plus";
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ function AddPage(props) {
     <Link to="/templates">
       <ButtonWrapper>
         <Button onClick={handleOnClick}>
-          <Plus height={16} width={16} />
+          <PlusIcon />
         </Button>
         <Text>Create a new page</Text>
       </ButtonWrapper>

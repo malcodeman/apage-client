@@ -13,7 +13,7 @@ import BackButton from "../../commonComponents/BackButton";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
 import LinkIcon from "../../commonAssets/icons/Link";
-import XIcon from "../assets/icons/X";
+import XIcon from "../../commonAssets/icons/X";
 
 const Wrapper = styled.div`
   padding: 0 2rem;
@@ -137,11 +137,11 @@ function SocialLinks(props) {
           return (
             <Link key={link.id}>
               <SocialIcon>
-                <LinkIcon size={16} color={theme.primary} />
+                <LinkIcon color={theme.primary} />
               </SocialIcon>
               <SocialUrl>{link.url}</SocialUrl>
               <RemoveButton onClick={() => removeSocialLink(link.id, meta)}>
-                <XIcon size={14} />
+                <XIcon />
               </RemoveButton>
             </Link>
           );

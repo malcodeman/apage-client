@@ -30,7 +30,7 @@ Search.propTypes = {
 
 Search.defaultProps = {
   color: "currentColor",
-  size: "24"
+  size: "16"
 };
 
 export default Search;

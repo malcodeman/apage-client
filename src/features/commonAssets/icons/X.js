@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Edit(props) {
+function X(props) {
   const { color, size, ...otherProps } = props;
 
   return (
@@ -17,19 +17,20 @@ function Edit(props) {
       strokeLinejoin="round"
       {...otherProps}
     >
-      <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
 }
 
-Edit.propTypes = {
+X.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-Edit.defaultProps = {
+X.defaultProps = {
   color: "currentColor",
-  size: "24"
+  size: "16"
 };
 
-export default Edit;
+export default X;

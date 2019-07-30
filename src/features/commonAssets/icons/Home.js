@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Home(props) {
-  const { color, size } = props;
+  const { color, size, ...otherProps } = props;
 
   return (
     <svg
@@ -10,6 +10,7 @@ function Home(props) {
       width={size}
       height={size}
       viewBox="0 0 16 16"
+      {...otherProps}
     >
       <path
         fill={color}
@@ -27,7 +28,7 @@ Home.propTypes = {
 
 Home.defaultProps = {
   color: "currentColor",
-  size: "24"
+  size: "16"
 };
 
 export default Home;

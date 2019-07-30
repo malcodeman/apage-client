@@ -3,7 +3,7 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
-import Logo from "../../commonComponents/Logo";
+import Logo from "../../commonAssets/icons/Logo";
 
 const Container = styled.div`
   padding: 0 2rem;
@@ -52,7 +52,7 @@ function Header(props) {
     <Container>
       <Nav>
         <BrandLink to="/">
-          <Logo size={16} color={theme.brand} />
+          <Logo color={theme.brand} />
           <BrandText>Templates</BrandText>
         </BrandLink>
         <Links>

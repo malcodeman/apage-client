@@ -153,7 +153,7 @@ function Card(props) {
                 rel="noopener noreferrer"
               >
                 <SocialIcon>
-                  <LinkIcon size={16} color={theme.primary} />
+                  <LinkIcon color={theme.primary} />
                 </SocialIcon>
                 <SocialUrl>{link.url}</SocialUrl>
               </CardLink>

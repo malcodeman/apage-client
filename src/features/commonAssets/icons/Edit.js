@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Lock(props) {
+function Edit(props) {
   const { color, size, ...otherProps } = props;
 
   return (
@@ -17,20 +17,19 @@ function Lock(props) {
       strokeLinejoin="round"
       {...otherProps}
     >
-      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
     </svg>
   );
 }
 
-Lock.propTypes = {
+Edit.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-Lock.defaultProps = {
+Edit.defaultProps = {
   color: "currentColor",
-  size: "24"
+  size: "16"
 };
 
-export default Lock;
+export default Edit;

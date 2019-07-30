@@ -3,8 +3,8 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import LogOut from "../assets/icons/LogOut";
 
+import LogOutIcon from "../../commonAssets/icons/LogOut";
 import { logout } from "../../auth/actions/authActionCreators";
 
 const StyledHeader = styled.header`
@@ -74,7 +74,7 @@ function Header(props) {
           <StyledNavLink to="/templates">Templates</StyledNavLink>
           {isAuthorized && (
             <LogOutWrapper onClick={handleLogOut}>
-              <LogOut size={16} />
+              <LogOutIcon />
               <LogOutText>Log out</LogOutText>
             </LogOutWrapper>
           )}

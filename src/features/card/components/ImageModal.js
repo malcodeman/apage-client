@@ -13,7 +13,7 @@ import {
 import Modal from "../../commonComponents/Modal";
 import Input from "../../commonComponents/Input";
 import Button from "../../commonComponents/Button";
-import XIcon from "../assets/icons/X";
+import XIcon from "../../commonAssets/icons/X";
 
 const Wrapper = styled.div`
   display: grid;
@@ -97,7 +97,7 @@ function ImageModal(props) {
           <Header>
             <Title>Link (URL)</Title>
             <XWrapper>
-              <XIcon size={16} onClick={dismiss} />
+              <XIcon onClick={dismiss} />
             </XWrapper>
           </Header>
           <FormWrapper>
