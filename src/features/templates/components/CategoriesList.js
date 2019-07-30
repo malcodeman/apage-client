@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 
+import Input from "../../commonComponents/Input";
 import Home from "../assets/icons/Home";
 import { CATEGORIES } from "../contants/templatesConstants";
 
@@ -23,22 +24,6 @@ const HomeLink = styled(Link)`
   background-color: #bdbdbd;
   color: #fff;
   margin-right: 0.5rem;
-  border-radius: ${props => props.theme.borderRadius};
-`;
-
-const Search = styled.input`
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.5rem;
-  border: 2px solid transparent;
-  background-color: #efefef;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  &:focus {
-    border-color: ${props => props.theme.borderColor};
-  }
-  color: ${props => props.theme.primary};
   border-radius: ${props => props.theme.borderRadius};
 `;
 
@@ -86,7 +71,7 @@ function CategoriesList(props) {
         <HomeLink to="/templates">
           <Home size={16} />
         </HomeLink>
-        <Search type="text" placeholder="Search templates" />
+        <Input type="text" placeholder="Search templates" />
       </Header>
       <StyledList>
         <Title>Categories</Title>

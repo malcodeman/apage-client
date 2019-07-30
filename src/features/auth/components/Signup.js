@@ -3,12 +3,13 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import { Form, Field, withFormik } from "formik";
+import { Form, withFormik } from "formik";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import Logo from "../../commonComponents/Logo";
 import Button from "../../commonComponents/Button";
+import Input from "../../commonComponents/Input";
 import Google from "../styles/icons/Google";
 import { signup } from "../actions/authActionCreators";
 import utils from "../../../core/utils";
@@ -51,7 +52,6 @@ const BrandText = styled.span`
 `;
 
 const FormWrapper = styled.div`
-  background-color: #f2f2f2;
   padding: 32px;
   border-radius: 6px;
 `;
@@ -92,21 +92,6 @@ const Label = styled.label`
   font-size: 0.8rem;
   padding-bottom: 0.25rem;
   color: ${props => props.theme.secondary};
-`;
-
-const Input = styled(Field)`
-  font-size: 1rem;
-  outline: 0;
-  padding: 0 0.5rem;
-  padding: 0.5rem;
-  border: 2px solid transparent;
-  font-weight: 500;
-  &:focus {
-    border-color: ${props => props.theme.borderColor};
-  }
-  border-radius: ${props => props.theme.borderRadius};
-  color: ${props => props.theme.primary};
-  background-color: ${props => props.theme.backgroundSecondary};
 `;
 
 const ErrorMessage = styled.span`
@@ -168,7 +153,15 @@ const Text = styled.span`
 `;
 
 const FormikForm = props => {
-  const { isAuthorized, values, errors, touched, isSubmitting } = props;
+  const {
+    isAuthorized,
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleChange,
+    handleBlur
+  } = props;
 
   if (isAuthorized) {
     return <Redirect to="/" />;
@@ -190,14 +183,26 @@ const FormikForm = props => {
           <StyledForm>
             <FormItem>
               <Label>Email</Label>
-              <Input type="text" name="email" />
+              <Input
+                type="text"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
               {touched.email && errors.email && (
                 <ErrorMessage>{errors.email}</ErrorMessage>
               )}
             </FormItem>
             <FormItem>
               <Label>Create a password</Label>
-              <Input type="password" name="password" />
+              <Input
+                type="password"
+                name="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
               {touched.password && errors.password && (
                 <ErrorMessage>{errors.password}</ErrorMessage>
               )}

@@ -3,11 +3,12 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import * as Yup from "yup";
-import { Form, Field, withFormik } from "formik";
+import { Form, withFormik } from "formik";
 
 import { updatePage } from "../../pages/actions/pagesActionCreators";
 import BackButton from "../../commonComponents/BackButton";
 import Button from "../../commonComponents/Button";
+import Input from "../../commonComponents/Input";
 import ImageModal from "./ImageModal";
 import Image from "./Image";
 
@@ -50,19 +51,6 @@ const DescriptionText = styled.p`
   color: ${props => props.theme.secondary};
 `;
 
-const Input = styled(Field)`
-  border: 2px solid transparent;
-  font-size: 1rem;
-  padding: 0.5rem;
-  font-weight: 400;
-  width: 100%;
-  background-color: hsla(0, 0%, 0%, 0.05);
-  border-radius: ${props => props.theme.borderRadius};
-  &:focus {
-    border-color: ${props => props.theme.borderColor};
-  }
-`;
-
 const ErrorMessage = styled.span`
   padding: 4px 8px;
   font-size: 0.8rem;
@@ -83,6 +71,9 @@ function Profile(props) {
   const {
     errors,
     touched,
+    values,
+    handleChange,
+    handleBlur,
     isSubmitting,
     profileImageURL,
     mainImageURL
@@ -113,7 +104,14 @@ function Profile(props) {
         <ProfileItem>
           <DescriptionTitle>Name</DescriptionTitle>
           <DescriptionText>e.g. Alex McRad</DescriptionText>
-          <Input placeholder="Name" type="text" name="name" />
+          <Input
+            placeholder="Name"
+            type="text"
+            name="name"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.name}
+          />
           {touched.name && errors.name && (
             <ErrorMessage>{errors.name}</ErrorMessage>
           )}
@@ -121,7 +119,14 @@ function Profile(props) {
         <ProfileItem>
           <DescriptionTitle>Tagline</DescriptionTitle>
           <DescriptionText>e.g. Drinker of Coffee</DescriptionText>
-          <Input placeholder="Tagline" type="text" name="tagline" />
+          <Input
+            placeholder="Tagline"
+            type="text"
+            name="tagline"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.tagline}
+          />
           {touched.tagline && errors.tagline && (
             <ErrorMessage>{errors.tagline}</ErrorMessage>
           )}
@@ -129,7 +134,14 @@ function Profile(props) {
         <ProfileItem>
           <DescriptionTitle>Location</DescriptionTitle>
           <DescriptionText>e.g. Seattle, WA</DescriptionText>
-          <Input placeholder="Location" type="text" name="location" />
+          <Input
+            placeholder="Location"
+            type="text"
+            name="location"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.location}
+          />
           {touched.location && errors.location && (
             <ErrorMessage>{errors.location}</ErrorMessage>
           )}
@@ -141,6 +153,9 @@ function Profile(props) {
             placeholder="CTA Button Title"
             type="text"
             name="ctaButtonText"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.ctaButtonText}
           />
           {touched.ctaButtonText && errors.ctaButtonText && (
             <ErrorMessage>{errors.ctaButtonText}</ErrorMessage>
@@ -153,12 +168,20 @@ function Profile(props) {
             placeholder="CTA Button Link"
             type="text"
             name="ctaButtonLink"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.ctaButtonLink}
           />
           {touched.ctaButtonLink && errors.ctaButtonLink && (
             <ErrorMessage>{errors.ctaButtonLink}</ErrorMessage>
           )}
         </ProfileItem>
-        <Button loading={isSubmitting} htmlType="submit" type="primary">
+        <Button
+          loading={isSubmitting}
+          disabled={isSubmitting}
+          htmlType="submit"
+          type="primary"
+        >
           Save changes
         </Button>
       </StyledForm>

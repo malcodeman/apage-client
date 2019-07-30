@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
+import Input from "../../commonComponents/Input";
 import Button from "../../commonComponents/Button";
 
 const Form = styled.form`
@@ -11,25 +12,6 @@ const Form = styled.form`
   grid-template-columns: 1fr auto;
   max-width: 380px;
   grid-gap: 0.5rem;
-`;
-
-const Input = styled.input`
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  outline: 0;
-  border: 2px solid transparent;
-  border-radius: 6px;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 500;
-  color: ${props => props.theme.primary};
-  transition: ${props => props.theme.easeIn};
-  background-color: ${props => props.theme.backgroundInput};
-  &:focus {
-    border-color: ${props => props.theme.borderColor};
-  }
 `;
 
 function EmailForm(props) {

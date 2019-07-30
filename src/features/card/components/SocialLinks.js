@@ -2,7 +2,7 @@ import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import styled, { withTheme } from "styled-components";
-import { Form, Field, withFormik } from "formik";
+import { Form, withFormik } from "formik";
 import * as Yup from "yup";
 
 import {
@@ -11,6 +11,7 @@ import {
 } from "../../pages/actions/pagesActionCreators";
 import BackButton from "../../commonComponents/BackButton";
 import Button from "../../commonComponents/Button";
+import Input from "../../commonComponents/Input";
 import LinkIcon from "../assets/icons/Link";
 import XIcon from "../assets/icons/X";
 
@@ -99,19 +100,6 @@ const FormItem = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Input = styled(Field)`
-  border: 2px solid transparent;
-  font-size: 1rem;
-  padding: 0.5rem;
-  font-weight: 400;
-  width: 100%;
-  background-color: hsla(0, 0%, 0%, 0.05);
-  border-radius: ${props => props.theme.borderRadius};
-  &:focus {
-    border-color: ${props => props.theme.borderColor};
-  }
-`;
-
 const ErrorMessage = styled.span`
   padding: 4px 8px;
   font-size: 0.8rem;
@@ -126,6 +114,9 @@ function SocialLinks(props) {
     touched,
     errors,
     isSubmitting,
+    values,
+    handleBlur,
+    handleChange,
     socialLinks,
     domain,
     removeSocialLink
@@ -158,12 +149,24 @@ function SocialLinks(props) {
       </Links>
       <StyledForm>
         <FormItem>
-          <Input placeholder="Paste a URL" type="text" name="url" />
+          <Input
+            placeholder="Paste a URL"
+            type="text"
+            name="url"
+            value={values.url}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
           {touched.url && errors.url && (
             <ErrorMessage>{errors.url}</ErrorMessage>
           )}
         </FormItem>
-        <Button loading={isSubmitting} htmlType="submit" type="primary">
+        <Button
+          loading={isSubmitting}
+          disabled={Boolean(isSubmitting || !values.url || errors.url)}
+          htmlType="submit"
+          type="primary"
+        >
           Add new
         </Button>
       </StyledForm>

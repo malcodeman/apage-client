@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { compose } from "redux";
 import styled from "styled-components";
 import * as Yup from "yup";
-import { Form, Field, withFormik } from "formik";
+import { Form, withFormik } from "formik";
 import { connect } from "react-redux";
 
 import {
@@ -11,7 +11,8 @@ import {
   updateProfileImage
 } from "../../pages/actions/pagesActionCreators";
 import Modal from "../../commonComponents/Modal";
-import Loader from "../../commonComponents/Loader";
+import Input from "../../commonComponents/Input";
+import Button from "../../commonComponents/Button";
 import LinkIcon from "../assets/icons/Link";
 import XIcon from "../assets/icons/X";
 
@@ -71,35 +72,6 @@ const FormItem = styled.div`
   display: flex;
 `;
 
-const Input = styled(Field)`
-  border: 2px solid transparent;
-  font-size: 1rem;
-  padding: 0.5rem;
-  font-weight: 400;
-  width: 100%;
-  background-color: hsla(0, 0%, 0%, 0.05);
-  border-radius: ${props => props.theme.borderRadius} 0 0
-    ${props => props.theme.borderRadius};
-  &:focus {
-    border-color: ${props => props.theme.borderColor};
-  }
-`;
-
-const Submit = styled.button`
-  color: #fff;
-  border: 0;
-  cursor: pointer;
-  min-height: 36px;
-  font-size: 0.8rem;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.brand};
-  border-radius: 0px ${props => props.theme.borderRadius}
-    ${props => props.theme.borderRadius} 0px;
-`;
-
 const ErrorMessage = styled.span`
   padding: 4px 8px;
   font-size: 0.8rem;
@@ -109,7 +81,15 @@ const ErrorMessage = styled.span`
 `;
 
 function ImageModal(props) {
-  const { dismiss, isSubmitting, errors, touched } = props;
+  const {
+    dismiss,
+    isSubmitting,
+    errors,
+    touched,
+    values,
+    handleChange,
+    handleBlur
+  } = props;
 
   return (
     <Modal dismiss={dismiss}>
@@ -124,10 +104,24 @@ function ImageModal(props) {
           <FormWrapper>
             <StyledForm>
               <FormItem>
-                <Input type="text" name="imageURL" placeholder="Enter a URL" />
-                <Submit disabled={isSubmitting}>
-                  {isSubmitting ? <Loader /> : <LinkIcon />}
-                </Submit>
+                <Input
+                  type="text"
+                  name="imageURL"
+                  placeholder="Enter a URL"
+                  value={values.imageURL}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                />
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  disabled={Boolean(
+                    isSubmitting || !values.imageURL || errors.imageURL
+                  )}
+                  loading={isSubmitting}
+                >
+                  <LinkIcon />
+                </Button>
               </FormItem>
               <ErrorMessage>
                 {(touched.imageURL && errors.imageURL && (

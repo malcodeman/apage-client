@@ -3,14 +3,13 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import { Form, Field, withFormik } from "formik";
+import { Form, withFormik } from "formik";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import Logo from "../../commonComponents/Logo";
 import Button from "../../commonComponents/Button";
-import Mail from "../styles/icons/Mail";
-import Lock from "../styles/icons/Lock";
+import Input from "../../commonComponents/Input";
 import Google from "../styles/icons/Google";
 import { login } from "../actions/authActionCreators";
 
@@ -52,7 +51,6 @@ const BrandText = styled.span`
 `;
 
 const FormWrapper = styled.div`
-  background-color: #f2f2f2;
   padding: 32px;
   border-radius: 6px;
 `;
@@ -87,28 +85,6 @@ const FormItem = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  border: 2px solid transparent;
-  &:focus-within {
-    border-color: ${props => props.theme.borderColor};
-  }
-  border-radius: ${props => props.theme.borderRadius};
-  background-color: ${props => props.theme.backgroundSecondary};
-`;
-
-const Input = styled(Field)`
-  font-size: 1rem;
-  outline: 0;
-  border: 0;
-  padding: 0 0.5rem;
-  filter: none;
-  font-weight: 500;
-  color: ${props => props.theme.primary};
 `;
 
 const ErrorMessage = styled.span`
@@ -163,7 +139,15 @@ const Text = styled.span`
 `;
 
 const FormikForm = props => {
-  const { isAuthorized, values, errors, touched, isSubmitting } = props;
+  const {
+    isAuthorized,
+    values,
+    errors,
+    touched,
+    isSubmitting,
+    handleChange,
+    handleBlur
+  } = props;
 
   if (isAuthorized) {
     return <Redirect to="/" />;
@@ -185,19 +169,27 @@ const FormikForm = props => {
           </FormHeader>
           <StyledForm>
             <FormItem>
-              <InputWrapper>
-                <Mail size={12} color={props.theme.secondary} />
-                <Input type="text" name="email" placeholder="Email" />
-              </InputWrapper>
+              <Input
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
               {touched.email && errors.email && (
                 <ErrorMessage>{errors.email}</ErrorMessage>
               )}
             </FormItem>
             <FormItem>
-              <InputWrapper>
-                <Lock size={12} color={props.theme.secondary} />
-                <Input type="password" name="password" placeholder="Password" />
-              </InputWrapper>
+              <Input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
               {touched.password && errors.password && (
                 <ErrorMessage>{errors.password}</ErrorMessage>
               )}
