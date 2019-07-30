@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Loader from "./Loader";
+import LinkIcon from "../commonAssets/icons/Link";
+import SearchIcon from "../commonAssets/icons/Search";
 
 const StyledButton = styled.button`
   display: flex;
@@ -27,7 +29,20 @@ const StyledButton = styled.button`
 `;
 
 function Button(props) {
-  const { onClick, disabled, type, htmlType, loading, children } = props;
+  const { onClick, disabled, type, htmlType, loading, children, icon } = props;
+
+  function handleIcon(icon) {
+    const size = 16;
+
+    switch (icon) {
+      case "link":
+        return <LinkIcon size={size} />;
+      case "search":
+        return <SearchIcon size={size} />;
+      default:
+        return null;
+    }
+  }
 
   return (
     <StyledButton
@@ -37,6 +52,7 @@ function Button(props) {
       type={htmlType}
     >
       {loading && <Loader />}
+      {icon && !loading && handleIcon(icon)}
       {children}
     </StyledButton>
   );
@@ -56,7 +72,8 @@ Button.propTypes = {
     "danger",
     "link"
   ]),
-  htmlType: PropTypes.oneOf(["button", "submit", "reset"])
+  htmlType: PropTypes.oneOf(["button", "submit", "reset"]),
+  icon: PropTypes.oneOf(["link", "search"])
 };
 
 Button.defaultProps = {

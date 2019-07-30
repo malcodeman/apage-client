@@ -3,7 +3,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import styled, { withTheme } from "styled-components";
 
-import LinkIcon from "../assets/icons/Link";
+import LinkIcon from "../../commonAssets/icons/Link";
 
 const StyledCard = styled.div`
   display: flex;

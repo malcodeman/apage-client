@@ -12,7 +12,7 @@ import {
 import BackButton from "../../commonComponents/BackButton";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
-import LinkIcon from "../assets/icons/Link";
+import LinkIcon from "../../commonAssets/icons/Link";
 import XIcon from "../assets/icons/X";
 
 const Wrapper = styled.div`

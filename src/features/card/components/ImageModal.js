@@ -13,7 +13,6 @@ import {
 import Modal from "../../commonComponents/Modal";
 import Input from "../../commonComponents/Input";
 import Button from "../../commonComponents/Button";
-import LinkIcon from "../assets/icons/Link";
 import XIcon from "../assets/icons/X";
 
 const Wrapper = styled.div`
@@ -119,9 +118,8 @@ function ImageModal(props) {
                     isSubmitting || !values.imageURL || errors.imageURL
                   )}
                   loading={isSubmitting}
-                >
-                  <LinkIcon />
-                </Button>
+                  icon="link"
+                />
               </FormItem>
               <ErrorMessage>
                 {(touched.imageURL && errors.imageURL && (
