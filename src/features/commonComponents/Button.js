@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Loader from "./Loader";
 import LinkIcon from "../commonAssets/icons/Link";
 import SearchIcon from "../commonAssets/icons/Search";
 
-const StyledButton = styled.button`
+const commonStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,22 +14,43 @@ const StyledButton = styled.button`
   cursor: pointer;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  &:disabled {
-    cursor: default;
-    color: ${props => props.theme.button.disabled.color};
-    background-color: ${props => props.theme.button.disabled.background};
-  }
-  &:hover:enabled {
-    opacity: 0.85;
-  }
   transition: ${props => props.theme.easeIn};
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.button[props.styleType].color};
   background-color: ${props => props.theme.button[props.styleType].background};
 `;
 
+const StyledButton = styled.button`
+  ${commonStyle}
+  &:hover:enabled {
+    opacity: 0.85;
+  }
+  &:disabled {
+    cursor: default;
+    color: ${props => props.theme.button.disabled.color};
+    background-color: ${props => props.theme.button.disabled.background};
+  }
+`;
+
+const Link = styled.a`
+  ${commonStyle}
+  &:hover {
+    opacity: 0.85;
+  }
+`;
+
 function Button(props) {
-  const { onClick, disabled, type, htmlType, loading, children, icon } = props;
+  const {
+    onClick,
+    disabled,
+    type,
+    htmlType,
+    loading,
+    children,
+    icon,
+    href,
+    target
+  } = props;
 
   function handleIcon(icon) {
     switch (icon) {
@@ -40,6 +61,21 @@ function Button(props) {
       default:
         return null;
     }
+  }
+
+  if (href) {
+    return (
+      <Link
+        rel="noopener noreferrer"
+        href={href}
+        target={target}
+        styleType={type}
+      >
+        {loading && <Loader />}
+        {icon && !loading && handleIcon(icon)}
+        {children}
+      </Link>
+    );
   }
 
   return (
@@ -71,7 +107,9 @@ Button.propTypes = {
     "link"
   ]),
   htmlType: PropTypes.oneOf(["button", "submit", "reset"]),
-  icon: PropTypes.oneOf(["link", "search"])
+  icon: PropTypes.oneOf(["link", "search"]),
+  href: PropTypes.string,
+  target: PropTypes.string
 };
 
 Button.defaultProps = {

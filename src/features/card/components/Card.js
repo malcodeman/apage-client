@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled, { withTheme } from "styled-components";
 
 import LinkIcon from "../../commonAssets/icons/Link";
+import Button from "../../commonComponents/Button";
 
 const StyledCard = styled.div`
   display: flex;
@@ -63,27 +64,6 @@ const Location = styled.span`
   margin-bottom: 2rem;
 `;
 
-const CtaButton = styled.a`
-  height: 36px;
-  padding: 0 1rem;
-  font-size: 18px;
-  border-radius: 36px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  background-color: #000;
-`;
-
-const CtaButtonText = styled.span`
-  font-family: "Roboto", sans-serif;
-  font-size: 0.6rem;
-  font-weight: 500;
-  text-transform: uppercase;
-`;
-
 const CardLinks = styled.div`
   display: flex;
   flex-direction: column;
@@ -135,13 +115,9 @@ function Card(props) {
           <Name>{name}</Name>
           <Tagline>{tagline}</Tagline>
           <Location>{location}</Location>
-          <CtaButton
-            href={ctaButtonLink}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <CtaButtonText>{ctaButtonText}</CtaButtonText>
-          </CtaButton>
+          <Button type="primary" target="_blank" href={ctaButtonLink}>
+            {ctaButtonText}
+          </Button>
         </CardProfile>
         <CardLinks>
           {socialLinks.map(link => {
