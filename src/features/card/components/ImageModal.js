@@ -13,6 +13,7 @@ import {
 import Modal from "../../commonComponents/Modal";
 import Input from "../../commonComponents/Input";
 import Button from "../../commonComponents/Button";
+import InputGroup from "../../commonComponents/InputGroup";
 import XIcon from "../../commonAssets/icons/X";
 
 const Wrapper = styled.div`
@@ -67,10 +68,6 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const FormItem = styled.div`
-  display: flex;
-`;
-
 const ErrorMessage = styled.span`
   padding: 4px 8px;
   font-size: 0.8rem;
@@ -102,7 +99,7 @@ function ImageModal(props) {
           </Header>
           <FormWrapper>
             <StyledForm>
-              <FormItem>
+              <InputGroup>
                 <Input
                   type="text"
                   name="imageURL"
@@ -120,7 +117,7 @@ function ImageModal(props) {
                   loading={isSubmitting}
                   icon="link"
                 />
-              </FormItem>
+              </InputGroup>
               <ErrorMessage>
                 {(touched.imageURL && errors.imageURL && (
                   <ErrorMessage>{errors.imageURL}</ErrorMessage>
