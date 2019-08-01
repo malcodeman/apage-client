@@ -9,6 +9,7 @@ import { updatePage } from "../../pages/actions/pagesActionCreators";
 import BackButton from "../../commonComponents/BackButton";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
+import FormItem from "../../commonComponents/FormItem";
 import ImageModal from "./ImageModal";
 import Image from "./Image";
 
@@ -30,33 +31,6 @@ const ImagesWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-`;
-
-const ProfileItem = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const DescriptionTitle = styled.h3`
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  font-size: 0.8rem;
-  line-height: 1.2;
-  color: ${props => props.theme.primary};
-`;
-
-const DescriptionText = styled.p`
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-  color: ${props => props.theme.secondary};
-`;
-
-const ErrorMessage = styled.span`
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: ${props => props.theme.error};
-  animation: ${props => props.theme.bounceInAnimation};
 `;
 
 function Profile(props) {
@@ -101,9 +75,11 @@ function Profile(props) {
             handleOnClick={() => setProfileImageModal(true)}
           />
         </ImagesWrapper>
-        <ProfileItem>
-          <DescriptionTitle>Name</DescriptionTitle>
-          <DescriptionText>e.g. Alex McRad</DescriptionText>
+        <FormItem
+          label="name"
+          help={touched.name && errors.name}
+          validateStatus="error"
+        >
           <Input
             placeholder="Name"
             type="text"
@@ -112,13 +88,12 @@ function Profile(props) {
             onBlur={handleBlur}
             value={values.name}
           />
-          {touched.name && errors.name && (
-            <ErrorMessage>{errors.name}</ErrorMessage>
-          )}
-        </ProfileItem>
-        <ProfileItem>
-          <DescriptionTitle>Tagline</DescriptionTitle>
-          <DescriptionText>e.g. Drinker of Coffee</DescriptionText>
+        </FormItem>
+        <FormItem
+          label="tagline"
+          help={touched.tagline && errors.tagline}
+          validateStatus="error"
+        >
           <Input
             placeholder="Tagline"
             type="text"
@@ -127,13 +102,12 @@ function Profile(props) {
             onBlur={handleBlur}
             value={values.tagline}
           />
-          {touched.tagline && errors.tagline && (
-            <ErrorMessage>{errors.tagline}</ErrorMessage>
-          )}
-        </ProfileItem>
-        <ProfileItem>
-          <DescriptionTitle>Location</DescriptionTitle>
-          <DescriptionText>e.g. Seattle, WA</DescriptionText>
+        </FormItem>
+        <FormItem
+          label="location"
+          help={touched.location && errors.location}
+          validateStatus="error"
+        >
           <Input
             placeholder="Location"
             type="text"
@@ -142,13 +116,12 @@ function Profile(props) {
             onBlur={handleBlur}
             value={values.location}
           />
-          {touched.location && errors.location && (
-            <ErrorMessage>{errors.location}</ErrorMessage>
-          )}
-        </ProfileItem>
-        <ProfileItem>
-          <DescriptionTitle>CTA button title</DescriptionTitle>
-          <DescriptionText>e.g. Get in Touch</DescriptionText>
+        </FormItem>
+        <FormItem
+          label="CTA button title"
+          help={touched.ctaButtonText && errors.ctaButtonText}
+          validateStatus="error"
+        >
           <Input
             placeholder="CTA Button Title"
             type="text"
@@ -157,13 +130,12 @@ function Profile(props) {
             onBlur={handleBlur}
             value={values.ctaButtonText}
           />
-          {touched.ctaButtonText && errors.ctaButtonText && (
-            <ErrorMessage>{errors.ctaButtonText}</ErrorMessage>
-          )}
-        </ProfileItem>
-        <ProfileItem>
-          <DescriptionTitle>CTA button link</DescriptionTitle>
-          <DescriptionText>e.g. mailto:hi@templates.com</DescriptionText>
+        </FormItem>
+        <FormItem
+          label="CTA button link"
+          help={touched.ctaButtonLink && errors.ctaButtonLink}
+          validateStatus="error"
+        >
           <Input
             placeholder="CTA Button Link"
             type="text"
@@ -172,10 +144,7 @@ function Profile(props) {
             onBlur={handleBlur}
             value={values.ctaButtonLink}
           />
-          {touched.ctaButtonLink && errors.ctaButtonLink && (
-            <ErrorMessage>{errors.ctaButtonLink}</ErrorMessage>
-          )}
-        </ProfileItem>
+        </FormItem>
         <Button
           loading={isSubmitting}
           disabled={isSubmitting}

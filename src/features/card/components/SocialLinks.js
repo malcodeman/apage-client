@@ -12,6 +12,7 @@ import {
 import BackButton from "../../commonComponents/BackButton";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
+import FormItem from "../../commonComponents/FormItem";
 import LinkIcon from "../../commonAssets/icons/Link";
 import XIcon from "../../commonAssets/icons/X";
 
@@ -96,18 +97,6 @@ const StyledForm = styled(Form)`
   padding: 0 2rem;
 `;
 
-const FormItem = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const ErrorMessage = styled.span`
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: ${props => props.theme.error};
-  animation: ${props => props.theme.bounceInAnimation};
-`;
-
 function SocialLinks(props) {
   const {
     theme,
@@ -148,7 +137,7 @@ function SocialLinks(props) {
         })}
       </Links>
       <StyledForm>
-        <FormItem>
+        <FormItem help={touched.url && errors.url} validateStatus="error">
           <Input
             placeholder="Paste a URL"
             type="text"
@@ -157,9 +146,6 @@ function SocialLinks(props) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {touched.url && errors.url && (
-            <ErrorMessage>{errors.url}</ErrorMessage>
-          )}
         </FormItem>
         <Button
           loading={isSubmitting}

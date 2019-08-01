@@ -49,5 +49,19 @@ export default {
       color: "hsl(0, 0%, 100%)",
       background: "#f82b60"
     }
+  },
+  form: {
+    success: {
+      color: "#818181"
+    },
+    warning: {
+      color: "#ffd60a"
+    },
+    error: {
+      color: "#f82b60"
+    },
+    validating: {
+      color: "#818181"
+    }
   }
 };

@@ -11,6 +11,7 @@ import Logo from "../../commonAssets/icons/Logo";
 import GoogleIcon from "../../commonAssets/icons/Google";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
+import FormItem from "../../commonComponents/FormItem";
 import { signup } from "../actions/authActionCreators";
 import utils from "../../../core/utils";
 
@@ -80,18 +81,6 @@ const StyledLink = styled(Link)`
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-`;
-
-const FormItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-`;
-
-const Label = styled.label`
-  font-size: 0.8rem;
-  padding-bottom: 0.25rem;
-  color: ${props => props.theme.secondary};
 `;
 
 const ErrorMessage = styled.span`
@@ -181,8 +170,11 @@ const FormikForm = props => {
             <Heading>Create an account</Heading>
           </FormHeader>
           <StyledForm>
-            <FormItem>
-              <Label>Email</Label>
+            <FormItem
+              label="email"
+              help={touched.email && errors.email}
+              validateStatus="error"
+            >
               <Input
                 type="text"
                 name="email"
@@ -190,12 +182,12 @@ const FormikForm = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.email && errors.email && (
-                <ErrorMessage>{errors.email}</ErrorMessage>
-              )}
             </FormItem>
-            <FormItem>
-              <Label>Create a password</Label>
+            <FormItem
+              label="create a password"
+              help={touched.password && errors.password}
+              validateStatus="error"
+            >
               <Input
                 type="password"
                 name="password"
@@ -203,9 +195,6 @@ const FormikForm = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.password && errors.password && (
-                <ErrorMessage>{errors.password}</ErrorMessage>
-              )}
             </FormItem>
             <Button
               type="primary"

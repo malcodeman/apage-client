@@ -13,6 +13,7 @@ import {
 import BackButton from "../../commonComponents/BackButton";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
+import FormItem from "../../commonComponents/FormItem";
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -25,33 +26,6 @@ const Title = styled.h2`
   font-weight: 500;
   margin: 2rem 0;
   color: ${props => props.theme.primary};
-`;
-
-const FormItem = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const DescriptionTitle = styled.h3`
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  font-size: 0.8rem;
-  line-height: 1.2;
-  color: ${props => props.theme.primary};
-`;
-
-const DescriptionText = styled.p`
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-  color: ${props => props.theme.secondary};
-`;
-
-const ErrorMessage = styled.span`
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: ${props => props.theme.error};
-  animation: ${props => props.theme.bounceInAnimation};
 `;
 
 function General(props) {
@@ -76,9 +50,11 @@ function General(props) {
     <StyledForm>
       <BackButton text={"Home"} />
       <Title>General</Title>
-      <FormItem>
-        <DescriptionTitle>Domain</DescriptionTitle>
-        <DescriptionText>Customize your built-in domain.</DescriptionText>
+      <FormItem
+        label="domain"
+        help={touched.domain && errors.domain}
+        validateStatus="error"
+      >
         <Input
           placeholder="Domain"
           type="text"
@@ -87,9 +63,6 @@ function General(props) {
           onBlur={handleBlur}
           value={values.domain}
         />
-        {touched.domain && errors.domain && (
-          <ErrorMessage>{errors.domain}</ErrorMessage>
-        )}
       </FormItem>
       <Button
         loading={isSubmitting}

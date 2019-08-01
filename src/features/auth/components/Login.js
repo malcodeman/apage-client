@@ -11,6 +11,7 @@ import Logo from "../../commonAssets/icons/Logo";
 import GoogleIcon from "../../commonAssets/icons/Google";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
+import FormItem from "../../commonComponents/FormItem";
 import { login } from "../actions/authActionCreators";
 
 const Wrapper = styled.div`
@@ -79,12 +80,6 @@ const StyledLink = styled(Link)`
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-`;
-
-const FormItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
 `;
 
 const ErrorMessage = styled.span`
@@ -168,7 +163,10 @@ const FormikForm = props => {
             <StyledLink to="/forgot">Forgot password ?</StyledLink>
           </FormHeader>
           <StyledForm>
-            <FormItem>
+            <FormItem
+              validateStatus="error"
+              help={touched.email && errors.email}
+            >
               <Input
                 type="text"
                 name="email"
@@ -177,11 +175,11 @@ const FormikForm = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.email && errors.email && (
-                <ErrorMessage>{errors.email}</ErrorMessage>
-              )}
             </FormItem>
-            <FormItem>
+            <FormItem
+              validateStatus="error"
+              help={touched.password && errors.password}
+            >
               <Input
                 type="password"
                 name="password"
@@ -190,9 +188,6 @@ const FormikForm = props => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              {touched.password && errors.password && (
-                <ErrorMessage>{errors.password}</ErrorMessage>
-              )}
             </FormItem>
             <Button
               type="primary"
