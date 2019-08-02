@@ -4,6 +4,7 @@ import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
 import Logo from "../../commonAssets/icons/Logo";
+import { NAME } from "../../../core/constants";
 
 const Container = styled.div`
   padding: 0 2rem;
@@ -53,7 +54,7 @@ function Header(props) {
       <Nav>
         <BrandLink to="/">
           <Logo color={theme.brand} />
-          <BrandText>Templates</BrandText>
+          <BrandText>{NAME}</BrandText>
         </BrandLink>
         <Links>
           <StyledLink to="/">Product</StyledLink>

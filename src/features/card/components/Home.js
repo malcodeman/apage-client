@@ -4,6 +4,7 @@ import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
 import Logo from "../../commonAssets/icons/Logo";
+import { NAME } from "../../../core/constants";
 
 const Wrapper = styled.div`
   padding: 0 2rem;
@@ -64,7 +65,7 @@ function Home(props) {
           <LogoWrapper>
             <Logo color={theme.brand} />
           </LogoWrapper>
-          <BrandText>Templates</BrandText>
+          <BrandText>{NAME}</BrandText>
         </BrandLink>
       </Header>
       <StyledList>

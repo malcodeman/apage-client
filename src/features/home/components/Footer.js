@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "../../commonAssets/icons/Logo";
 import { FOOTER_LINKS } from "../constants/homeConstants";
+import { NAME } from "../../../core/constants";
 
 const Wrapper = styled.section`
   padding: 4rem 2rem;
@@ -106,7 +107,7 @@ function Footer(props) {
           </div>
           <LegalWrapper>
             <Text mr={0.5} small quiet={0.75}>
-              © Templates
+              © {NAME}
             </Text>
             <StyledLink mr={0.5} small="true" quiet={0.75} to="/tos">
               Terms

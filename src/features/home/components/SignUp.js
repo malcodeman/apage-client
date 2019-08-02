@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import EmailForm from "./EmailForm";
+import { NAME } from "../../../core/constants";
 
 const Wrapper = styled.section`
   padding: 4rem 2rem;
@@ -33,15 +34,15 @@ const Text = styled.div`
 function SignUp() {
   return (
     <Wrapper>
-      <Title>Power your team with Templates</Title>
+      <Title>Power your team with {NAME}</Title>
       <Center>
         <EmailForm
           placeholderText="Enter your email"
           ctaText="Sign up for free"
         />
         <Text>
-          Templates is free to use for teams of any size. We also offer paid
-          plans with additional features, storage, and support.
+          {NAME} is free to use for teams of any size. We also offer paid plans
+          with additional features, storage, and support.
         </Text>
       </Center>
     </Wrapper>

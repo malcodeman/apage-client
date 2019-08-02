@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import EmailForm from "./EmailForm";
 import LandingPage from "../styles/illustrations/LandingPage";
+import { NAME } from "../../../core/constants";
 
 const Container = styled.section`
   padding: 0 2rem;
@@ -74,13 +75,12 @@ function Hero(props) {
         <HeroText>
           <Title>Create, your way</Title>
           <Subtitle>
-            Templates is the all-in-one platform to build a beautiful online
+            {NAME} is the all-in-one platform to build a beautiful online
             presence.
           </Subtitle>
           <EmailForm />
           <Note>
-            Already using Templates ?
-            <StyledLink to="/login">Sign in</StyledLink>
+            Already using {NAME} ?<StyledLink to="/login">Sign in</StyledLink>
           </Note>
         </HeroText>
         <Illustration>

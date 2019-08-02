@@ -1,4 +1,4 @@
-export const NAME = "Templates";
+export const NAME = "Apage";
 
 export default {
   NAME

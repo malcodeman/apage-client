@@ -14,6 +14,7 @@ import Input from "../../commonComponents/Input";
 import FormItem from "../../commonComponents/FormItem";
 import { signup } from "../actions/authActionCreators";
 import utils from "../../../core/utils";
+import { NAME } from "../../../core/constants";
 
 const Wrapper = styled.div`
   @media (min-width: 576px) {
@@ -162,7 +163,7 @@ const FormikForm = props => {
         <Header>
           <BrandLink to="/">
             <Logo color={props.theme.brand} />
-            <BrandText>Templates</BrandText>
+            <BrandText>{NAME}</BrandText>
           </BrandLink>
         </Header>
         <FormWrapper>
