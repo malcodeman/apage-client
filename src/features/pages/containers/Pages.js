@@ -7,6 +7,7 @@ import { getPages } from "../actions/pagesActionCreators";
 import Header from "../../header/containers/Header";
 import AddPage from "./AddPage";
 import Page from "../components/Page";
+import Skeleton from "../components/Skeleton";
 
 const Main = styled.main`
   margin-top: 48px;
@@ -28,7 +29,7 @@ const Grid = styled.div`
 `;
 
 function Pages(props) {
-  const { getPages, pages } = props;
+  const { getPages, pages, isFetching } = props;
   const memoizedGetPages = useCallback(() => getPages(), [getPages]);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ function Pages(props) {
       <Main>
         <Container>
           <Grid>
+            {pages.length === 0 && isFetching && <Skeleton active />}
             {pages.map(page => (
               <Page key={page.id} domain={page.domain} title={page.title} />
             ))}
@@ -56,7 +58,8 @@ function Pages(props) {
 
 const mapStateToProps = state => {
   return {
-    pages: state.pages.pages
+    pages: state.pages.pages,
+    isFetching: state.pages.isFetching
   };
 };
 

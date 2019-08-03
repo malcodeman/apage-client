@@ -3,6 +3,8 @@ import {
   CREATE_PAGE_REQUEST,
   CREATE_PAGE_SUCCESS,
   CREATE_PAGE_RESET,
+  GET_PAGES_FAILURE,
+  GET_PAGES_REQUEST,
   GET_PAGES_SUCCESS,
   GET_PAGE_SUCCESS,
   GET_PAGE_RESET,
@@ -15,6 +17,7 @@ import {
   REMOVE_SOCIAL_LINK_SUCCESS,
   GET_PAGE_FAILURE
 } from "../actions/pagesActionTypes";
+import { LOGOUT } from "../../auth/actions/authActionTypes";
 
 const initialPageState = {
   domain: "",
@@ -26,7 +29,8 @@ const initialState = {
   pages: [],
   createPageSuccess: false,
   updateDomainSuccess: false,
-  pageNotExists: false
+  pageNotExists: false,
+  isFetching: false
 };
 
 export default (state = initialState, action) => {
@@ -57,10 +61,21 @@ export default (state = initialState, action) => {
         ...state,
         createPageSuccess: false
       };
+    case GET_PAGES_REQUEST:
+      return {
+        ...state,
+        isFetching: true
+      };
     case GET_PAGES_SUCCESS:
       return {
         ...state,
-        pages: action.payload
+        pages: action.payload,
+        isFetching: false
+      };
+    case GET_PAGES_FAILURE:
+      return {
+        ...state,
+        isFetching: false
       };
     case GET_PAGE_SUCCESS:
       return {
@@ -133,6 +148,11 @@ export default (state = initialState, action) => {
             link => link.id !== action.payload.linkId
           )
         }
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        pages: []
       };
     default:
       return state;
