@@ -21,7 +21,7 @@ const Help = styled.span`
   font-weight: 500;
   padding: 0.25rem 0.5rem;
   line-height: 1.25;
-  animation: ${props => props.theme.bounceInAnimation};
+  animation: ${props => props.theme.animations.bounceIn};
   color: ${props =>
     props.theme.form[props.validateStatus].color || props.theme.secondary};
 `;

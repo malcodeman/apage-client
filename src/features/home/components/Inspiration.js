@@ -68,7 +68,7 @@ const Card = styled.div`
   border-radius: 14px;
   background-color: transparent;
   cursor: pointer;
-  transition: 0.085s all ease-in;
+  transition: ${props => props.theme.transitions.easeIn};
   &:hover {
     box-shadow: 0 0 0 10px hsla(0, 0%, 0%, 0.05);
     background-color: hsla(0, 0%, 0%, 0.05);

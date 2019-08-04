@@ -89,7 +89,7 @@ const ErrorMessage = styled.span`
   font-size: 0.8rem;
   font-weight: 500;
   color: ${props => props.theme.error};
-  animation: ${props => props.theme.bounceInAnimation};
+  animation: ${props => props.theme.animations.bounceIn};
 `;
 
 const Footer = styled.footer`

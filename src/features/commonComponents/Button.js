@@ -14,8 +14,8 @@ const commonStyle = css`
   cursor: pointer;
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  transition: ${props => props.theme.easeIn};
   border-radius: ${props => props.theme.borderRadius};
+  transition: ${props => props.theme.transitions.easeIn};
   color: ${props => props.theme.button[props.styleType].color};
   background-color: ${props => props.theme.button[props.styleType].background};
 `;

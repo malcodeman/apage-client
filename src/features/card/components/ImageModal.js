@@ -20,8 +20,7 @@ const Wrapper = styled.div`
   display: grid;
   width: 100vw;
   height: 100vh;
-  transition: width 0.3s cubic-bezier(0.84, 0.02, 0.37, 0.74),
-    height 0.3s cubic-bezier(0.84, 0.02, 0.37, 0.74);
+  transition: ${props => props.theme.transitions.resize};
   @media (min-width: 768px) {
     width: 50vw;
     height: 50vh;
@@ -73,7 +72,7 @@ const ErrorMessage = styled.span`
   font-size: 0.8rem;
   font-weight: 500;
   color: ${props => props.theme.error};
-  animation: ${props => props.theme.bounceInAnimation};
+  animation: ${props => props.theme.animations.bounceIn};
 `;
 
 function ImageModal(props) {

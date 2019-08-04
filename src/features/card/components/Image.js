@@ -10,7 +10,7 @@ const StyledImage = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  transition: 0.06s box-shadow ease-in;
+  transition: ${props => props.theme.transitions.easeIn};
   :hover {
     box-shadow: 0 0 0 10px hsla(0, 0%, 0%, 0.05);
   }

@@ -14,54 +14,85 @@ const bounceIn = keyframes`
   }
 `;
 
-export default {
-  brand: "#1473e6",
-  brandHover: "#2750ae",
-  primary: "#3f3f3f",
-  secondary: "#818181",
-  backgroundPrimary: "#000000",
-  backgroundSecondary: "#FFFFFF",
-  backgroundInput: "#f2f2f2",
-  easeIn: "0.085s all ease-in",
-  error: "#f82b60",
-  link: "#2680eb",
-  borderColor: "#DDDDDD",
-  borderWidth: "1px",
-  borderRadius: "3px",
-  disabled: "hsla(0,0%,0%,0.25)",
-  bounceInAnimation: css`
+const loading = keyframes`
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+`;
+
+const brand = "#1473e6";
+const secondary = "#818181";
+const error = "#f82b60";
+const warning = "#ffd60a";
+
+const button = {
+  disabled: {
+    color: "rgba(0, 0, 0, 0.247)",
+    background: "hsla(0, 0%, 0%, 0.25)"
+  },
+  default: {
+    color: "hsl(0, 0%, 20%)",
+    background: "hsla(0, 0%, 0%, 0.05)"
+  },
+  primary: {
+    color: "hsl(0, 0%, 100%)",
+    background: brand
+  },
+  danger: {
+    color: "hsl(0, 0%, 100%)",
+    background: error
+  },
+  link: {
+    color: brand,
+    background: "transparent"
+  }
+};
+
+const form = {
+  success: {
+    color: secondary
+  },
+  warning: {
+    color: warning
+  },
+  error: {
+    color: error
+  },
+  validating: {
+    color: secondary
+  }
+};
+
+const animations = {
+  bounceIn: css`
     ${bounceIn} 240ms cubic-bezier(0.215, 0.61, 0.355, 1);
   `,
-  button: {
-    disabled: {
-      color: "rgba(0, 0, 0, 0.247)",
-      background: "hsla(0, 0%, 0%, 0.25)"
-    },
-    default: {
-      color: "hsl(0, 0%, 20%)",
-      background: "hsla(0, 0%, 0%, 0.05)"
-    },
-    primary: {
-      color: "hsl(0, 0%, 100%)",
-      background: "#1473e6"
-    },
-    danger: {
-      color: "hsl(0, 0%, 100%)",
-      background: "#f82b60"
-    }
-  },
-  form: {
-    success: {
-      color: "#818181"
-    },
-    warning: {
-      color: "#ffd60a"
-    },
-    error: {
-      color: "#f82b60"
-    },
-    validating: {
-      color: "#818181"
-    }
-  }
+  loading: css`
+    ${loading} 1.4s ease infinite;
+  `
+};
+
+const transitions = {
+  easeIn: "0.085s all ease-in",
+  resize:
+    "width 0.3s cubic-bezier(0.84, 0.02, 0.37, 0.74), height 0.3s cubic-bezier(0.84, 0.02, 0.37, 0.74);"
+};
+
+export default {
+  button,
+  form,
+  animations,
+  transitions,
+  brand,
+  secondary,
+  error,
+  brandHover: "#2750ae",
+  primary: "#3f3f3f",
+  backgroundSecondary: "#FFFFFF",
+  backgroundInput: "#f2f2f2",
+  borderColor: "#DDDDDD",
+  borderRadius: "3px"
 };

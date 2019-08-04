@@ -11,8 +11,8 @@ const StyledInput = styled.input`
   width: 100%;
   line-height: 1.5;
   color: ${props => props.theme.primary};
-  transition: ${props => props.theme.easeIn};
   border-radius: ${props => props.theme.borderRadius};
+  transition: ${props => props.theme.transitions.easeIn};
   background-color: ${props => props.theme.backgroundInput};
   &:focus {
     border-color: ${props => props.theme.borderColor};
