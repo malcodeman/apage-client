@@ -16,6 +16,7 @@ const commonStyle = css`
   font-size: 1rem;
   border-radius: ${props => props.theme.borderRadius};
   transition: ${props => props.theme.transitions.easeIn};
+  margin-bottom: ${props => props.mb && `${props.mb}rem`};
   color: ${props => props.theme.button[props.styleType].color};
   background-color: ${props => props.theme.button[props.styleType].background};
 `;
@@ -49,7 +50,8 @@ function Button(props) {
     children,
     icon,
     href,
-    target
+    target,
+    mb
   } = props;
 
   function handleIcon(icon) {
@@ -70,6 +72,7 @@ function Button(props) {
         href={href}
         target={target}
         styleType={type}
+        mb={mb}
       >
         {loading && <Loader />}
         {icon && !loading && handleIcon(icon)}
@@ -84,6 +87,7 @@ function Button(props) {
       disabled={disabled}
       styleType={type}
       type={htmlType}
+      mb={mb}
     >
       {loading && <Loader />}
       {icon && !loading && handleIcon(icon)}
@@ -109,7 +113,8 @@ Button.propTypes = {
   htmlType: PropTypes.oneOf(["button", "submit", "reset"]),
   icon: PropTypes.oneOf(["link", "search"]),
   href: PropTypes.string,
-  target: PropTypes.string
+  target: PropTypes.string,
+  mb: PropTypes.number
 };
 
 Button.defaultProps = {
@@ -118,7 +123,8 @@ Button.defaultProps = {
   block: false,
   size: "default",
   type: "default",
-  htmlType: "button"
+  htmlType: "button",
+  mb: 0
 };
 
 export default Button;

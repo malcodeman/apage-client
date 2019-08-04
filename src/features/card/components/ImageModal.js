@@ -14,6 +14,7 @@ import Modal from "../../commonComponents/Modal";
 import Input from "../../commonComponents/Input";
 import Button from "../../commonComponents/Button";
 import InputGroup from "../../commonComponents/InputGroup";
+import FormItem from "../../commonComponents/FormItem";
 import XIcon from "../../commonAssets/icons/X";
 
 const Wrapper = styled.div`
@@ -67,14 +68,6 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const ErrorMessage = styled.span`
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: ${props => props.theme.error};
-  animation: ${props => props.theme.animations.bounceIn};
-`;
-
 function ImageModal(props) {
   const {
     dismiss,
@@ -98,31 +91,30 @@ function ImageModal(props) {
           </Header>
           <FormWrapper>
             <StyledForm>
-              <InputGroup>
-                <Input
-                  type="text"
-                  name="imageURL"
-                  placeholder="Enter a URL"
-                  value={values.imageURL}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                />
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  disabled={Boolean(
-                    isSubmitting || !values.imageURL || errors.imageURL
-                  )}
-                  loading={isSubmitting}
-                  icon="link"
-                />
-              </InputGroup>
-              <ErrorMessage>
-                {(touched.imageURL && errors.imageURL && (
-                  <ErrorMessage>{errors.imageURL}</ErrorMessage>
-                )) ||
-                  errors.general}
-              </ErrorMessage>
+              <FormItem
+                help={touched.imageURL && errors.imageURL}
+                validateStatus="error"
+              >
+                <InputGroup>
+                  <Input
+                    type="text"
+                    name="imageURL"
+                    placeholder="Enter a URL"
+                    value={values.imageURL}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                  />
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    disabled={Boolean(
+                      isSubmitting || !values.imageURL || errors.imageURL
+                    )}
+                    loading={isSubmitting}
+                    icon="link"
+                  />
+                </InputGroup>
+              </FormItem>
             </StyledForm>
           </FormWrapper>
         </Main>

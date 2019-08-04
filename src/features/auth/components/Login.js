@@ -12,6 +12,7 @@ import GoogleIcon from "../../commonAssets/icons/Google";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
 import FormItem from "../../commonComponents/FormItem";
+import Alert from "../../commonComponents/Alert";
 import { login } from "../actions/authActionCreators";
 import { NAME } from "../../../core/constants";
 
@@ -81,14 +82,6 @@ const StyledLink = styled(Link)`
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-`;
-
-const ErrorMessage = styled.span`
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: ${props => props.theme.error};
-  animation: ${props => props.theme.animations.bounceIn};
 `;
 
 const Footer = styled.footer`
@@ -201,10 +194,13 @@ const FormikForm = props => {
                   errors.password
               )}
               loading={isSubmitting}
+              mb={1}
             >
               Sign in
             </Button>
-            {errors.general && <ErrorMessage>{errors.general}</ErrorMessage>}
+            {errors.general && (
+              <Alert type="error" message={errors.general} closable />
+            )}
           </StyledForm>
         </FormWrapper>
         <Footer>

@@ -81,11 +81,19 @@ const transitions = {
     "width 0.3s cubic-bezier(0.84, 0.02, 0.37, 0.74), height 0.3s cubic-bezier(0.84, 0.02, 0.37, 0.74);"
 };
 
+const alert = {
+  success: "#30d158",
+  info: "#0a84ff",
+  warning,
+  error
+};
+
 export default {
   button,
   form,
   animations,
   transitions,
+  alert,
   brand,
   secondary,
   error,
