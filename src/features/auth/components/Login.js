@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import Header from "./Header";
-import GoogleIcon from "../../commonAssets/icons/Google";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
 import FormItem from "../../commonComponents/FormItem";
@@ -57,11 +56,6 @@ const StyledLink = styled(Link)`
   color: ${props => (props.color ? props.color : props.theme.secondary)};
 `;
 
-const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-`;
-
 const Footer = styled.footer`
   padding: 1rem 2rem;
 `;
@@ -70,26 +64,6 @@ const OtherOptions = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-`;
-
-const SocialSignInButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0.5rem;
-  background-color: transparent;
-  width: 100%;
-  margin-bottom: 2rem;
-  border: 2px solid ${props => props.theme.borderColor};
-  border-radius: ${props => props.theme.borderRadius};
-`;
-
-const SocialSignInText = styled.span`
-  font-size: 1rem;
-  font-weight: 500;
-  padding-left: 1rem;
-  color: ${props => props.theme.primary};
 `;
 
 const NoAccountWrapper = styled.div`
@@ -130,7 +104,7 @@ const FormikForm = props => {
             <Heading>Sign in</Heading>
             <StyledLink to="/forgot">Forgot password ?</StyledLink>
           </FormHeader>
-          <StyledForm>
+          <Form>
             <FormItem
               validateStatus="error"
               help={touched.email && errors.email}
@@ -169,19 +143,19 @@ const FormikForm = props => {
               )}
               loading={isSubmitting}
               mb={1}
+              block
             >
               Sign in
             </Button>
             {errors.general && (
               <Alert type="error" message={errors.general} closable />
             )}
-          </StyledForm>
+          </Form>
         </FormWrapper>
         <Footer>
-          <SocialSignInButton>
-            <GoogleIcon />
-            <SocialSignInText>Sign in with Google</SocialSignInText>
-          </SocialSignInButton>
+          <Button mb={1} icon="google" block>
+            Sign in with Google
+          </Button>
           <OtherOptions>
             <NoAccountWrapper>
               <Text>Don't have an account?</Text>

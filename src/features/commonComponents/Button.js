@@ -5,6 +5,7 @@ import styled, { css } from "styled-components";
 import Loader from "./Loader";
 import LinkIcon from "../commonAssets/icons/Link";
 import SearchIcon from "../commonAssets/icons/Search";
+import GoogleIcon from "../commonAssets/icons/Google";
 
 const commonStyle = css`
   display: flex;
@@ -14,6 +15,7 @@ const commonStyle = css`
   cursor: pointer;
   padding: 0.5rem 1rem;
   font-size: 1rem;
+  width: ${props => props.block && "100%"};
   border-radius: ${props => props.theme.borderRadius};
   transition: ${props => props.theme.transitions.easeIn};
   margin-bottom: ${props => props.mb && `${props.mb}rem`};
@@ -51,15 +53,22 @@ function Button(props) {
     icon,
     href,
     target,
-    mb
+    mb,
+    block
   } = props;
 
   function handleIcon(icon) {
+    const style = {
+      marginRight: "0.5rem"
+    };
+
     switch (icon) {
       case "link":
-        return <LinkIcon />;
+        return <LinkIcon style={style} />;
       case "search":
-        return <SearchIcon />;
+        return <SearchIcon style={style} />;
+      case "google":
+        return <GoogleIcon style={style} />;
       default:
         return null;
     }
@@ -73,6 +82,7 @@ function Button(props) {
         target={target}
         styleType={type}
         mb={mb}
+        block={block}
       >
         {loading && <Loader />}
         {icon && !loading && handleIcon(icon)}
@@ -88,6 +98,7 @@ function Button(props) {
       styleType={type}
       type={htmlType}
       mb={mb}
+      block={block}
     >
       {loading && <Loader />}
       {icon && !loading && handleIcon(icon)}
@@ -111,7 +122,7 @@ Button.propTypes = {
     "link"
   ]),
   htmlType: PropTypes.oneOf(["button", "submit", "reset"]),
-  icon: PropTypes.oneOf(["link", "search"]),
+  icon: PropTypes.oneOf(["link", "search", "google"]),
   href: PropTypes.string,
   target: PropTypes.string,
   mb: PropTypes.number
