@@ -3,8 +3,7 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
-import Logo from "../../commonAssets/icons/Logo";
-import { NAME } from "../../../core/constants";
+import Logo from "../../commonComponents/Logo";
 
 const Container = styled.div`
   padding: 0 2rem;
@@ -17,19 +16,6 @@ const Nav = styled.nav`
   justify-content: space-between;
   padding: 32px 0;
   font-size: 1rem;
-`;
-
-const BrandLink = styled(Link)`
-  display: flex;
-  align-items: center;
-`;
-
-const BrandText = styled.span`
-  font-size: 1rem;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  color: ${props => props.theme.primary};
 `;
 
 const Links = styled.div`
@@ -52,10 +38,7 @@ function Header(props) {
   return (
     <Container>
       <Nav>
-        <BrandLink to="/">
-          <Logo color={theme.brand} />
-          <BrandText>{NAME}</BrandText>
-        </BrandLink>
+        <Logo />
         <Links>
           <StyledLink to="/">Product</StyledLink>
           <StyledLink to="/">Templates</StyledLink>

@@ -7,14 +7,13 @@ import { Form, withFormik } from "formik";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import Logo from "../../commonAssets/icons/Logo";
+import Header from "./Header";
 import GoogleIcon from "../../commonAssets/icons/Google";
 import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
 import FormItem from "../../commonComponents/FormItem";
 import Alert from "../../commonComponents/Alert";
 import { login } from "../actions/authActionCreators";
-import { NAME } from "../../../core/constants";
 
 const Wrapper = styled.div`
   @media (min-width: 576px) {
@@ -30,27 +29,6 @@ const Content = styled.div`
     width: 100%;
     max-width: 384px;
   }
-`;
-
-const Header = styled.header`
-  padding: 1rem 2rem;
-  background-color: #f2f2f2;
-  @media (min-width: 576px) {
-    background-color: initial;
-  }
-`;
-
-const BrandLink = styled(Link)`
-  display: flex;
-  align-items: center;
-`;
-
-const BrandText = styled.span`
-  font-size: 1rem;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  color: ${props => props.theme.primary};
 `;
 
 const FormWrapper = styled.div`
@@ -135,7 +113,8 @@ const FormikForm = props => {
     touched,
     isSubmitting,
     handleChange,
-    handleBlur
+    handleBlur,
+    theme
   } = props;
 
   if (isAuthorized) {
@@ -145,12 +124,7 @@ const FormikForm = props => {
   return (
     <Wrapper>
       <Content>
-        <Header>
-          <BrandLink to="/">
-            <Logo color={props.theme.brand} />
-            <BrandText>{NAME}</BrandText>
-          </BrandLink>
-        </Header>
+        <Header />
         <FormWrapper>
           <FormHeader>
             <Heading>Sign in</Heading>
@@ -211,7 +185,7 @@ const FormikForm = props => {
           <OtherOptions>
             <NoAccountWrapper>
               <Text>Don't have an account?</Text>
-              <StyledLink to="/signup" color={props.theme.brand} bold="true">
+              <StyledLink to="/signup" color={theme.brand} bold="true">
                 Sign up for free
               </StyledLink>
             </NoAccountWrapper>

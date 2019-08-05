@@ -1,10 +1,8 @@
 import React from "react";
-import { compose } from "redux";
-import styled, { withTheme } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import Logo from "../../commonAssets/icons/Logo";
-import { NAME } from "../../../core/constants";
+import Logo from "../../commonComponents/Logo";
 
 const Wrapper = styled.div`
   padding: 0 2rem;
@@ -12,23 +10,6 @@ const Wrapper = styled.div`
 
 const Header = styled.header`
   margin-bottom: 1rem;
-`;
-
-const BrandLink = styled(Link)`
-  display: flex;
-  align-items: center;
-`;
-
-const LogoWrapper = styled.div`
-  display: flex;
-`;
-
-const BrandText = styled.span`
-  font-size: 1rem;
-  padding: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  color: ${props => props.theme.primary};
 `;
 
 const StyledList = styled.ul`
@@ -56,17 +37,12 @@ const StyledLink = styled(Link)`
 `;
 
 function Home(props) {
-  const { theme, domain } = props;
+  const { domain } = props;
 
   return (
     <Wrapper>
       <Header>
-        <BrandLink to="/">
-          <LogoWrapper>
-            <Logo color={theme.brand} />
-          </LogoWrapper>
-          <BrandText>{NAME}</BrandText>
-        </BrandLink>
+        <Logo />
       </Header>
       <StyledList>
         <Item>
@@ -86,4 +62,4 @@ function Home(props) {
   );
 }
 
-export default compose(withTheme)(Home);
+export default Home;
