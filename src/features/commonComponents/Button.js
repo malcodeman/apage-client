@@ -64,11 +64,11 @@ function Button(props) {
 
     switch (icon) {
       case "link":
-        return <LinkIcon style={style} />;
+        return <LinkIcon style={children && style} />;
       case "search":
-        return <SearchIcon style={style} />;
+        return <SearchIcon style={children && style} />;
       case "google":
-        return <GoogleIcon style={style} />;
+        return <GoogleIcon style={children && style} />;
       default:
         return null;
     }
