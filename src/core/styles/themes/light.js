@@ -88,12 +88,19 @@ const alert = {
   error
 };
 
+const text = {
+  secondary,
+  warning,
+  danger: error
+};
+
 export default {
   button,
   form,
   animations,
   transitions,
   alert,
+  text,
   brand,
   secondary,
   error,

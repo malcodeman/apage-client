@@ -3,6 +3,7 @@ import { compose } from "redux";
 import styled, { withTheme } from "styled-components";
 
 import { INSPIRATIONS } from "../constants/homeConstants";
+import Text from "../../commonComponents/Text";
 
 const Wrapper = styled.section`
   padding: 4rem 2rem;
@@ -99,14 +100,6 @@ const CardCover = styled.div`
   background-color: ${props => `${props.theme.brand}33`};
 `;
 
-const CardText = styled.span`
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.8rem;
-  font-weight: 500;
-  line-height: 1.5;
-`;
-
 function Inspiration(props) {
   const { theme } = props;
 
@@ -124,7 +117,9 @@ function Inspiration(props) {
             <CardCover>
               {cloneElement(inspiration.cover, { color: theme.brand })}
             </CardCover>
-            <CardText>{inspiration.text}</CardText>
+            <Text strong upperCase letterSpacing={0.1}>
+              {inspiration.text}
+            </Text>
           </Card>
         ))}
       </Grid>

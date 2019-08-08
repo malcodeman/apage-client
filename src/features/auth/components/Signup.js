@@ -12,6 +12,7 @@ import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
 import FormItem from "../../commonComponents/FormItem";
 import Alert from "../../commonComponents/Alert";
+import Text from "../../commonComponents/Text";
 import { signup } from "../actions/authActionCreators";
 import utils from "../../../core/utils";
 
@@ -48,15 +49,6 @@ const Heading = styled.h1`
   font-size: 1rem;
 `;
 
-const StyledLink = styled(Link)`
-  font-size: 0.8rem;
-  padding-bottom: 0.14rem;
-  font-weight: ${props => (props.bold ? "500" : "normal")};
-  border-bottom: 2px solid
-    ${props => (props.color ? props.color : props.theme.secondary)};
-  color: ${props => (props.color ? props.color : props.theme.secondary)};
-`;
-
 const Footer = styled.footer`
   padding: 1rem 2rem;
 `;
@@ -67,24 +59,10 @@ const OtherOptions = styled.div`
   justify-content: space-between;
 `;
 
-const TextSecondary = styled.p`
-  font-size: 0.8rem;
-  opacity: 0.75;
-  margin-bottom: 1rem;
-  color: ${props => props.theme.primary};
-`;
-
 const NoAccountWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-`;
-
-const Text = styled.span`
-  font-size: 0.8rem;
-  line-height: 1.6;
-  opacity: 0.75;
-  color: ${props => props.theme.primary};
 `;
 
 const FormikForm = props => {
@@ -163,16 +141,21 @@ const FormikForm = props => {
           <Button mb={1} icon="google" block>
             Sign up with Google
           </Button>
-          <TextSecondary>
+          <Text mb={2}>
             By creating an account, you agree to the{" "}
-            <StyledLink to="/tos">Terms of Service</StyledLink>.
-          </TextSecondary>
+            <Link to="/tos">
+              <Text underline>Terms of Service</Text>
+            </Link>
+            .
+          </Text>
           <OtherOptions>
             <NoAccountWrapper>
               <Text>Already have an account?</Text>
-              <StyledLink to="/login" color={theme.brand} bold="true">
-                Sign in
-              </StyledLink>
+              <Link to="/login">
+                <Text underline strong color={theme.brand}>
+                  Sign in
+                </Text>
+              </Link>
             </NoAccountWrapper>
           </OtherOptions>
         </Footer>

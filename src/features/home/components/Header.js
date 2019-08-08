@@ -4,6 +4,7 @@ import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
 import Logo from "../../commonComponents/Logo";
+import Text from "../../commonComponents/Text";
 
 const Container = styled.div`
   padding: 0 2rem;
@@ -14,6 +15,7 @@ const Container = styled.div`
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 32px 0;
   font-size: 1rem;
 `;
@@ -25,13 +27,6 @@ const Links = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
-  padding: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  color: ${props => (props.color ? props.color : props.theme.primary)};
-`;
-
 function Header(props) {
   const { theme } = props;
 
@@ -40,13 +35,31 @@ function Header(props) {
       <Nav>
         <Logo />
         <Links>
-          <StyledLink to="/">Product</StyledLink>
-          <StyledLink to="/">Templates</StyledLink>
-          <StyledLink to="/">Pricing</StyledLink>
-          <StyledLink to="/login">Sign in</StyledLink>
-          <StyledLink to="/signup" color={theme.brand}>
-            Sign up
-          </StyledLink>
+          <Link to="/">
+            <Text strong size={1} mr={1}>
+              Product
+            </Text>
+          </Link>
+          <Link to="/">
+            <Text strong size={1} mr={1}>
+              Templates
+            </Text>
+          </Link>
+          <Link to="/">
+            <Text strong size={1} mr={1}>
+              Pricing
+            </Text>
+          </Link>
+          <Link to="/login">
+            <Text strong size={1} mr={1}>
+              Sign in
+            </Text>
+          </Link>
+          <Link to="/signup">
+            <Text strong size={1} color={theme.brand}>
+              Sign up
+            </Text>
+          </Link>
         </Links>
       </Nav>
     </Container>

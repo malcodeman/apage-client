@@ -4,6 +4,7 @@ import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
 import EmailForm from "./EmailForm";
+import Text from "../../commonComponents/Text";
 import LandingPage from "../styles/illustrations/LandingPage";
 import { NAME } from "../../../core/constants";
 
@@ -11,13 +12,6 @@ const Container = styled.section`
   padding: 0 2rem;
   margin: 0 auto;
   max-width: 1200px;
-`;
-
-const StyledLink = styled(Link)`
-  padding: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  color: ${props => (props.color ? props.color : props.theme.primary)};
 `;
 
 const Grid = styled.div`
@@ -28,8 +22,6 @@ const Grid = styled.div`
     align-items: center;
   }
 `;
-
-const HeroText = styled.div``;
 
 const Illustration = styled.div`
   display: none;
@@ -60,29 +52,28 @@ const Subtitle = styled.h2`
   color: ${props => props.theme.secondary};
 `;
 
-const Note = styled.p`
-  font-size: 0.8rem;
-  padding: 1rem 0;
-  color: ${props => props.theme.secondary};
-`;
-
 function Hero(props) {
   const { theme } = props;
 
   return (
     <Container>
       <Grid>
-        <HeroText>
+        <div>
           <Title>Create, your way</Title>
           <Subtitle>
             {NAME} is the all-in-one platform to build a beautiful online
             presence.
           </Subtitle>
           <EmailForm />
-          <Note>
-            Already using {NAME} ?<StyledLink to="/login">Sign in</StyledLink>
-          </Note>
-        </HeroText>
+          <Text mt={1} type="secondary">
+            Already using {NAME}?{" "}
+            <Link to="/login">
+              <Text underline strong>
+                Sign in
+              </Text>
+            </Link>
+          </Text>
+        </div>
         <Illustration>
           <LandingPage color={theme.brand} />
         </Illustration>

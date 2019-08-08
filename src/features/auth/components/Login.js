@@ -12,6 +12,7 @@ import Button from "../../commonComponents/Button";
 import Input from "../../commonComponents/Input";
 import FormItem from "../../commonComponents/FormItem";
 import Alert from "../../commonComponents/Alert";
+import Text from "../../commonComponents/Text";
 import { login } from "../actions/authActionCreators";
 
 const Wrapper = styled.div`
@@ -47,15 +48,6 @@ const Heading = styled.h1`
   font-size: 1rem;
 `;
 
-const StyledLink = styled(Link)`
-  font-size: 0.8rem;
-  padding-bottom: 0.14rem;
-  font-weight: ${props => (props.bold ? "500" : "normal")};
-  border-bottom: 2px solid
-    ${props => (props.color ? props.color : props.theme.secondary)};
-  color: ${props => (props.color ? props.color : props.theme.secondary)};
-`;
-
 const Footer = styled.footer`
   padding: 1rem 2rem;
 `;
@@ -70,13 +62,6 @@ const NoAccountWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-`;
-
-const Text = styled.span`
-  font-size: 0.8rem;
-  line-height: 1.6;
-  opacity: 0.75;
-  color: ${props => props.theme.primary};
 `;
 
 const FormikForm = props => {
@@ -102,7 +87,9 @@ const FormikForm = props => {
         <FormWrapper>
           <FormHeader>
             <Heading>Sign in</Heading>
-            <StyledLink to="/forgot">Forgot password ?</StyledLink>
+            <Link to="/forgot">
+              <Text underline>Forgot password ?</Text>
+            </Link>
           </FormHeader>
           <Form>
             <FormItem
@@ -159,11 +146,15 @@ const FormikForm = props => {
           <OtherOptions>
             <NoAccountWrapper>
               <Text>Don't have an account?</Text>
-              <StyledLink to="/signup" color={theme.brand} bold="true">
-                Sign up for free
-              </StyledLink>
+              <Link to="/signup">
+                <Text underline strong color={theme.brand}>
+                  Sign up for free
+                </Text>
+              </Link>
             </NoAccountWrapper>
-            <StyledLink to="/sso/login">Sign in with SSO</StyledLink>
+            <Link to="/sso/login">
+              <Text underline>Sign in with SSO</Text>
+            </Link>
           </OtherOptions>
         </Footer>
       </Content>

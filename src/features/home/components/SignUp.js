@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import EmailForm from "./EmailForm";
+import Text from "../../commonComponents/Text";
 import { NAME } from "../../../core/constants";
 
 const Wrapper = styled.section`
@@ -13,6 +15,7 @@ const Wrapper = styled.section`
 const Center = styled.div`
   margin: 0 auto;
   max-width: 24rem;
+  text-align: center;
 `;
 
 const Title = styled.h2`
@@ -24,13 +27,6 @@ const Title = styled.h2`
   color: ${props => props.theme.primary};
 `;
 
-const Text = styled.div`
-  font-size: 0.8rem;
-  margin-top: 1rem;
-  text-align: center;
-  color: ${props => props.theme.secondary};
-`;
-
 function SignUp() {
   return (
     <Wrapper>
@@ -40,8 +36,13 @@ function SignUp() {
           placeholderText="Enter your email"
           ctaText="Sign up for free"
         />
-        <Text>
-          {NAME} is free to use for teams of any size. We also offer paid plans
+        <Text mt={1} type="secondary">
+          {NAME} is free to use for teams of any size. We also offer{" "}
+          <Link to="/pricing">
+            <Text underline bold>
+              paid plans
+            </Text>
+          </Link>{" "}
           with additional features, storage, and support.
         </Text>
       </Center>

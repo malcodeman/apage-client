@@ -4,6 +4,7 @@ import styled, { withTheme } from "styled-components";
 import { Link } from "react-router-dom";
 
 import Logo from "../../commonAssets/icons/Logo";
+import Text from "../../commonComponents/Text";
 import { FOOTER_LINKS } from "../constants/homeConstants";
 import { NAME } from "../../../core/constants";
 
@@ -27,40 +28,6 @@ const LinksWrapper = styled.div`
   flex-direction: column;
 `;
 
-const StyledLink = styled(Link)`
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  cursor: pointer;
-  font-weight: 500;
-  line-height: 1.5;
-  padding-bottom: 0.14rem;
-  &:hover {
-    border-color: currentColor;
-  }
-  opacity: ${props => (props.quiet ? `${props.quiet}` : "1")};
-  font-size: ${props => (props.small ? "0.7rem" : "0.8rem")};
-  margin-right: ${props => (props.mr ? `${props.mr}rem` : "0")};
-  border-bottom: 2px solid
-    ${props =>
-      props.bordercolor ? props.bordercolor : props.theme.borderColor};
-  color: ${props => (props.color ? props.color : props.theme.secondary)};
-`;
-
-const Text = styled.span`
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.5;
-  color: ${props => props.theme.secondary};
-  opacity: ${props => (props.quiet ? `${props.quiet}` : "1")};
-  font-size: ${props => (props.small ? "0.7rem" : "0.8rem")};
-  margin-right: ${props => (props.mr ? `${props.mr}rem` : "0")};
-`;
-
-const LegalWrapper = styled.div`
-  margin-top: 4rem;
-`;
-
 function Footer(props) {
   const { theme } = props;
 
@@ -71,51 +38,61 @@ function Footer(props) {
         <LinksWrapper>
           {FOOTER_LINKS[0].map(link => {
             return (
-              <div key={link.id}>
-                <StyledLink to={link.path}>{link.text}</StyledLink>
-              </div>
+              <Link to={link.path} key={link.id}>
+                <Text underline strong mb={0.5}>
+                  {link.text}
+                </Text>
+              </Link>
             );
           })}
         </LinksWrapper>
         <LinksWrapper>
           {FOOTER_LINKS[1].map(link => {
             return (
-              <div key={link.id}>
-                <StyledLink to={link.path}>{link.text}</StyledLink>
-              </div>
+              <Link to={link.path} key={link.id}>
+                <Text underline strong mb={0.5}>
+                  {link.text}
+                </Text>
+              </Link>
             );
           })}
         </LinksWrapper>
         <LinksWrapper>
           {FOOTER_LINKS[2].map(link => {
             return (
-              <div key={link.id}>
-                <StyledLink to={link.path}>{link.text}</StyledLink>
-              </div>
+              <Link to={link.path} key={link.id}>
+                <Text underline strong mb={0.5}>
+                  {link.text}
+                </Text>
+              </Link>
             );
           })}
         </LinksWrapper>
         <LinksWrapper>
-          <div>
-            <StyledLink to="/" color={theme.brand} bordercolor={theme.brand}>
+          <Link to="/" color={theme.brand} bordercolor={theme.brand}>
+            <Text underline strong mb={1} color={theme.brand}>
               We’re hiring!
-            </StyledLink>
-          </div>
-          <Text>Questions?</Text>
-          <div>
-            <StyledLink to="/">Explore our help center</StyledLink>
-          </div>
-          <LegalWrapper>
-            <Text mr={0.5} small quiet={0.75}>
-              © {NAME}
             </Text>
-            <StyledLink mr={0.5} small="true" quiet={0.75} to="/tos">
-              Terms
-            </StyledLink>
-            <StyledLink small="true" quiet={0.75} to="/privacy">
-              Privacy
-            </StyledLink>
-          </LegalWrapper>
+          </Link>
+          <Text>Questions?</Text>
+          <Link to="/">
+            <Text underline strong mb={4}>
+              Explore our help center
+            </Text>
+          </Link>
+          <div>
+            <Text mr={0.5}>© {NAME}</Text>
+            <Link to="/tos">
+              <Text type="secondary" underline strong mr={0.5}>
+                Terms
+              </Text>
+            </Link>
+            <Link to="/privacy">
+              <Text type="secondary" underline strong>
+                Privacy
+              </Text>
+            </Link>
+          </div>
         </LinksWrapper>
       </StyledFooter>
     </Wrapper>
