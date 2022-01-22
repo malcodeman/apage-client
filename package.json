@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "formik": "^1.5.7",
-    "nanoid": "^2.0.3",
+    "nanoid": "^3.1.31",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-outside-click-handler": "^1.2.3",
